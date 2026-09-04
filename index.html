@@ -72,6 +72,10 @@
   margin:10px auto 0;transform:rotate(-4deg)
 }
 
+
+.homehero.homehero-banner{min-height:0!important;height:auto!important;position:relative;overflow:hidden;background:#fff}
+.hero-banner-img{display:block;width:100%;height:auto;object-fit:contain;object-position:center}
+
 .needs{background:#fff;padding:14px 22px 12px;margin:0;border:0;border-radius:0;box-shadow:none}
 .needs h2{
   font-size:clamp(1.45rem,2.1vw,2rem);margin:0 0 14px;text-align:center;color:var(--navy);
@@ -184,16 +188,8 @@
   </header>
 
   <section class="home" id="home">
-    <div class="homehero">
-      <div class="hero-photo"><img src="hero-classroom.jpg" alt="Des élèves réalisent ensemble une pause active en classe"></div>
-      <div class="hero-copy">
-        <div class="pause-logo">PAUSE 5'</div>
-        <div class="pause-stripes" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="hero-title"><span class="w1">BOUGER.</span><br><span class="w2">RESPIRER.</span><br><span class="w3">APPRENDRE.</span></div>
-        <p class="tag">5 minutes · sur place · sans matériel</p>
-        <p class="hero-sub">Des pauses actives et ludiques<br>pour plus d’énergie, de bien-être<br>et de réussite !</p>
-      </div>
-      <div class="hero-quote">Une classe<br>en mouvement,<br>des élèves<br>plus engagés !</div>
+    <div class="homehero homehero-banner">
+      <img class="hero-banner-img" src="hero-banner.jpg" alt="PAUSE 5' · Bouger. Respirer. Apprendre. Une classe en mouvement, des élèves plus engagés !">
     </div>
     <div class="needs"><h2>De quoi les élèves de ma classe ont-ils besoin maintenant ?</h2><div class="filters" id="filters"></div></div>
     <div class="benefits" aria-label="Bénéfices des pauses actives">

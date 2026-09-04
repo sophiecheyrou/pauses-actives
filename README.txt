@@ -45,3 +45,5 @@ V11 : photo d'accueil fixe, ajout du logo Collège Actif, nouvelle icône color�
 V12 : accueil rapproché du visuel validé, photo fixe avec fondu graphique, logo officiel Académie de Paris, crédit Sophie Cheyrou sur deux lignes, phrase d'accroche, bénéfices et bouton À propos. L'icône n'est pas redessinée dans cette version. Préchargement de la vidéo suivante non activé à ce stade.
 
 V13 : photo d'accueil recentrée, phrase d'accroche repositionnée dans un cartouche plus lisible, logo Collège Actif ajouté à côté du logo Académie de Paris, cache v13.
+
+V14 : remplacement uniquement du bandeau d'accueil V13 par le NOUVEAU BANDEAU fourni. Aucun autre élément fonctionnel ou graphique modifié.
