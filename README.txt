@@ -32,3 +32,5 @@ La touche Échap permet généralement de quitter le plein écran.
 
 HORS LIGNE
 Les fichiers principaux sont mis en cache au premier chargement. Les vidéos et audios sont ensuite mis en cache au fur et à mesure de leur utilisation.
+
+V8 : compatibilité Chrome/Safari améliorée pour la projection, logo officiel fourni par l'utilisateur, sous-titre sous Sophie Cheyrou supprimé, mode projection homogène sans API plein écran native.

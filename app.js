@@ -105,27 +105,15 @@ function goHome(){
   stop();stopStepAudio();countdownRunning=false;$('countdown').classList.remove('open');exitFullscreen();
   $('demoVideo').pause();$('player').classList.remove('open');$('finish').classList.remove('open');$('home').classList.remove('hidden');$('homeCredit').style.display='block';$('start').hidden=false;$('pause').hidden=true;currentIndex=null;window.scrollTo({top:0,behavior:'smooth'});
 }
-async function enterFullscreen(){
+function enterFullscreen(){
   const panel=$('projectionPanel');
-  if(!panel) return;
-  try{
-    if(!document.fullscreenElement && panel.requestFullscreen) await panel.requestFullscreen();
-    else panel.classList.add('projector-mode');
-  }catch(e){panel.classList.add('projector-mode');}
+  if(panel) panel.classList.add('projector-mode');
 }
-async function exitFullscreen(){
+function exitFullscreen(){
   const panel=$('projectionPanel');
   if(panel) panel.classList.remove('projector-mode');
-  try{if(document.fullscreenElement && document.exitFullscreen) await document.exitFullscreen();}catch(e){}
 }
-function toggleFullscreen(){
-  if(document.fullscreenElement || $('projectionPanel').classList.contains('projector-mode')) exitFullscreen();
-  else enterFullscreen();
-}
-document.addEventListener('fullscreenchange',()=>{
-  $('fullscreen').textContent=document.fullscreenElement?'⤢ Quitter le plein écran':'⛶ Plein écran';
-});
 
-$('back').onclick=goHome;$('finishBtn').onclick=goHome;$('start').onclick=start;$('pause').onclick=pause;$('next').onclick=nextStep;$('fullscreen').onclick=toggleFullscreen;
+$('back').onclick=goHome;$('finishBtn').onclick=goHome;$('start').onclick=start;$('pause').onclick=pause;$('next').onclick=nextStep;
 renderFilters();renderSessions();
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
