@@ -114,6 +114,6 @@ function exitFullscreen(){
   if(panel) panel.classList.remove('projector-mode');
 }
 
-$('back').onclick=goHome;$('finishBtn').onclick=goHome;$('start').onclick=start;$('pause').onclick=pause;$('next').onclick=nextStep;
+$('back').onclick=goHome;$('finishBtn').onclick=goHome;$('homeDuringSession').onclick=goHome;$('start').onclick=start;$('pause').onclick=pause;$('next').onclick=nextStep;
 renderFilters();renderSessions();
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
