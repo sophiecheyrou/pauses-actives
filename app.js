@@ -1,3 +1,15 @@
+
+// --- Fenêtre "À propos" ---
+const aboutBtn = document.getElementById('aboutBtn');
+const aboutModal = document.getElementById('aboutModal');
+const aboutClose = document.getElementById('aboutClose');
+function openAbout(){ if(aboutModal) aboutModal.classList.add('open'); }
+function closeAbout(){ if(aboutModal) aboutModal.classList.remove('open'); }
+if(aboutBtn) aboutBtn.addEventListener('click', openAbout);
+if(aboutClose) aboutClose.addEventListener('click', closeAbout);
+if(aboutModal) aboutModal.addEventListener('click', (e)=>{ if(e.target===aboutModal) closeAbout(); });
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAbout(); });
+
 const cats={
  BOOST:{icon:'⚡',label:'Se réveiller',desc:'Retrouver de l’énergie'},MOVE:{icon:'🔥',label:'Bouger',desc:'Mettre le corps en mouvement'},FOCUS:{icon:'🎯',label:'Se concentrer',desc:'Mobiliser son attention'},RESET:{icon:'🌿',label:"S’étirer",desc:'Délier et mobiliser le corps'},RELAX:{icon:'🧘',label:'Se calmer',desc:'Respirer et relâcher'}
 };
