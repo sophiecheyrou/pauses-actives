@@ -46,39 +46,52 @@ function audioPathFor(step){
   if(!step.video) return null;
   return step.video.replace(/^videos\//,'audio/').replace(/\.mp4$/i,'.mp3');
 }
-function prepareStepAudio(step){
-  const a=$('stepAudio'); if(!a) return;
-  a.pause(); a.removeAttribute('src');
-  const src=audioPathFor(step); if(!src) return;
-  a.src=src; a.load();
+
+// Un seul lecteur audio pour toute la pause. Le premier clic sur « Démarrer »
+// l'autorise dans Safari/Chrome, puis le même lecteur est réutilisé pour toutes
+// les consignes, y compris depart.mp3 et fin.mp3.
+function appAudio(){ return $('cueAudio'); }
+function resetAudio(){
+  const a=appAudio(); if(!a) return;
+  a.pause(); a.onended=null; a.onerror=null;
+  try{a.currentTime=0;}catch(e){}
+  a.removeAttribute('src'); a.load();
+}
+function playAudio(src,onDone){
+  const a=appAudio();
+  if(!a || !src){onDone?.();return;}
+  let done=false;
+  const finish=()=>{
+    if(done)return; done=true;
+    a.onended=null; a.onerror=null;
+    onDone?.();
+  };
+  a.pause();
+  a.onended=finish; a.onerror=finish;
+  a.src=src;
+  try{a.currentTime=0;}catch(e){}
+  // Important : ne pas appeler load() entre le clic et play() dans Safari.
+  const promise=a.play();
+  if(promise && typeof promise.catch==='function') promise.catch(finish);
 }
 function playStepAudio(){
-  const a=$('stepAudio'); if(!a || !a.getAttribute('src')) return;
-  a.currentTime=0; a.play().catch(()=>{});
+  if(currentIndex===null) return;
+  playAudio(audioPathFor(sessions[currentIndex].steps[stepIndex]));
 }
-function pauseStepAudio(){
-  const a=$('stepAudio'); if(a) a.pause();
-}
+function pauseStepAudio(){ const a=appAudio(); if(a) a.pause(); }
 function resumeStepAudio(){
-  const a=$('stepAudio');
-  if(!a || !a.getAttribute('src')) return;
+  const a=appAudio(); if(!a || !a.getAttribute('src')) return;
   if(a.currentTime>0 && (!Number.isFinite(a.duration) || a.currentTime<a.duration)) a.play().catch(()=>{});
 }
 function stopStepAudio(){
-  const a=$('stepAudio'); if(!a) return; a.pause(); try{a.currentTime=0;}catch(e){}
-}
-function playCue(src,onDone){
-  const a=$('cueAudio');
-  if(!a){onDone?.();return;}
-  let done=false;
-  const finish=()=>{if(done)return;done=true;clearTimeout(timer);a.onended=null;a.onerror=null;onDone?.();};
-  a.pause();a.src=src;a.load();a.onended=finish;a.onerror=finish;
-  const timer=setTimeout(finish,9000);
-  a.play().catch(finish);
+  const a=appAudio(); if(!a) return;
+  a.pause(); try{a.currentTime=0;}catch(e){}
 }
 
+let sessionStarted=false;
 function openSession(i){
-  stop(); finishing=false; currentIndex=i; stepIndex=0; totalRemaining=300;
+  stop(); resetAudio(); finishing=false; countdownRunning=false; sessionStarted=false;
+  currentIndex=i; stepIndex=0; totalRemaining=300;
   $('home').classList.add('hidden'); $('homeCredit').style.display='none'; $('finish').classList.remove('open'); $('player').classList.add('open');
   let s=sessions[i]; $('playerCat').textContent=`${cats[s.cat].icon} ${cats[s.cat].label}`; $('playerTitle').textContent=s.title;
   $('start').hidden=false;$('pause').hidden=true;$('start').textContent='▶ Démarrer';
@@ -87,15 +100,20 @@ function openSession(i){
 function loadStep(){
   let s=sessions[currentIndex].steps[stepIndex]; remaining=s.seconds;
   $('phaseLabel').textContent=s.phase; $('moveName').textContent=s.name; $('moveIcon').textContent=s.icon; $('instruction').textContent=s.instruction;
-  loadVideo(s.video); prepareStepAudio(s); renderTimeline(); updateTimes();
+  loadVideo(s.video); renderTimeline(); updateTimes();
 }
 function loadVideo(src){
   const v=$('demoVideo'), d=$('demo');
-  d.classList.remove('has-video'); v.pause(); v.removeAttribute('src'); v.load();
+  d.classList.remove('has-video');
+  v.pause(); v.onloadeddata=null; v.onerror=null; v.removeAttribute('src'); v.load();
   if(!src) return;
   v.src=src;
-  v.onloadeddata=()=>{d.classList.add('has-video');v.play().catch(()=>{});};
-  v.onerror=()=>{d.classList.remove('has-video');v.removeAttribute('src');};
+  v.onloadeddata=()=>{
+    d.classList.add('has-video');
+    // La vidéo ne démarre jamais à l'ouverture de la fiche.
+    if(sessionStarted && running) v.play().catch(()=>{});
+  };
+  v.onerror=()=>{d.classList.remove('has-video');v.pause();};
   v.load();
 }
 function renderTimeline(){let steps=sessions[currentIndex].steps;$('timeline').innerHTML=steps.map((_,i)=>`<span class="${i<stepIndex?'done':i===stepIndex?'current':''}"></span>`).join('');}
@@ -109,16 +127,23 @@ function runCountdown(){
   const values=['3','2','1'];let i=0;
   const next=()=>{
     if(i<values.length){num.textContent=values[i];i++;setTimeout(next,850);}
-    else{num.hidden=true;go.hidden=false;setTimeout(()=>{overlay.classList.remove('open');countdownRunning=false;startSessionClock();playStepAudio();},850);}
+    else{num.hidden=true;go.hidden=false;setTimeout(()=>{
+      overlay.classList.remove('open');countdownRunning=false;sessionStarted=true;
+      startSessionClock();
+      $('demoVideo').play().catch(()=>{});
+      playStepAudio();
+    },850);}
   };next();
 }
 function start(){
   if(running||countdownRunning)return;
-  if(totalRemaining===300 && stepIndex===0){
+  if(totalRemaining===300 && stepIndex===0 && !sessionStarted){
     enterFullscreen();$('start').hidden=true;$('pause').hidden=false;
-    playCue('audio/depart.mp3',runCountdown);
+    // Cette lecture est déclenchée directement par le clic utilisateur :
+    // elle « déverrouille » le lecteur audio pour toute la session.
+    playAudio('audio/depart.mp3',runCountdown);
   }else{
-    startSessionClock();resumeStepAudio();
+    sessionStarted=true; startSessionClock(); $('demoVideo').play().catch(()=>{}); resumeStepAudio();
   }
 }
 function startSessionClock(){
@@ -127,26 +152,30 @@ function startSessionClock(){
 }
 function stop(){if(interval)clearInterval(interval);interval=null;running=false;}
 function pause(){
-  if(running){stop();pauseStepAudio();$('pause').textContent='▶ Reprendre';}
-  else{startSessionClock();resumeStepAudio();$('pause').textContent='⏸ Pause';}
+  if(running){stop();$('demoVideo').pause();pauseStepAudio();$('pause').textContent='▶ Reprendre';}
+  else{startSessionClock();$('demoVideo').play().catch(()=>{});resumeStepAudio();$('pause').textContent='⏸ Pause';}
 }
 function nextStep(){
-  let was=running;stop();
-  if(stepIndex<sessions[currentIndex].steps.length-1){stepIndex++;loadStep();if(was){startSessionClock();playStepAudio();}}
-  else finishSession();
+  let was=running;stop(); stopStepAudio();
+  if(stepIndex<sessions[currentIndex].steps.length-1){
+    stepIndex++;loadStep();
+    if(was){startSessionClock();$('demoVideo').play().catch(()=>{});playStepAudio();}
+  } else finishSession();
 }
 function finishSession(){
   if(finishing)return;finishing=true;
-  stop();stopStepAudio();
-  playCue('audio/fin.mp3',()=>{
+  stop(); $('demoVideo').pause(); stopStepAudio();
+  // Le même lecteur audio, déjà autorisé au démarrage, joue le son final.
+  playAudio('audio/fin.mp3',()=>{
     exitFullscreen();
     $('player').classList.remove('open');$('finish').classList.add('open');
     finishing=false;window.scrollTo({top:0,behavior:'smooth'});
   });
 }
 function goHome(){
-  stop();stopStepAudio();finishing=false;countdownRunning=false;$('countdown').classList.remove('open');exitFullscreen();
-  $('demoVideo').pause();$('player').classList.remove('open');$('finish').classList.remove('open');$('home').classList.remove('hidden');$('homeCredit').style.display='block';$('start').hidden=false;$('pause').hidden=true;currentIndex=null;window.scrollTo({top:0,behavior:'smooth'});
+  stop(); resetAudio(); finishing=false;countdownRunning=false;sessionStarted=false;$('countdown').classList.remove('open');exitFullscreen();
+  const v=$('demoVideo');v.pause();v.removeAttribute('src');v.load();
+  $('player').classList.remove('open');$('finish').classList.remove('open');$('home').classList.remove('hidden');$('homeCredit').style.display='block';$('start').hidden=false;$('pause').hidden=true;currentIndex=null;window.scrollTo({top:0,behavior:'smooth'});
 }
 function enterFullscreen(){
   const panel=$('projectionPanel');
