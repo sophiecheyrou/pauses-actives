@@ -92,10 +92,12 @@ let sessionStarted=false;
 function openSession(i){
   stop(); resetAudio(); finishing=false; countdownRunning=false; sessionStarted=false;
   currentIndex=i; stepIndex=0; totalRemaining=300;
-  $('home').classList.add('hidden'); $('homeCredit').style.display='none'; $('finish').classList.remove('open'); $('player').classList.add('open');
+  $('home').classList.add('hidden'); $('finish').classList.remove('open'); $('player').classList.add('open');
   let s=sessions[i]; $('playerCat').textContent=`${cats[s.cat].icon} ${cats[s.cat].label}`; $('playerTitle').textContent=s.title;
   $('start').hidden=false;$('pause').hidden=true;$('start').textContent='▶ Démarrer';
-  loadStep(); window.scrollTo({top:0,behavior:'smooth'});
+  loadStep();
+  playAudio('audio/depart.mp3');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 function loadStep(){
   let s=sessions[currentIndex].steps[stepIndex]; remaining=s.seconds;
@@ -137,14 +139,11 @@ function runCountdown(){
 }
 function start(){
   if(running||countdownRunning)return;
-  if(totalRemaining===300 && stepIndex===0 && !sessionStarted){
-    enterFullscreen();$('start').hidden=true;$('pause').hidden=false;
-    // Cette lecture est déclenchée directement par le clic utilisateur :
-    // elle « déverrouille » le lecteur audio pour toute la session.
-    playAudio('audio/depart.mp3',runCountdown);
-  }else{
-    sessionStarted=true; startSessionClock(); $('demoVideo').play().catch(()=>{}); resumeStepAudio();
-  }
+  enterFullscreen();
+  sessionStarted=true;
+  startSessionClock();
+  $('demoVideo').play().catch(()=>{});
+  playStepAudio();
 }
 function startSessionClock(){
   if(running)return;running=true;$('start').hidden=true;$('pause').hidden=false;$('pause').textContent='⏸ Pause';
@@ -165,17 +164,15 @@ function nextStep(){
 function finishSession(){
   if(finishing)return;finishing=true;
   stop(); $('demoVideo').pause(); stopStepAudio();
-  // Le même lecteur audio, déjà autorisé au démarrage, joue le son final.
-  playAudio('audio/fin.mp3',()=>{
-    exitFullscreen();
-    $('player').classList.remove('open');$('finish').classList.add('open');
-    finishing=false;window.scrollTo({top:0,behavior:'smooth'});
-  });
+  exitFullscreen();
+  $('player').classList.remove('open');$('finish').classList.add('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+  playAudio('audio/fin.mp3',()=>{finishing=false;});
 }
 function goHome(){
   stop(); resetAudio(); finishing=false;countdownRunning=false;sessionStarted=false;$('countdown').classList.remove('open');exitFullscreen();
   const v=$('demoVideo');v.pause();v.removeAttribute('src');v.load();
-  $('player').classList.remove('open');$('finish').classList.remove('open');$('home').classList.remove('hidden');$('homeCredit').style.display='block';$('start').hidden=false;$('pause').hidden=true;currentIndex=null;window.scrollTo({top:0,behavior:'smooth'});
+  $('player').classList.remove('open');$('finish').classList.remove('open');$('home').classList.remove('hidden');$('start').hidden=false;$('pause').hidden=true;currentIndex=null;window.scrollTo({top:0,behavior:'smooth'});
 }
 function enterFullscreen(){
   const panel=$('projectionPanel');
