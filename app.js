@@ -13,9 +13,9 @@ document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAbout(); }
 const cats={
  BOOST:{icon:'⚡',label:'Se réveiller',desc:'Retrouver de l’énergie'},MOVE:{icon:'🔥',label:'Bouger',desc:'Mettre le corps en mouvement'},FOCUS:{icon:'🎯',label:'Se concentrer',desc:'Mobiliser son attention'},RESET:{icon:'🌿',label:"S’étirer",desc:'Délier et mobiliser le corps'},RELAX:{icon:'🧘',label:'Se calmer',desc:'Respirer et relâcher'}
 };
-const P=(phase,name,seconds,icon,instruction,seated,video)=>({phase,name,seconds,icon,instruction,seated,video});
+const P=(phase,name,seconds,icon,instruction,seated,video,audio=null)=>({phase,name,seconds,icon,instruction,seated,video,audio});
 const sessions=[
-{cat:'BOOST',title:'Début de journée',tag:'Énergie immédiate',intensity:2,steps:[P('MISE EN ROUTE','Marche tranquille',20,'🚶','Debout derrière ta chaise. Marche tranquillement sur place.','Marche assis en alternant les pieds.','videos/marche.mp4'),P('ACTIVATION','Marche active',40,'⚡','Accélère. Les bras accompagnent le mouvement.','Pieds et bras dynamiques.','videos/marche-active.mp4'),P('ACTIVATION','Talons-fesses',40,'🦵','Alterne les talons vers l’arrière. Reste léger et droit.','Talons alternés vers l’avant.','videos/talons-fesses.mp4'),P('JAMBES','Squats',40,'⬇️','Recule légèrement le bassin et remonte. Va à ton rythme.','Extensions alternées des jambes.','videos/squats.mp4'),P('CARDIO','Genoux alternés',40,'🔥','Monte un genou puis l’autre. Trouve ton rythme.','Genoux alternés assis.','videos/genoux.mp4'),P('CARDIO','Boxe',60,'🥊','Droite, gauche. Les coups restent contrôlés. Accélère progressivement.','Même mouvement assis.','videos/boxe.mp4'),P('CHALLENGE','30 secondes',30,'🎯','Combien de montées de genoux peux-tu réaliser proprement ?','Même défi assis.','videos/genoux.mp4'),P('RESET','Respire',30,'🌬️','Ralentis. Inspire… expire lentement. Relâche les épaules.','Identique assis.','videos/respire.mp4')]},
+{cat:'BOOST',title:'Début de journée',tag:'Énergie immédiate',intensity:2,steps:[P('MISE EN ROUTE','Marche tranquille',20,'🚶','Debout derrière ta chaise. Marche tranquillement sur place.','Marche assis en alternant les pieds.','videos/marche.mp4','audio/marche.mp3'),P('ACTIVATION','Marche active',40,'⚡','Accélère. Les bras accompagnent le mouvement.','Pieds et bras dynamiques.','videos/marche-active.mp4','audio/marche-active.mp3'),P('ACTIVATION','Talons-fesses',40,'🦵','Alterne les talons vers l’arrière. Reste léger et droit.','Talons alternés vers l’avant.','videos/talons-fesses.mp4','audio/talons-fesses.mp3'),P('JAMBES','Squats',40,'⬇️','Recule légèrement le bassin et remonte. Va à ton rythme.','Extensions alternées des jambes.','videos/squats.mp4','audio/squats.mp3'),P('CARDIO','Genoux alternés',40,'🔥','Monte un genou puis l’autre. Trouve ton rythme.','Genoux alternés assis.','videos/genoux.mp4','audio/genoux.mp3'),P('CARDIO','Boxe',60,'🥊','Droite, gauche. Les coups restent contrôlés. Accélère progressivement.','Même mouvement assis.','videos/boxe.mp4','audio/boxe.mp3'),P('CHALLENGE','30 secondes',30,'🎯','Combien de montées de genoux peux-tu réaliser proprement ?','Même défi assis.','videos/genoux.mp4','audio/challenge-genoux.mp3'),P('RESET','Respire',30,'🌬️','Ralentis. Inspire… expire lentement. Relâche les épaules.','Identique assis.','videos/respire.mp4','audio/respire.mp3')]},
 {cat:'BOOST',title:'Début d’après-midi',tag:'Relancer sans s’épuiser',intensity:2,steps:[P('MOBILITÉ','Grandir',30,'↕️','Monte les bras. Grandis-toi. Relâche.','Identique assis.','videos/grandir.mp4'),P('ACTIVATION','Pas droite-gauche',40,'↔️','Droite. Centre. Gauche. Centre.','Tapote alternativement les pieds.','videos/pas-lateraux.mp4'),P('ACTIVATION','Montée sur pointes',40,'🦶','Monte sur les pointes puis redescends doucement.','Talons levés puis reposés.','videos/pointes.mp4'),P('COORDINATION','Coude-genou croisé',40,'✕','Coude droit, genou gauche. Puis inverse.','Identique assis.','videos/coude-genou.mp4'),P('CARDIO','Marche turbo',50,'🚶','Marche vite. Bras actifs. Encore un peu plus vite.','Pieds et bras rapides.','videos/marche-turbo.mp4'),P('JAMBES','Squat + bras',50,'🙌','Descends légèrement. Remonte en levant les bras.','Bras hauts + extension de jambes.','videos/squat-bras.mp4'),P('CHALLENGE','Classe synchro',25,'🎯','Toute la classe peut-elle tenir le même rythme ?','Identique assis.','videos/synchro.mp4'),P('RESET','Respire',25,'🌬️','Inspire trois secondes. Souffle lentement.','Identique assis.','videos/respire.mp4')]},
 {cat:'MOVE',title:'Full Body',tag:'Tout le corps en 5 min',intensity:3,steps:[P('MOBILITÉ','Cercles d’épaules',30,'🔄','Grands cercles vers l’arrière.','Identique assis.','videos/epaules.mp4'),P('JAMBES','Demi-squats',40,'⬇️','Descends légèrement et remonte. Mouvement fluide.','Extensions alternées.','videos/demi-squats.mp4'),P('HAUT DU CORPS','Poussées devant',40,'🙌','Pousse les deux mains devant toi puis ramène.','Identique assis.','videos/poussees.mp4'),P('CARDIO','Genoux alternés',40,'🔥','Genou droit, gauche. Accélère progressivement.','Genoux alternés assis.','videos/genoux.mp4'),P('JAMBES','Squat + pointes',40,'⬆️','Un squat puis monte sur la pointe des pieds.','Extensions + pointes.','videos/squat-pointes.mp4'),P('COMBO','Deux genoux + squat',50,'🔁','Deux genoux puis un squat. Recommence.','Deux genoux puis deux extensions.','videos/combo.mp4'),P('CHALLENGE','Sans arrêter',30,'⏱️','Tiens 30 secondes en gardant un mouvement propre.','Même défi assis.','videos/challenge.mp4'),P('RESET','Marche douce',30,'🌬️','Marche doucement. Relâche les bras. Respire.','Pieds doux + respiration.','videos/respire.mp4')]},
 {cat:'MOVE',title:'Boxing Break',tag:'Dynamique et défoulant',intensity:3,steps:[P('GARDE','Mise en garde',30,'🥊','Pieds stables. Mains devant. Épaules relâchées.','Dos droit, mains en garde.','videos/garde.mp4'),P('TECHNIQUE','Directs',40,'👊','Droite. Gauche. Droite. Gauche.','Identique assis.','videos/directs.mp4'),P('TECHNIQUE','Double direct',40,'🥊','Droite-gauche… pause… droite-gauche.','Identique assis.','videos/double-direct.mp4'),P('COORDINATION','Direct + esquive',40,'↙️','Deux directs puis légère flexion.','Deux directs puis légère inclinaison.','videos/esquive.mp4'),P('TECHNIQUE','Uppercuts',40,'⬆️','Alterne les bras de bas en haut. Sans forcer.','Identique assis.','videos/uppercuts.mp4'),P('COMBO','Droite-gauche-droite-esquive',50,'🔥','Enchaîne : droite, gauche, droite, esquive.','Même combo assis.','videos/combo-boxe.mp4'),P('CHALLENGE','Classe synchro',30,'🎯','Toute la classe ensemble. Ne perdez pas le rythme !','Identique assis.','videos/synchro-boxe.mp4'),P('RESET','Relâche',30,'🌬️','Ouvre les mains. Secoue les bras. Inspire. Souffle.','Identique assis.','videos/respire.mp4')]},
@@ -27,7 +27,7 @@ const sessions=[
 {cat:'RELAX',title:'Reset mental',tag:'Relâcher & repartir',intensity:1,steps:[P('DÉTENTE','Secouer mains et bras',30,'🤲','Secoue doucement les mains et les avant-bras.','Identique assis.','videos/secouer.mp4'),P('RELÂCHEMENT','Épaules',40,'↕️','Monte les épaules puis relâche-les.','Identique assis.','videos/epaules-relax.mp4'),P('ÉTIREMENT','S’étirer vers le haut',40,'🙌','Grandis-toi vers le plafond. Respire normalement.','Identique assis.','videos/grandir.mp4'),P('SOUFFLE','Ouvrir / refermer',40,'🌬️','Inspire en ouvrant les bras. Expire en les refermant.','Identique assis.','videos/ouvrir-fermer.mp4'),P('TENSION / DÉTENTE','Poings 3 secondes',40,'✊','Serre doucement les poings 3 secondes puis relâche.','Identique assis.','videos/poings.mp4'),P('TENSION / DÉTENTE','Épaules 3 secondes',40,'🌿','Monte légèrement les épaules 3 secondes puis relâche.','Identique assis.','videos/epaules-relax.mp4'),P('RESET','Respiration calme',40,'🌬️','Laisse la respiration ralentir.','Identique assis.','videos/respire.mp4'),P('REPRISE','Immobilité',30,'🧘','Reste immobile. Une dernière respiration. On reprend.','Identique assis.','videos/posture.mp4')]}
 ];
 
-let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false;
+let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false, finishing=false;
 const $=id=>document.getElementById(id);
 function renderFilters(){
   const order=['BOOST','MOVE','FOCUS','RESET','RELAX'];
@@ -40,26 +40,45 @@ function renderSessions(){
   $('sessions').innerHTML=list.map(({s,i})=>`<button class="session cat-${s.cat}" type="button" data-i="${i}"><div class="cat">${cats[s.cat].icon} ${cats[s.cat].label}</div><h3>${s.title}</h3><p>${s.tag}</p><div class="meta"><span>5 minutes</span><span>Intensité ${'●'.repeat(s.intensity)}${'○'.repeat(3-s.intensity)}</span></div></button>`).join('');
   document.querySelectorAll('.session').forEach(btn=>btn.onclick=()=>openSession(Number(btn.dataset.i)));
 }
-function audioPathFor(video){
-  if(!video) return null;
-  return video.replace(/^videos\//,'audio/').replace(/\.mp4$/i,'.mp3');
+function audioPathFor(step){
+  if(!step) return null;
+  if(step.audio) return step.audio;
+  if(!step.video) return null;
+  return step.video.replace(/^videos\//,'audio/').replace(/\.mp4$/i,'.mp3');
 }
-function prepareStepAudio(video){
+function prepareStepAudio(step){
   const a=$('stepAudio'); if(!a) return;
   a.pause(); a.removeAttribute('src');
-  const src=audioPathFor(video); if(!src) return;
+  const src=audioPathFor(step); if(!src) return;
   a.src=src; a.load();
 }
 function playStepAudio(){
-  const a=$('stepAudio'); if(!a || !a.src) return;
+  const a=$('stepAudio'); if(!a || !a.getAttribute('src')) return;
   a.currentTime=0; a.play().catch(()=>{});
 }
+function pauseStepAudio(){
+  const a=$('stepAudio'); if(a) a.pause();
+}
+function resumeStepAudio(){
+  const a=$('stepAudio');
+  if(!a || !a.getAttribute('src')) return;
+  if(a.currentTime>0 && (!Number.isFinite(a.duration) || a.currentTime<a.duration)) a.play().catch(()=>{});
+}
 function stopStepAudio(){
-  const a=$('stepAudio'); if(!a) return; a.pause();
+  const a=$('stepAudio'); if(!a) return; a.pause(); try{a.currentTime=0;}catch(e){}
+}
+function playCue(src,onDone){
+  const a=$('cueAudio');
+  if(!a){onDone?.();return;}
+  let done=false;
+  const finish=()=>{if(done)return;done=true;clearTimeout(timer);a.onended=null;a.onerror=null;onDone?.();};
+  a.pause();a.src=src;a.load();a.onended=finish;a.onerror=finish;
+  const timer=setTimeout(finish,9000);
+  a.play().catch(finish);
 }
 
 function openSession(i){
-  stop(); currentIndex=i; stepIndex=0; totalRemaining=300;
+  stop(); finishing=false; currentIndex=i; stepIndex=0; totalRemaining=300;
   $('home').classList.add('hidden'); $('homeCredit').style.display='none'; $('finish').classList.remove('open'); $('player').classList.add('open');
   let s=sessions[i]; $('playerCat').textContent=`${cats[s.cat].icon} ${cats[s.cat].label}`; $('playerTitle').textContent=s.title;
   $('start').hidden=false;$('pause').hidden=true;$('start').textContent='▶ Démarrer';
@@ -68,7 +87,7 @@ function openSession(i){
 function loadStep(){
   let s=sessions[currentIndex].steps[stepIndex]; remaining=s.seconds;
   $('phaseLabel').textContent=s.phase; $('moveName').textContent=s.name; $('moveIcon').textContent=s.icon; $('instruction').textContent=s.instruction;
-  loadVideo(s.video); prepareStepAudio(s.video); renderTimeline(); updateTimes();
+  loadVideo(s.video); prepareStepAudio(s); renderTimeline(); updateTimes();
 }
 function loadVideo(src){
   const v=$('demoVideo'), d=$('demo');
@@ -93,15 +112,23 @@ function runCountdown(){
     else{num.hidden=true;go.hidden=false;setTimeout(()=>{overlay.classList.remove('open');countdownRunning=false;startSessionClock();playStepAudio();},850);}
   };next();
 }
-function start(){if(running||countdownRunning)return; if(totalRemaining===300 && stepIndex===0){enterFullscreen();$('start').hidden=true;$('pause').hidden=false;runCountdown();}else startSessionClock();}
+function start(){
+  if(running||countdownRunning)return;
+  if(totalRemaining===300 && stepIndex===0){
+    enterFullscreen();$('start').hidden=true;$('pause').hidden=false;
+    playCue('audio/depart.mp3',runCountdown);
+  }else{
+    startSessionClock();resumeStepAudio();
+  }
+}
 function startSessionClock(){
   if(running)return;running=true;$('start').hidden=true;$('pause').hidden=false;$('pause').textContent='⏸ Pause';
   interval=setInterval(()=>{remaining--;totalRemaining--;updateTimes();if(remaining<=0)nextStep();},1000);
 }
 function stop(){if(interval)clearInterval(interval);interval=null;running=false;}
 function pause(){
-  if(running){stop();stopStepAudio();$('pause').textContent='▶ Reprendre';}
-  else{startSessionClock();$('pause').textContent='⏸ Pause';}
+  if(running){stop();pauseStepAudio();$('pause').textContent='▶ Reprendre';}
+  else{startSessionClock();resumeStepAudio();$('pause').textContent='⏸ Pause';}
 }
 function nextStep(){
   let was=running;stop();
@@ -109,12 +136,16 @@ function nextStep(){
   else finishSession();
 }
 function finishSession(){
-  stop();stopStepAudio();exitFullscreen();
-  $('player').classList.remove('open');$('finish').classList.add('open');
-  window.scrollTo({top:0,behavior:'smooth'});
+  if(finishing)return;finishing=true;
+  stop();stopStepAudio();
+  playCue('audio/fin.mp3',()=>{
+    exitFullscreen();
+    $('player').classList.remove('open');$('finish').classList.add('open');
+    finishing=false;window.scrollTo({top:0,behavior:'smooth'});
+  });
 }
 function goHome(){
-  stop();stopStepAudio();countdownRunning=false;$('countdown').classList.remove('open');exitFullscreen();
+  stop();stopStepAudio();finishing=false;countdownRunning=false;$('countdown').classList.remove('open');exitFullscreen();
   $('demoVideo').pause();$('player').classList.remove('open');$('finish').classList.remove('open');$('home').classList.remove('hidden');$('homeCredit').style.display='block';$('start').hidden=false;$('pause').hidden=true;currentIndex=null;window.scrollTo({top:0,behavior:'smooth'});
 }
 function enterFullscreen(){
