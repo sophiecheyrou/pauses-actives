@@ -147,6 +147,13 @@
 .cat-BOOST{color:var(--boost)}.cat-MOVE{color:var(--move)}.cat-FOCUS{color:var(--focus)}.cat-RESET{color:var(--reset)}.cat-RELAX{color:var(--relax)}
 .panel.projector-mode{position:fixed;inset:0;z-index:50;width:100vw;height:100vh;height:100dvh;max-width:none;border:0;border-radius:0;padding:12px 18px;background:#fff;box-shadow:none;grid-template-rows:auto auto minmax(0,1fr) auto auto}.panel.projector-mode .projection-layout{grid-template-columns:minmax(0,1.95fr) minmax(330px,.85fr);gap:22px;min-height:0;align-items:center}.panel.projector-mode .demo{max-height:100%;height:auto;width:100%;align-self:center}.panel.projector-mode .phase h3{font-size:clamp(2.7rem,4vw,4.7rem)}.panel.projector-mode .phase p{font-size:clamp(1.9rem,2.8vw,3.2rem)}.panel.projector-mode .phase .phase-time{font-size:clamp(4rem,6vw,6.4rem)}.panel.projector-mode .sessionhead h2{font-size:1.85rem}.panel.projector-mode .controls{margin-top:6px}.panel.projector-mode .timeline{margin-top:6px}
 
+
+/* Écran d'attente avant le démarrage de chaque pause */
+.prestart-message{display:none;position:absolute;inset:0;z-index:6;align-items:center;justify-content:center;flex-direction:column;text-align:center;background:linear-gradient(135deg,#f7fbff,#eef6ff);color:var(--navy);padding:30px}
+.prestart-message strong{font-size:clamp(2rem,4.8vw,4.5rem);font-weight:950;letter-spacing:-.04em}
+.prestart-message span{margin-top:10px;font-size:clamp(1.35rem,3vw,2.6rem);font-weight:900;letter-spacing:.08em}
+.demo.prestart .prestart-message{display:flex}
+.demo.prestart video,.demo.prestart .loop,.demo.prestart .caption{visibility:hidden}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
 
@@ -211,7 +218,7 @@
       <div class="sessionhead"><div><div class="eyebrow" id="playerCat"></div><h2 id="playerTitle"></h2></div><div class="timer" id="total">05:00</div></div>
       <div class="progress"><div id="progressBar"></div></div>
       <div class="projection-layout">
-        <div class="demo" id="demo" aria-label="Démonstration vidéo du mouvement"><video id="demoVideo" loop muted playsinline preload="metadata"></video><div class="loop" id="moveIcon">⚡</div><div class="caption">La vidéo de démonstration apparaîtra ici lorsqu’elle sera ajoutée au dossier videos.</div></div>
+        <div class="demo" id="demo" aria-label="Démonstration vidéo du mouvement"><video id="demoVideo" loop muted playsinline preload="auto"></video><div class="prestart-message" aria-live="polite"><strong>PAUSE 5'…</strong><span>EN PLACE !</span></div><div class="loop" id="moveIcon">⚡</div><div class="caption">La vidéo de démonstration apparaîtra ici lorsqu’elle sera ajoutée au dossier videos.</div></div>
         <div class="phase"><div class="phase-label" id="phaseLabel">Prêts ?</div><h3 id="moveName">La pause va commencer</h3><p id="instruction">Restez à votre place. Aucun matériel nécessaire.</p><div class="phase-time" id="phaseTime">00:20</div></div>
       </div>
       <div class="controls"><button class="primary" id="start">▶ Démarrer</button><button class="secondary" id="pause" hidden>⏸ Pause</button><button class="secondary" id="next">Étape suivante →</button><button class="secondary home-control" id="homeDuringSession">⏹ Accueil</button></div>
@@ -221,7 +228,7 @@
     </div>
   </section>
 
-  <section class="finish" id="finish"><div class="check">✓</div><div class="eyebrow">PAUSE TERMINÉE</div><h2>On reprend !</h2><p>5 minutes de mouvement. La classe peut reprendre le cours.</p><button class="primary" id="finishBtn">Retour à l'accueil</button></section>
+  <section class="finish" id="finish"><div class="check">✓</div><div class="eyebrow">PAUSE TERMINÉE</div><h2>On reprend le cours !</h2><p>5 minutes de mouvement. La classe peut reprendre le cours.</p><button class="primary" id="finishBtn">Retour à l'accueil</button></section>
 </div>
 
 <div class="about-modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
