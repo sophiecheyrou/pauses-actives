@@ -123,6 +123,10 @@
 .session .cat{font-size:.78rem;font-weight:950;letter-spacing:.08em;text-transform:uppercase}
 .session h3{font-size:1.25rem;margin:.48rem 0 .25rem;color:var(--text)}
 .session p{margin:0;color:var(--muted);font-size:.92rem}
+
+.seated-badge{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:5px 9px;border-radius:999px;background:#f3f7fb;border:1px solid #d9e4ef;color:#334e68;font-size:.78rem;font-weight:850}
+.seated-badge span{line-height:1.15}
+
 .session .meta{display:flex;justify-content:space-between;gap:10px;margin-top:13px;font-size:.82rem;color:var(--muted)}
 
 .about-modal{
@@ -178,6 +182,12 @@
 }
 @media (max-width:900px){.filters{grid-template-columns:repeat(2,1fr)}.homehero{grid-template-columns:1fr}.hero-photo{min-height:320px}.projection-layout{grid-template-columns:1fr}.demo{max-height:none}.panel{display:block}.controls{margin-bottom:8px}}
 
+
+.seated-project{margin-top:12px;padding:14px 16px;border-radius:14px;background:#f2f7fb;border:2px solid #bfd2e5;color:#183b5b;font-size:clamp(1.1rem,1.8vw,1.9rem);line-height:1.18;font-weight:850}
+.panel.projector-mode .seated-project{font-size:clamp(1.45rem,2.2vw,2.5rem);padding:16px 18px}
+.why-active{margin:16px 0;padding:14px 16px;border-radius:14px;background:#f7f9fb;border:1px solid #e3e8ef}
+.why-active h3{margin:0 0 9px}.why-active p{margin:6px 0}.why-active small{display:block;margin-top:10px;line-height:1.4;color:#52606d}
+
 </style>
 </head>
 <body>
@@ -189,6 +199,7 @@
       <img class="college-logo" src="logo-college-actif.png" alt="Collège Actif · Avenir Positif">
     </div>
     <div class="header-actions">
+      <button class="about-btn" id="soundToggle" type="button" aria-pressed="true">🔊 Son</button>
       <button class="about-btn" id="aboutBtn" type="button">ⓘ&nbsp; À propos</button>
     </div>
   </header>
@@ -219,7 +230,7 @@
       <div class="progress"><div id="progressBar"></div></div>
       <div class="projection-layout">
         <div class="demo" id="demo" aria-label="Démonstration vidéo du mouvement"><video id="demoVideo" loop muted playsinline preload="auto"></video><div class="prestart-message" aria-live="polite"><strong>PAUSE 5'…</strong><span>EN PLACE !</span></div><div class="loop" id="moveIcon">⚡</div><div class="caption">La vidéo de démonstration apparaîtra ici lorsqu’elle sera ajoutée au dossier videos.</div></div>
-        <div class="phase"><div class="phase-label" id="phaseLabel">Prêts ?</div><h3 id="moveName">La pause va commencer</h3><p id="instruction">Restez à votre place. Aucun matériel nécessaire.</p><div class="phase-time" id="phaseTime">00:20</div></div>
+        <div class="phase"><div class="phase-label" id="phaseLabel">Prêts ?</div><h3 id="moveName">La pause va commencer</h3><p id="instruction">Restez à votre place. Aucun matériel nécessaire.</p><div id="seatedInstruction" class="seated-project" hidden></div><div class="phase-time" id="phaseTime">00:20</div></div>
       </div>
       <div class="controls"><button class="primary" id="start">▶ Démarrer</button><button class="secondary" id="pause" hidden>⏸ Pause</button><button class="secondary" id="next">Étape suivante →</button><button class="secondary home-control" id="homeDuringSession">⏹ Accueil</button></div>
       <div class="timeline" id="timeline"></div>
@@ -238,6 +249,14 @@
     <p><strong>PAUSE 5'</strong> propose des pauses actives de cinq minutes, simples et ludiques, pour remettre les élèves en mouvement au cours de la journée scolaire.</p>
     <p>Conçu pour être utilisé directement <strong>en classe</strong>, l’outil ne nécessite ni matériel ni préparation particulière : l’enseignant choisit le besoin du moment, lance la pause et les élèves suivent la démonstration projetée.</p>
     <p>L’objectif est de favoriser l’activité physique, l’attention, le bien-être et un climat de classe propice aux apprentissages.</p>
+    <div class="why-active">
+      <h3>ⓘ Pourquoi une pause active ?</h3>
+      <p>• <strong>Rompre le temps sédentaire</strong> et interrompre les périodes prolongées en position assise.</p>
+      <p>• <strong>Remettre les élèves en mouvement</strong> régulièrement au cours de la journée.</p>
+      <p>• <strong>Favoriser l’attention et la disponibilité</strong> pour revenir plus facilement dans la tâche.</p>
+      <p>• <strong>Contribuer au bien-être</strong>, à l’engagement et à un climat propice aux apprentissages.</p>
+      <small>Les travaux scientifiques sur les pauses actives montrent des résultats encourageants sur l’attention, le comportement en tâche et certaines fonctions exécutives. Les effets sur la mémorisation et la réussite scolaire sont plus variables : PAUSE 5’ vise d’abord à rompre la sédentarité et à créer de meilleures conditions de disponibilité pour apprendre.</small>
+    </div>
     <p><strong>Dispositif « Collège Actif - Avenir Positif » piloté par Bruno Trehet, IA-IPR EPS de l’académie de Paris.</strong></p>
     <p><strong>Conception et réalisation :</strong> Sophie Cheyrou, professeur d’EPS.</p>
   </div>
