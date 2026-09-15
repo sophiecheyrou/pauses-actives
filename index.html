@@ -193,13 +193,18 @@
 .modal-card{max-height:88vh;display:flex;flex-direction:column}
 .modal-body{overflow-y:auto;overscroll-behavior:contain;padding-bottom:34px}
 .credit{margin:18px 0 8px;padding:12px 14px;border-radius:12px;background:#f3f7fb;line-height:1.35}
-.floating-sound{position:fixed;top:16px;right:16px;z-index:9999;border:0;border-radius:999px;padding:11px 16px;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.18);font-weight:850;font-size:1rem;cursor:pointer}
-.floating-sound[hidden]{display:none!important}
+
+
+
+
+/* V22b — un seul bouton Son */
+#soundToggle{position:relative;z-index:60}
+body.session-active #soundToggle{position:fixed;top:16px;right:150px;z-index:9999;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.16)}
+body.projector-active #soundToggle{position:fixed;top:16px;right:18px;z-index:9999;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.16)}
 
 </style>
 </head>
 <body>
-<button id="floatingSoundToggle" class="floating-sound" type="button" aria-pressed="true" hidden>🔊 Son</button>
 <div class="app" id="app">
   <header class="institutional" aria-label="Académie de Paris">
     <div class="brand-logos">

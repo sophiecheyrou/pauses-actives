@@ -58,7 +58,7 @@ let soundEnabled=true;
 let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false, finishing=false;
 const $=id=>document.getElementById(id);
 function updateSoundUI(){
-  ['soundToggle','sessionSoundToggle','floatingSoundToggle'].forEach(id=>{
+  ['soundToggle'].forEach(id=>{
     const b=$(id); if(!b)return;
     b.textContent=soundEnabled?'🔊 Son':'🔇 Son coupé';
     b.setAttribute('aria-pressed',String(soundEnabled));
@@ -66,7 +66,14 @@ function updateSoundUI(){
 }
 function toggleSound(){
   soundEnabled=!soundEnabled;
-  if(!soundEnabled) resetAudio();
+  if(!soundEnabled){
+    resetAudio();
+  }else{
+    // Réactivation immédiate : rejoue la consigne audio de l'étape en cours.
+    if(currentIndex!==null && sessionStarted && running){
+      playStepAudio();
+    }
+  }
   updateSoundUI();
 }
 function renderFilters(){
@@ -131,7 +138,7 @@ function stopStepAudio(){
 
 let sessionStarted=false;
 function openSession(i){
-  const fs=$('floatingSoundToggle'); if(fs) fs.hidden=false;
+  document.body.classList.add('session-active');
   stop(); resetAudio(); finishing=false; countdownRunning=false; sessionStarted=false;
   currentIndex=i; stepIndex=0; totalRemaining=300;
   $('home').classList.add('hidden'); $('finish').classList.remove('open'); $('player').classList.add('open'); $('demo').classList.add('prestart');
@@ -183,6 +190,7 @@ function runCountdown(){
   };next();
 }
 function start(){
+  document.body.classList.add('projector-active');
   if(running||countdownRunning)return;
   enterFullscreen();
   $('demo').classList.remove('prestart');
@@ -217,7 +225,7 @@ function finishSession(){
   playAudio('audio/fin.mp3',()=>{finishing=false;});
 }
 function goHome(){
-  const fs=$('floatingSoundToggle'); if(fs) fs.hidden=true;
+  document.body.classList.remove('session-active','projector-active');
   stop(); resetAudio(); finishing=false;countdownRunning=false;sessionStarted=false;$('countdown').classList.remove('open');exitFullscreen();
   const v=$('demoVideo');v.pause();v.removeAttribute('src');v.load();
   $('player').classList.remove('open');$('finish').classList.remove('open');$('home').classList.remove('hidden');$('demo').classList.remove('prestart');$('start').hidden=false;$('pause').hidden=true;$('next').hidden=true;currentIndex=null;window.scrollTo({top:0,behavior:'smooth'});
@@ -238,7 +246,5 @@ if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.se
 if($('soundToggle')) $('soundToggle').addEventListener('click',toggleSound);
 updateSoundUI();
 
-if($('sessionSoundToggle')) $('sessionSoundToggle').addEventListener('click',toggleSound);
 
-if($('floatingSoundToggle')) $('floatingSoundToggle').addEventListener('click',toggleSound);
 updateSoundUI();
