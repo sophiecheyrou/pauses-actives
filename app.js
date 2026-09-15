@@ -58,10 +58,11 @@ let soundEnabled=true;
 let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false, finishing=false;
 const $=id=>document.getElementById(id);
 function updateSoundUI(){
-  const b=$('soundToggle');
-  if(!b) return;
-  b.textContent=soundEnabled ? '🔊 Son' : '🔇 Son coupé';
-  b.setAttribute('aria-pressed', String(soundEnabled));
+  ['soundToggle','sessionSoundToggle'].forEach(id=>{
+    const b=$(id); if(!b) return;
+    b.textContent=soundEnabled ? '🔊 Son' : '🔇 Son coupé';
+    b.setAttribute('aria-pressed', String(soundEnabled));
+  });
 }
 function toggleSound(){
   soundEnabled = !soundEnabled;
@@ -249,4 +250,7 @@ updateSoundUI();
 updateSoundUI();
 
 if($('soundToggle')) $('soundToggle').addEventListener('click', toggleSound);
+updateSoundUI();
+
+if($('sessionSoundToggle')) $('sessionSoundToggle').addEventListener('click', toggleSound);
 updateSoundUI();

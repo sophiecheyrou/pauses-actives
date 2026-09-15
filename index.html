@@ -199,8 +199,15 @@
 
 /* V22b — un seul bouton Son */
 #soundToggle{position:relative;z-index:60}
-body.session-active #soundToggle{position:fixed;top:16px;right:150px;z-index:9999;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.16)}
-body.projector-active #soundToggle{position:fixed;top:16px;right:18px;z-index:9999;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.16)}
+
+
+
+
+/* V22d : bouton Son dans le bandeau de séance, à côté du chronomètre */
+.session-tools{display:flex;align-items:center;gap:10px;justify-content:flex-end}
+.session-sound-btn{border:1px solid var(--line);border-radius:14px;padding:9px 13px;background:#f4f7fb;color:var(--navy);font-weight:900;font-size:1rem;cursor:pointer;white-space:nowrap}
+.panel.projector-mode .session-tools{align-items:center}
+.panel.projector-mode .session-sound-btn{font-size:1rem;padding:7px 12px}
 
 </style>
 </head>
@@ -240,7 +247,7 @@ body.projector-active #soundToggle{position:fixed;top:16px;right:18px;z-index:99
       
     </div>
     <div class="panel" id="projectionPanel">
-      <div class="sessionhead"><div><div class="eyebrow" id="playerCat"></div><h2 id="playerTitle"></h2></div><div class="timer" id="total">05:00</div></div>
+      <div class="sessionhead"><div><div class="eyebrow" id="playerCat"></div><h2 id="playerTitle"></h2></div><div class="session-tools"><div class="timer" id="total">05:00</div><button id="sessionSoundToggle" class="session-sound-btn" type="button" aria-pressed="true">🔊 Son</button></div></div>
       <div class="progress"><div id="progressBar"></div></div>
       <div class="projection-layout">
         <div class="demo" id="demo" aria-label="Démonstration vidéo du mouvement"><video id="demoVideo" loop muted playsinline preload="auto"></video><div class="prestart-message" aria-live="polite"><strong>PAUSE 5'…</strong><span>EN PLACE !</span></div><div class="loop" id="moveIcon">⚡</div><div class="caption">La vidéo de démonstration apparaîtra ici lorsqu’elle sera ajoutée au dossier videos.</div></div>
@@ -285,5 +292,5 @@ body.projector-active #soundToggle{position:fixed;top:16px;right:18px;z-index:99
 /* V22c : un seul bouton Son, dans l'en-tête, sans superposition */
 #soundToggle{position:static!important;z-index:auto!important}
 body.session-active #soundToggle,
-body.projector-active #soundToggle{position:static!important;top:auto!important;right:auto!important;box-shadow:none!important}
+
 </style>
