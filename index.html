@@ -188,9 +188,18 @@
 .why-active{margin:16px 0;padding:14px 16px;border-radius:14px;background:#f7f9fb;border:1px solid #e3e8ef}
 .why-active h3{margin:0 0 9px}.why-active p{margin:6px 0}.why-active small{display:block;margin-top:10px;line-height:1.4;color:#52606d}
 
+
+/* V22a correctifs */
+.modal-card{max-height:88vh;display:flex;flex-direction:column}
+.modal-body{overflow-y:auto;overscroll-behavior:contain;padding-bottom:34px}
+.credit{margin:18px 0 8px;padding:12px 14px;border-radius:12px;background:#f3f7fb;line-height:1.35}
+.floating-sound{position:fixed;top:16px;right:16px;z-index:9999;border:0;border-radius:999px;padding:11px 16px;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.18);font-weight:850;font-size:1rem;cursor:pointer}
+.floating-sound[hidden]{display:none!important}
+
 </style>
 </head>
 <body>
+<button id="floatingSoundToggle" class="floating-sound" type="button" aria-pressed="true" hidden>🔊 Son</button>
 <div class="app" id="app">
   <header class="institutional" aria-label="Académie de Paris">
     <div class="brand-logos">
@@ -255,10 +264,10 @@
       <p>• <strong>Remettre les élèves en mouvement</strong> régulièrement au cours de la journée.</p>
       <p>• <strong>Favoriser l’attention et la disponibilité</strong> pour revenir plus facilement dans la tâche.</p>
       <p>• <strong>Contribuer au bien-être</strong>, à l’engagement et à un climat propice aux apprentissages.</p>
-      <small>Les travaux scientifiques sur les pauses actives montrent des résultats encourageants sur l’attention, le comportement en tâche et certaines fonctions exécutives. Les effets sur la mémorisation et la réussite scolaire sont plus variables : PAUSE 5’ vise d’abord à rompre la sédentarité et à créer de meilleures conditions de disponibilité pour apprendre.</small>
+      
     </div>
     <p><strong>Dispositif « Collège Actif - Avenir Positif » piloté par Bruno Trehet, IA-IPR EPS de l’académie de Paris.</strong></p>
-    <p><strong>Conception et réalisation :</strong> Sophie Cheyrou, professeur d’EPS.</p>
+    <p class="credit"><strong>Cet outil a été conçu et réalisé par Sophie Cheyrou, professeur d’EPS (Académie de Paris)</strong></p>
   </div>
 </div>
 
