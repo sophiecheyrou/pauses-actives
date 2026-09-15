@@ -85,7 +85,7 @@ function renderFilters(){
 }
 function renderSessions(){
   const list=sessions.map((s,i)=>({s,i})).filter(x=>filter==='ALL'||x.s.cat===filter);
-  $('sessions').innerHTML=list.map(({s,i})=>`<button class="session cat-${s.cat}" type="button" data-i="${i}"><div class="cat">${cats[s.cat].icon} ${cats[s.cat].label}</div><h3>${s.title}</h3><p>${s.tag}</p>${s.steps.every(st=>st.seated && st.seated.trim())?'<div class="seated-badge" title="Tous les exercices disposent d’une adaptation en position assise">♿ <span>Adaptation assise possible</span></div>':''}<div class="meta"><span>5 minutes</span><span>Intensité ${'●'.repeat(s.intensity)}${'○'.repeat(3-s.intensity)}</span></div></button>`).join('');
+  $('sessions').innerHTML=list.map(({s,i})=>`<button class="session cat-${s.cat}" type="button" data-i="${i}"><div class="cat">${cats[s.cat].icon} ${cats[s.cat].label}</div><h3>${s.title}</h3><p>${s.tag}</p>${s.steps.every(st=>st.seated && st.seated.trim())?'<div class="seated-badge" title="Tous les exercices disposent d’une adaptation en position assise">🪑 <span>Adaptation assise possible</span></div>':''}<div class="meta"><span>5 minutes</span><span>Intensité ${'●'.repeat(s.intensity)}${'○'.repeat(3-s.intensity)}</span></div></button>`).join('');
   document.querySelectorAll('.session').forEach(btn=>btn.onclick=()=>openSession(Number(btn.dataset.i)));
 }
 function audioPathFor(step){
@@ -152,9 +152,9 @@ function openSession(i){
 function loadStep(){
   let s=sessions[currentIndex].steps[stepIndex]; remaining=s.seconds;
   $('phaseLabel').textContent=s.phase; $('moveName').textContent=s.name; $('moveIcon').textContent=s.icon;
-  $('instruction').textContent='DEBOUT : '+s.instruction;
+  $('instruction').textContent='🧍 DEBOUT : '+s.instruction;
   const si=$('seatedInstruction');
-  if(si){si.hidden=!(s.seated&&s.seated.trim());si.textContent=s.seated?'♿ ASSIS : '+s.seated:'';}
+  if(si){si.hidden=!(s.seated&&s.seated.trim());si.textContent=s.seated?'🪑 ASSIS : '+s.seated:'';}
   loadVideo(s.video); renderTimeline(); updateTimes();
 }
 function loadVideo(src){
