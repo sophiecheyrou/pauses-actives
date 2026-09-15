@@ -58,20 +58,20 @@ let soundEnabled=true;
 let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false, finishing=false;
 const $=id=>document.getElementById(id);
 function updateSoundUI(){
-  ['soundToggle'].forEach(id=>{
-    const b=$(id); if(!b)return;
-    b.textContent=soundEnabled?'🔊 Son':'🔇 Son coupé';
-    b.setAttribute('aria-pressed',String(soundEnabled));
-  });
+  const b=$('soundToggle');
+  if(!b) return;
+  b.textContent=soundEnabled ? '🔊 Son' : '🔇 Son coupé';
+  b.setAttribute('aria-pressed', String(soundEnabled));
 }
 function toggleSound(){
-  soundEnabled=!soundEnabled;
+  soundEnabled = !soundEnabled;
   if(!soundEnabled){
+    // Coupe immédiatement la piste en cours.
     resetAudio();
   }else{
-    // Réactivation immédiate : rejoue la consigne audio de l'étape en cours.
-    if(currentIndex!==null && sessionStarted && running){
-      playStepAudio();
+    // Le son est réactivé. Si une étape tourne, sa consigne repart immédiatement.
+    if(currentIndex !== null && sessionStarted && running){
+      setTimeout(()=>playStepAudio(), 0);
     }
   }
   updateSoundUI();
@@ -99,7 +99,7 @@ function audioPathFor(step){
 // les consignes, y compris depart.mp3 et fin.mp3.
 function appAudio(){ return $('cueAudio'); }
 function resetAudio(){
-  const a=appAudio(); if(!a) return;
+  const a=appAudio(); a.muted=false; if(!a) return;
   a.pause(); a.onended=null; a.onerror=null;
   try{a.currentTime=0;}catch(e){}
   a.removeAttribute('src'); a.load();
@@ -138,7 +138,7 @@ function stopStepAudio(){
 
 let sessionStarted=false;
 function openSession(i){
-  document.body.classList.add('session-active');
+  
   stop(); resetAudio(); finishing=false; countdownRunning=false; sessionStarted=false;
   currentIndex=i; stepIndex=0; totalRemaining=300;
   $('home').classList.add('hidden'); $('finish').classList.remove('open'); $('player').classList.add('open'); $('demo').classList.add('prestart');
@@ -190,7 +190,7 @@ function runCountdown(){
   };next();
 }
 function start(){
-  document.body.classList.add('projector-active');
+  
   if(running||countdownRunning)return;
   enterFullscreen();
   $('demo').classList.remove('prestart');
@@ -225,7 +225,7 @@ function finishSession(){
   playAudio('audio/fin.mp3',()=>{finishing=false;});
 }
 function goHome(){
-  document.body.classList.remove('session-active','projector-active');
+  
   stop(); resetAudio(); finishing=false;countdownRunning=false;sessionStarted=false;$('countdown').classList.remove('open');exitFullscreen();
   const v=$('demoVideo');v.pause();v.removeAttribute('src');v.load();
   $('player').classList.remove('open');$('finish').classList.remove('open');$('home').classList.remove('hidden');$('demo').classList.remove('prestart');$('start').hidden=false;$('pause').hidden=true;$('next').hidden=true;currentIndex=null;window.scrollTo({top:0,behavior:'smooth'});
@@ -243,8 +243,10 @@ $('back').onclick=goHome;$('finishBtn').onclick=goHome;$('homeDuringSession').on
 renderFilters();renderSessions();
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
 
-if($('soundToggle')) $('soundToggle').addEventListener('click',toggleSound);
 updateSoundUI();
 
 
+updateSoundUI();
+
+if($('soundToggle')) $('soundToggle').addEventListener('click', toggleSound);
 updateSoundUI();

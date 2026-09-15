@@ -280,3 +280,10 @@ body.projector-active #soundToggle{position:fixed;top:16px;right:18px;z-index:99
 <script src="app.js"></script>
 </body>
 </html>
+
+<style>
+/* V22c : un seul bouton Son, dans l'en-tête, sans superposition */
+#soundToggle{position:static!important;z-index:auto!important}
+body.session-active #soundToggle,
+body.projector-active #soundToggle{position:static!important;top:auto!important;right:auto!important;box-shadow:none!important}
+</style>
