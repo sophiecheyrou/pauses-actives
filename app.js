@@ -11,7 +11,7 @@ if(aboutModal) aboutModal.addEventListener('click', (e)=>{ if(e.target===aboutMo
 document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAbout(); });
 
 const cats={
- BOOST:{icon:'⚡',label:'Se réveiller',desc:'Retrouver de l’énergie'},MOVE:{icon:'🔥',label:'Bouger',desc:'Mettre le corps en mouvement'},FOCUS:{icon:'🎯',label:'Se concentrer',desc:'Mobiliser son attention'},RESET:{icon:'🌿',label:"S’étirer",desc:'Délier et mobiliser le corps'},RELAX:{icon:'🧘',label:'Se calmer',desc:'Respirer et relâcher'}
+ BOOST:{icon:'⚡',label:'Se réveiller',desc:'Retrouver de l’énergie'},MOVE:{icon:'🔥',label:'Bouger',desc:'Mettre le corps en mouvement'},FOCUS:{icon:'🎯',label:'Se concentrer',desc:'Mobiliser son attention'},RESET:{icon:'🌿',label:"S’étirer",desc:'Délier et mobiliser le corps'},RELAX:{icon:'🌙',label:'Se calmer',desc:'Respirer et relâcher'}
 };
 const P=(phase,name,seconds,icon,instruction,seated,video,audio=null)=>({phase,name,seconds,icon,instruction,seated,video,audio});
 const sessions=[
@@ -81,7 +81,7 @@ function renderFilters(){
   const order=['BOOST','MOVE','FOCUS','RESET','RELAX'];
   const extra={BOOST:'Pour bien commencer ou relancer l’énergie',MOVE:'Pour se dynamiser et faire monter l’énergie',FOCUS:'Pour retrouver son calme et être plus attentif',RESET:'Pour relâcher les tensions et mobiliser le corps',RELAX:'Pour se recentrer et aborder la suite sereinement'};
   $('filters').innerHTML=order.map(k=>`<button class="filter ${filter===k?'active':''}" data-cat="${k}" type="button"><span class="filter-icon">${cats[k].icon}</span><b>${cats[k].label}</b><small>${extra[k]}</small></button>`).join('');
-  document.querySelectorAll('.filter').forEach(btn=>btn.onclick=()=>{filter=btn.dataset.cat;renderFilters();renderSessions();$('sessionHeading').textContent=`${cats[filter].label} · choisir une pause`;setTimeout(()=>$('sessions').scrollIntoView({behavior:'smooth',block:'start'}),60);});
+  document.querySelectorAll('.filter').forEach(btn=>btn.onclick=()=>{filter=btn.dataset.cat;renderFilters();renderSessions();$('sessionHeading').innerHTML=`${cats[filter].label}<small class="choose-under">(Choisir une pause)</small>`;setTimeout(()=>$('sessions').scrollIntoView({behavior:'smooth',block:'start'}),60);});
 }
 function renderSessions(){
   const list=sessions.map((s,i)=>({s,i})).filter(x=>filter==='ALL'||x.s.cat===filter);
