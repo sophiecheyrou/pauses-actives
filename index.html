@@ -299,6 +299,82 @@ img,video,svg{max-width:100%;height:auto}
 }
 </style>
 
+
+<style>
+/* V22l — À propos : vraie vue plein écran sur smartphone */
+@media (max-width: 700px){
+  #aboutModal,
+  #aboutModal.open{
+    position:fixed!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    height:100dvh!important;
+    display:none;
+    padding:0!important;
+    margin:0!important;
+    background:#fff!important;
+    backdrop-filter:none!important;
+    overflow:hidden!important;
+    z-index:99999!important;
+  }
+  #aboutModal.open{display:block!important}
+
+  #aboutModal .about-card{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    max-width:none!important;
+    height:100%!important;
+    max-height:none!important;
+    min-height:0!important;
+    margin:0!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    padding:
+      calc(20px + env(safe-area-inset-top))
+      20px
+      calc(110px + env(safe-area-inset-bottom))
+      20px!important;
+    overflow-x:hidden!important;
+    overflow-y:scroll!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain;
+  }
+
+  #aboutModal .about-close{
+    position:fixed!important;
+    top:calc(12px + env(safe-area-inset-top))!important;
+    right:14px!important;
+    float:none!important;
+    z-index:100000!important;
+  }
+
+  #aboutModal .about-card h2{
+    margin-right:52px!important;
+    padding-top:0!important;
+  }
+
+  #aboutModal .credit{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    margin:22px 0 0!important;
+    padding:14px!important;
+  }
+
+  /* espace terminal volontaire : garantit que la dernière mention peut
+     remonter au-dessus de la barre Safari de l'iPhone */
+  #aboutModal .about-card::after{
+    content:"";
+    display:block;
+    height:80px;
+    width:100%;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app" id="app">
