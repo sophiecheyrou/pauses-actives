@@ -256,6 +256,49 @@ img,video,svg{max-width:100%;height:auto}
 }
 </style>
 
+
+<style>
+/* V22k — À propos entièrement lisible sur smartphone/iPhone */
+@media (max-width: 640px){
+  .about-modal,
+  .about-modal.open{
+    display:block;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch;
+    padding:10px 8px calc(28px + env(safe-area-inset-bottom))!important;
+  }
+  .about-card{
+    width:100%!important;
+    max-width:100%!important;
+    max-height:none!important;
+    min-height:auto!important;
+    overflow:visible!important;
+    margin:0 auto!important;
+    padding:20px 18px calc(28px + env(safe-area-inset-bottom))!important;
+    border-radius:18px!important;
+  }
+  .about-close{
+    position:sticky!important;
+    float:right;
+    top:4px!important;
+    right:auto!important;
+    z-index:5;
+  }
+  .about-card h2{
+    padding-top:4px;
+    font-size:1.35rem!important;
+  }
+  .about-card .credit{
+    display:block!important;
+    visibility:visible!important;
+    margin:18px 0 4px!important;
+    padding:12px 14px!important;
+    line-height:1.35!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app" id="app">
