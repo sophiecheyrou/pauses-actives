@@ -53,6 +53,12 @@ P('FIN','Immobilité',30,'🧘','Reste immobile.','Posture confortable.','videos
 let soundEnabled=true;
 let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false, finishing=false;
 const $=id=>document.getElementById(id);
+const MEDIA_VERSION='v23-20260918-1300';
+function freshMediaUrl(src){
+  if(!src) return src;
+  const sep=src.includes('?')?'&':'?';
+  return `${src}${sep}v=${MEDIA_VERSION}`;
+}
 function updateSoundUI(){
   ['sessionSoundToggle'].forEach(id=>{
     const b=$(id); if(!b) return;
@@ -113,7 +119,7 @@ function playAudio(src,onDone){
   };
   a.pause();
   a.onended=finish; a.onerror=finish;
-  a.src=src;
+  a.src=freshMediaUrl(src);
   try{a.currentTime=0;}catch(e){}
   // Important : ne pas appeler load() entre le clic et play() dans Safari.
   const promise=a.play();
@@ -167,7 +173,7 @@ function loadVideo(src){
   d.classList.remove('has-video');
   v.pause(); v.onloadeddata=null; v.onerror=null; v.removeAttribute('src'); v.load();
   if(!src) return;
-  v.src=src;
+  v.src=freshMediaUrl(src);
   v.onloadeddata=()=>{
     d.classList.add('has-video');
     // La vidéo ne démarre jamais à l'ouverture de la fiche.
