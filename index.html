@@ -375,6 +375,275 @@ img,video,svg{max-width:100%;height:auto}
 }
 </style>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style id="v22s-prestart-grid">
+/* V22s — solution structurelle : le pré-écran utilise EXACTEMENT
+   le même panneau plein écran et la même grille que la séance. */
+body.pause-prestart{
+  overflow:hidden!important;
+}
+
+body.pause-prestart #projectionPanel.projector-mode{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100vh!important;
+  height:100dvh!important;
+  min-height:0!important;
+  max-height:100dvh!important;
+  overflow:hidden!important;
+  display:grid!important;
+  grid-template-rows:auto auto minmax(0,1fr) auto auto!important;
+  padding:12px 18px!important;
+  box-sizing:border-box!important;
+}
+
+/* Avant DÉMARRER : pas de chrono ni de consignes. */
+body.pause-prestart #total,
+body.pause-prestart .phase{
+  display:none!important;
+}
+
+/* La zone centrale occupe uniquement l'espace restant de la grille.
+   Aucune position absolue, aucune hauteur en vh : impossible de déborder. */
+body.pause-prestart #projectionPanel.projector-mode .projection-layout{
+  display:grid!important;
+  grid-template-columns:1fr!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  margin-top:12px!important;
+  overflow:hidden!important;
+  align-items:stretch!important;
+}
+
+body.pause-prestart #projectionPanel.projector-mode .demo.prestart{
+  position:relative!important;
+  inset:auto!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:none!important;
+  aspect-ratio:auto!important;
+  margin:0!important;
+  padding:0!important;
+  align-self:stretch!important;
+  justify-self:stretch!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:hidden!important;
+  border:1px solid #183553!important;
+  border-radius:22px!important;
+  background:
+    radial-gradient(circle at 8% 10%,rgba(255,226,93,.28),transparent 30%),
+    radial-gradient(circle at 92% 90%,rgba(71,210,207,.28),transparent 32%),
+    linear-gradient(135deg,#fffdf4 0%,#ffffff 49%,#f4ffff 100%)!important;
+  box-shadow:0 10px 30px rgba(36,59,83,.07)!important;
+}
+
+/* Le message remplit le cadre, sans créer un second cadre intérieur. */
+body.pause-prestart #projectionPanel.projector-mode .demo.prestart .prestart-message{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:clamp(18px,4vh,52px) clamp(18px,5vw,72px)!important;
+  box-sizing:border-box!important;
+  border:0!important;
+  border-radius:inherit!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  text-align:center!important;
+}
+
+body.pause-prestart .prestart-message strong{
+  width:100%!important;
+  margin:0!important;
+  text-align:center!important;
+  font-size:clamp(34px,5.2vw,76px)!important;
+  line-height:1.05!important;
+  font-weight:950!important;
+  color:#0B2340!important;
+}
+body.pause-prestart .prestart-message span{
+  width:100%!important;
+  margin:clamp(10px,2.2vh,26px) 0 0!important;
+  padding:0!important;
+  text-align:center!important;
+  font-size:clamp(38px,5.8vw,84px)!important;
+  line-height:1!important;
+  font-weight:950!important;
+  color:#079A94!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+/* Les commandes et la timeline restent dans leurs lignes de grille :
+   elles sont donc toujours visibles et ne chevauchent jamais le cadre. */
+body.pause-prestart #projectionPanel.projector-mode .controls{
+  position:static!important;
+  margin-top:8px!important;
+  display:flex!important;
+  justify-content:center!important;
+  align-items:center!important;
+  gap:10px!important;
+}
+body.pause-prestart #projectionPanel.projector-mode .timeline{
+  position:static!important;
+  margin-top:6px!important;
+}
+
+/* Écrans étroits : mêmes proportions, texte adapté. */
+@media (max-width:700px){
+  body.pause-prestart #projectionPanel.projector-mode{
+    padding:10px 12px!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .projection-layout{
+    margin-top:8px!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .demo.prestart{
+    border-radius:17px!important;
+  }
+  body.pause-prestart .prestart-message strong{
+    font-size:clamp(30px,10vw,48px)!important;
+  }
+  body.pause-prestart .prestart-message span{
+    font-size:clamp(34px,12vw,56px)!important;
+  }
+}
+
+/* Écrans très bas / smartphone paysage : compacter l'en-tête,
+   mais conserver le cadre dans la ligne flexible. */
+@media (max-height:560px){
+  body.pause-prestart #projectionPanel.projector-mode{
+    padding:7px 10px!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .sessionhead h2{
+    font-size:1.25rem!important;
+    margin:.05rem 0!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .progress{
+    height:6px!important;
+    margin-top:4px!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .projection-layout{
+    margin-top:5px!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .controls{
+    margin-top:5px!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .primary,
+  body.pause-prestart #projectionPanel.projector-mode .secondary{
+    padding:7px 12px!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .timeline{
+    margin-top:3px!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .timeline span{
+    height:4px!important;
+  }
+}
+</style>
+
+
+<style id="v22u-safe-prestart">
+/* V22u — cadre PRÊT plus bas, espace garanti avant les boutons */
+body.pause-prestart #projectionPanel.projector-mode{
+  height:100vh!important;
+  height:100dvh!important;
+  overflow:hidden!important;
+
+  /* en-tête | progression | cadre flexible | ESPACE | boutons | timeline */
+  grid-template-rows:
+    auto
+    auto
+    minmax(0,1fr)
+    clamp(18px,2.6vh,28px)
+    auto
+    auto!important;
+}
+
+/* Le contenu central occupe uniquement la 3e ligne. */
+body.pause-prestart #projectionPanel.projector-mode .projection-layout{
+  grid-row:3!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  margin:10px 0 0!important;
+  overflow:hidden!important;
+}
+
+/* Cadre : 100 % de sa ligne, donc réduit automatiquement par la ligne d'espace. */
+body.pause-prestart #projectionPanel.projector-mode .demo.prestart{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:100%!important;
+  margin:0!important;
+  overflow:hidden!important;
+}
+
+/* Ligne 4 volontairement vide = séparation incompressible. */
+body.pause-prestart #projectionPanel.projector-mode .controls{
+  grid-row:5!important;
+  position:static!important;
+  margin:0!important;
+  align-self:center!important;
+  justify-self:center!important;
+  z-index:2!important;
+}
+
+body.pause-prestart #projectionPanel.projector-mode .timeline{
+  grid-row:6!important;
+  position:static!important;
+  margin-top:5px!important;
+}
+
+/* Écrans peu hauts : espace réduit mais toujours présent. */
+@media (max-height:700px){
+  body.pause-prestart #projectionPanel.projector-mode{
+    grid-template-rows:auto auto minmax(0,1fr) 14px auto auto!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .projection-layout{
+    margin-top:6px!important;
+  }
+}
+@media (max-height:520px){
+  body.pause-prestart #projectionPanel.projector-mode{
+    grid-template-rows:auto auto minmax(0,1fr) 9px auto auto!important;
+  }
+  body.pause-prestart #projectionPanel.projector-mode .projection-layout{
+    margin-top:3px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="app" id="app">
