@@ -644,6 +644,45 @@ body.pause-prestart #projectionPanel.projector-mode .timeline{
 }
 </style>
 
+
+<style id="v22v-pulse-challenge">
+.finish.pulse-result .check{display:none}
+.finish.pulse-result h2{color:#079A94;font-size:clamp(30px,4.2vw,58px);line-height:1.08}
+.finish.pulse-result .pulse-alt{
+  max-width:780px;margin:12px auto 22px;padding:14px 18px;
+  border-radius:14px;background:#f3f7fb;color:#243B53;font-weight:700;
+}
+</style>
+
+
+<style id="v22x-pulse-prestart">
+/* V22x — défi Retour de récréation intégré dans le grand cadre PRÊT */
+.prestart-pulse-extras{
+  width:min(86%,1180px);
+  margin-top:clamp(18px,3vh,34px);
+  display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2vh,22px);
+}
+.prestart-pulse-extras[hidden]{display:none!important}
+.prestart-heart{font-size:clamp(44px,5vw,72px);line-height:1;filter:drop-shadow(0 4px 5px rgba(0,0,0,.08))}
+.prestart-challenge{
+  width:100%;box-sizing:border-box;padding:clamp(10px,1.6vh,16px) clamp(16px,2.5vw,30px);
+  border-radius:999px;background:rgba(207,245,242,.68);color:#153b69;
+  text-align:center;font-size:clamp(15px,1.55vw,24px);line-height:1.2;font-weight:700;
+}
+.prestart-challenge b{color:#079A94;font-weight:950}
+/* Sur Retour de récréation, remonter légèrement le bloc principal pour faire tenir le défi sans agrandir le cadre */
+body.pause-prestart.pulse-prestart .prestart-message strong{font-size:clamp(32px,4.8vw,70px)!important}
+body.pause-prestart.pulse-prestart .prestart-message span{font-size:clamp(36px,5.2vw,76px)!important;margin-top:clamp(6px,1.4vh,16px)!important}
+@media(max-height:700px){
+ body.pause-prestart.pulse-prestart .prestart-pulse-extras{margin-top:10px;gap:8px}
+ body.pause-prestart.pulse-prestart .prestart-heart{font-size:38px}
+ body.pause-prestart.pulse-prestart .prestart-challenge{padding:8px 14px;font-size:clamp(13px,1.35vw,18px)}
+}
+@media(max-width:700px){
+ .prestart-pulse-extras{width:94%}
+ .prestart-challenge{border-radius:18px;font-size:clamp(13px,3.5vw,18px)}
+}
+</style>
 </head>
 <body>
 <div class="app" id="app">
@@ -674,9 +713,9 @@ body.pause-prestart #projectionPanel.projector-mode .timeline{
     </div>
     <div class="panel" id="projectionPanel">
       <div class="sessionhead"><div><div class="eyebrow" id="playerCat"></div><h2 id="playerTitle"></h2></div><div class="session-tools"><div class="timer" id="total">05:00</div><button id="sessionSoundToggle" class="session-sound-btn" type="button" aria-pressed="true">🔊 Son</button></div></div>
-      <div class="progress"><div id="progressBar"></div></div>
+      <div class="progress"><div id="progressBar"></div></div><div id="sessionChallenge" hidden style="display:none!important"></div>
       <div class="projection-layout">
-        <div class="demo" id="demo" aria-label="Démonstration vidéo du mouvement"><video id="demoVideo" loop muted playsinline preload="auto"></video><div class="prestart-message" aria-live="polite"><strong>PAUSE 5'…</strong><span>PRÊT ?</span></div><div class="loop" id="moveIcon">⚡</div><div class="caption">La vidéo de démonstration apparaîtra ici lorsqu’elle sera ajoutée au dossier videos.</div></div>
+        <div class="demo" id="demo" aria-label="Démonstration vidéo du mouvement"><video id="demoVideo" loop muted playsinline preload="auto"></video><div class="prestart-message" aria-live="polite"><strong>PAUSE 5'…</strong><span>PRÊT ?</span><div id="prestartPulseExtras" class="prestart-pulse-extras" hidden><div class="prestart-heart" aria-hidden="true">❤️</div><div class="prestart-challenge"><b>MON DÉFI :</b> après la respiration, mon nombre de battements est-il plus bas ?</div></div></div><div class="loop" id="moveIcon">⚡</div><div class="caption">La vidéo de démonstration apparaîtra ici lorsqu’elle sera ajoutée au dossier videos.</div></div>
         <div class="phase"><div class="phase-label" id="phaseLabel">Prêts ?</div><h3 id="moveName">La pause va commencer</h3><p id="instruction" class="instruction-card standing-project">Restez à votre place. Aucun matériel nécessaire.</p><div id="seatedInstruction" class="seated-project" hidden></div><div class="phase-time" id="phaseTime">00:20</div></div>
       </div>
       <div class="controls"><button class="primary" id="start">▶ Démarrer</button><button class="secondary" id="pause" hidden>⏸ Pause</button><button class="secondary" id="next">Étape suivante →</button><button class="secondary home-control" id="homeDuringSession">⏹ Accueil</button></div>
@@ -686,7 +725,7 @@ body.pause-prestart #projectionPanel.projector-mode .timeline{
     </div>
   </section>
 
-  <section class="finish" id="finish"><div class="check">✓</div><div class="eyebrow">PAUSE TERMINÉE</div><h2>On reprend le cours !</h2><p>5 minutes de mouvement. La classe peut reprendre le cours.</p><button class="primary" id="finishBtn">Retour à l'accueil</button></section>
+  <section class="finish" id="finish"><div class="check">✓</div><div class="eyebrow">PAUSE TERMINÉE</div><h2>On reprend le cours !</h2><p id="finishText">5 minutes de mouvement. La classe peut reprendre le cours.</p><div id="pulseAlt" class="pulse-alt" hidden></div><button class="primary" id="finishBtn">Retour à l'accueil</button></section>
 </div>
 
 <div class="about-modal" id="aboutModal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">

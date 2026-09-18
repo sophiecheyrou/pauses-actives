@@ -24,8 +24,6 @@ const sessions=[
 {cat:'RESET',title:'Relâcher les tensions',tag:'Après une longue période assise',intensity:1,steps:[P('MOBILITÉ','Cercles épaules',40,'🔄','Lentement vers l’arrière.','Identique assis.','videos/epaules.mp4','audio/cercles-epaules.mp3'),P('OUVERTURE','Ouvrir la poitrine',40,'↔️','Ouvre les bras. Rapproche doucement les omoplates.','Identique assis.','videos/poitrine.mp4','audio/ouvrir-poitrine.mp3'),P('ÉTIREMENT','Bras haut',40,'🙌','Grandis-toi vers le plafond.','Identique assis.','videos/grandir.mp4','audio/bras-haut.mp3'),P('MOBILITÉ','Rotation du buste',40,'🌿','Droite… centre… gauche.','Identique assis.','videos/rotation.mp4','audio/rotation-buste.mp3'),P('DOS','Dos rond / dos long',40,'↕️','Arrondis légèrement. Puis redresse-toi.','Identique assis.','videos/dos.mp4','audio/dos-rond-grand.mp3'),P('GLOBAL','Mobilité générale',50,'🌿','Bras haut, bras ouverts, relâche.','Identique assis.','videos/mobilite.mp4','audio/mobilite.mp3'),P('RESET','Respiration',50,'🌬️','Inspire en grandissant. Expire en relâchant.','Identique assis.','videos/respire.mp4','audio/respire-etirement.mp3')]},
 {cat:'RESET',title:'Besoin de bouger un peu',tag:'Mobilité douce',intensity:1,steps:[P('MAINS','Poignets',35,'🤲','Cercles de poignets dans les deux sens.','Identique assis.','videos/poignets.mp4','audio/poignets.mp3'),P('BRAS','Coudes',35,'💪','Plie et tends doucement les bras.','Identique assis.','videos/coudes.mp4','audio/coudes.mp3'),P('ÉPAULES','Épaules',35,'🔄','Grands cercles, sans forcer.','Identique assis.','videos/epaules.mp4','audio/epaules-mobilite.mp3'),P('TRONC','Buste',35,'🌿','Tourne doucement à droite et à gauche.','Identique assis.','videos/rotation.mp4','audio/buste.mp3'),P('JAMBES','Genoux',35,'🦵','Plie et tends légèrement les jambes.','Extensions alternées.','videos/genoux-doux.mp4','audio/genoux-mobilite.mp3'),P('PIEDS','Chevilles',35,'🦶','Pointes puis talons.','Identique assis.','videos/chevilles.mp4','audio/chevilles.mp3'),P('GLOBAL','Corps entier',45,'🙌','Grandis-toi puis relâche tout le corps.','Identique assis.','videos/mobilite.mp4','audio/corps-entier.mp3'),P('RESET','Respiration',45,'🌬️','Inspire par le nez, souffle doucement.','Identique assis.','videos/respire.mp4','audio/respire-deverrouillage.mp3')]},
 {cat:'RELAX',title:'Respirer',tag:'Faire redescendre la pression',intensity:1,steps:[P('INSTALLATION','Position confortable',30,'🧘','Dos droit, Épaules relâchées, regard devant','Les 2 pieds au sol, dos droit, regard devant','videos/posture.mp4','audio/position-calme.mp3'),P('SOUFFLE','Inspire 3 sec.\nExpire 4 sec.',40,'🌬️','Inspire 3 secondes. Expire 4 secondes.','Identique assis.','videos/respire.mp4','audio/respiration-3-4.mp3'),P('RELÂCHEMENT','Monter / relâcher épaules',40,'🌿','Monte les épaules à l’inspiration. Relâche à l’expiration.','Identique assis.','videos/epaules-relax.mp4','audio/epaules-relache.mp3'),P('MOBILITÉ','Lever / baisser les bras',40,'🙌','Inspire en montant les bras doucement et expire en descendant les bras lentement.','Identique assis.','videos/bras-lents.mp4','audio/bras-respiration.mp3'),P('NUQUE','Mobilité douce',40,'👀','Penche légèrement la tête, sans forcer.','Identique assis.','videos/nuque.mp4','audio/nuque.mp3'),P('SOUFFLE','Expiration longue',50,'🌬️','Inspire naturellement. Allonge doucement l’expiration.','Identique assis.','videos/respire.mp4','audio/expiration-longue.mp3'),P('RESET','4 respirations lentes',40,'🧘','Quatre respirations tranquilles.','Identique assis.','videos/respire.mp4','audio/quatre-respirations.mp3'),P('REPRISE','Silence & reprise',20,'👁️','1 ou 2 dernière(s) longue(s) respiration(s).','Identique assis.','videos/regard.mp4','audio/silence-reprise.mp3')]},
-{cat:'RELAX',title:'S’apaiser',tag:'Relâcher & repartir',intensity:1,steps:[P('DÉTENTE','Bouger mains et bras',30,'🤲','Bouge doucement les mains et les avant-bras.','Identique assis.','videos/secouer.mp4','audio/secoue-mains.mp3'),P('RELÂCHEMENT','Épaules',40,'↕️','Monte les épaules puis relâche-les.','Identique assis.','videos/epaules-relax.mp4','audio/relache-epaules.mp3'),P('ÉTIREMENT','S’étirer vers le haut',40,'🙌','Grandis-toi vers le plafond. Respirer normalement.','Identique assis.','videos/grandir.mp4','audio/etire-haut.mp3'),P('SOUFFLE','Ouvrir / refermer',40,'🌬️','Inspire en ouvrant les bras. Expire en les refermant.','Identique assis.','videos/ouvrir-fermer.mp4','audio/ouvre-ferme.mp3'),P('TENSION / DÉTENTE','Poings 3 secondes',40,'✊','Serre doucement les poings 3 secondes puis relâche.','Identique assis.','videos/poings.mp4','audio/poings.mp3'),P('TENSION / DÉTENTE','Épaules 3 secondes',40,'🌿','Monte légèrement les épaules 3 secondes puis relâche.','Identique assis.','videos/epaules-relax.mp4','audio/tension-epaules.mp3'),P('RESET','Respiration calme',40,'🌬️','Laisse la respiration ralentir.','Identique assis.','videos/respire.mp4','audio/respiration-calme.mp3'),P('REPRISE','Immobilité',30,'🧘','Reste immobile. Une dernière respiration. On reprend.','Identique assis.','videos/posture.mp4','audio/retour-calme.mp3')]}
-,
 {cat:'FOCUS',title:'Avant une évaluation',tag:'Apaiser le stress · respirer · se recentrer',intensity:1,steps:[
 P('S’ANCRER','Points de contact',40,'🪑','Sens tes appuis.','Sens tes appuis sur la chaise.','videos/posture.mp4','audio/position-calme.mp3'),
 P('RESPIRER','Carré respiratoire',50,'◻️','Inspire · pause · expire · pause.','Même respiration, sans forcer.','videos/respire.mp4','audio/respiration-3-4.mp3'),
@@ -34,14 +32,13 @@ P('RELÂCHER','Épaules',40,'🌿','Monte… puis relâche.','Même mouvement.',
 P('S’ANCRER','Corps immobile',40,'🧘','Sens ton corps immobile.','Sens chaise, dos, mains, pieds.','videos/posture.mp4','audio/retour-calme.mp3'),
 P('SE RECENTRER','Un point',45,'👁️','Fixe un point.','Mains relâchées.','videos/regard.mp4','audio/focus-respire.mp3'),
 P('RESPIRER','Souffle calme',50,'🌬️','Respirer naturellement.','Posture confortable.','videos/respire.mp4','audio/respiration-calme.mp3')]},
-{cat:'RELAX',title:'Retour de récréation',tag:'Faire redescendre l’activation · observer son rythme · se recentrer',intensity:1,steps:[
-P('OBSERVER','Mon rythme au départ',40,'❤️','Compte 15 secondes.','Assis, reste calme.','videos/posture.mp4','audio/position-calme.mp3'),
-P('S’INSTALLER','Points de contact',35,'🪑','Sens tes appuis.','Sens la chaise et tes appuis.','videos/posture.mp4','audio/retour-calme.mp3'),
-P('RESPIRER','Souffle long',50,'🌬️','Souffle plus longtemps.','Épaules relâchées.','videos/respire.mp4','audio/expiration-longue.mp3'),
-P('RELÂCHER','Épaules',40,'🌿','Monte… puis relâche.','Même mouvement.','videos/epaules-relax.mp4','audio/epaules-relache.mp3'),
-P('RESPIRER','Carré respiratoire',45,'◻️','Inspire · pause · expire · pause.','Même respiration, sans forcer.','videos/respire.mp4','audio/respiration-3-4.mp3'),
-P('SE RECENTRER','Regard calme',40,'👁️','Fixe un point.','Mains posées.','videos/regard.mp4','audio/focus-respire.mp3'),
-P('OBSERVER','Mon rythme maintenant',50,'❤️','Compte 15 secondes.','Compare simplement.','videos/posture.mp4','audio/silence-reprise.mp3')]},
+{cat:'RELAX',title:'Retour de récréation',tag:'MON DÉFI : après la respiration, mon nombre de battements est-il plus bas ?',intensity:1,steps:[
+P('APPRENDRE','Prendre son pouls',30,'❤️','Pose doucement 2 doigts sur un seul côté du cou, sous la mâchoire. Cherche les battements.','','videos/posture.mp4','audio/recre-apprendre-pouls.mp3'),
+P('MESURER','1re mesure – 30 s',30,'⏱️','Compte chaque battement pendant 30 secondes.','','videos/posture.mp4','audio/recre-mesure-1.mp3'),
+P('MÉMORISER','Mon repère de départ',15,'🧠','Retiens ton nombre. Ce sera ton repère de départ.','','videos/posture.mp4','audio/recre-memoriser.mp3'),
+P('RESPIRER','Respiration lente',180,'🌬️','Inspire lentement… Expire encore plus lentement. Relâche les épaules.','','videos/respire.mp4','audio/recre-respiration-lente.mp3'),
+P('MESURER','2e mesure – 30 s',30,'⏱️','Reprends ton pouls de la même façon. Compte les battements pendant 30 secondes.','','videos/posture.mp4','audio/recre-mesure-2.mp3'),
+P('COMPARER','Mon défi',15,'🎯','Compare avec ton premier nombre. Ton pouls a-t-il diminué ?','','videos/posture.mp4','audio/recre-comparer.mp3')]},
 {cat:'RELAX',title:'Fin de journée',tag:'Délier, relâcher et terminer calmement',intensity:1,steps:[
 P('MOBILITÉ','Poignets',35,'🤲','Bouge doucement les poignets.','Même mouvement.','videos/poignets.mp4','audio/poignets.mp3'),
 P('RELÂCHEMENT','Épaules',40,'🔄','Fais rouler les épaules.','Même mouvement.','videos/epaules.mp4','audio/cercles-epaules.mp3'),
@@ -146,6 +143,13 @@ function openSession(i){
   currentIndex=i; stepIndex=0; totalRemaining=300;
   $('home').classList.add('hidden'); $('finish').classList.remove('open'); $('player').classList.add('open'); $('demo').classList.add('prestart');
   let s=sessions[i]; $('playerCat').textContent=`${cats[s.cat].icon} ${cats[s.cat].label}`; $('playerTitle').textContent=s.title;
+  const isPulsePrestart=s.title==='Retour de récréation';
+  document.body.classList.toggle('pulse-prestart',isPulsePrestart);
+  const pulseExtras=$('prestartPulseExtras');
+  if(pulseExtras) pulseExtras.hidden=!isPulsePrestart;
+  const challenge=$('sessionChallenge');
+  if(challenge){ challenge.hidden=true; challenge.textContent=''; }
+
   $('start').hidden=false;$('pause').hidden=true;$('next').hidden=true;$('start').textContent='▶ Démarrer';
   loadStep();
   playAudio('audio/depart.mp3');
@@ -194,6 +198,7 @@ function runCountdown(){
 }
 function start(){
   document.body.classList.remove('pause-prestart');
+  document.body.classList.remove('pulse-prestart');
   
   if(running||countdownRunning)return;
   enterFullscreen();
@@ -224,7 +229,23 @@ function finishSession(){
   if(finishing)return;finishing=true;
   stop(); $('demoVideo').pause(); stopStepAudio();
   exitFullscreen();
-  $('player').classList.remove('open');$('finish').classList.add('open');
+  const isPulse=currentIndex!==null && sessions[currentIndex].title==='Retour de récréation';
+  const finish=$('finish'), finishText=$('finishText'), pulseAlt=$('pulseAlt');
+  finish.classList.toggle('pulse-result',isPulse);
+  if(isPulse){
+    finish.querySelector('h2').textContent='RÉUSSI ! Mon pouls a diminué.';
+    finishText.textContent='';
+    finishText.hidden=true;
+    pulseAlt.hidden=false;
+    pulseAlt.textContent="IDENTIQUE OU PLUS ÉLEVÉ ? Ce n'est pas grave : j'ai appris à observer mon corps.";
+  }else{
+    finish.querySelector('h2').textContent='On reprend le cours !';
+    finishText.hidden=false;
+    finishText.textContent='5 minutes de mouvement. La classe peut reprendre le cours.';
+    pulseAlt.hidden=true;
+    pulseAlt.textContent='';
+  }
+  $('player').classList.remove('open');finish.classList.add('open');
   window.scrollTo({top:0,behavior:'smooth'});
   playAudio('audio/fin.mp3',()=>{finishing=false;});
 }
