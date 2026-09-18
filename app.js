@@ -32,12 +32,12 @@ P('S’ANCRER','Corps immobile',40,'🧘','Sens ton corps immobile.','Sens chais
 P('SE RECENTRER','Un point',45,'👁️','Fixe un point.','Mains relâchées.','videos/regard.mp4','audio/focus-respire.mp3'),
 P('RESPIRER','Souffle calme',50,'🌬️','Respirer naturellement.','Posture confortable.','videos/respire.mp4','audio/respiration-calme.mp3')]},
 {cat:'RELAX',title:'Retour de récréation',tag:'MON DÉFI : après la respiration, mon nombre de battements est-il plus bas ?',intensity:1,steps:[
-P('APPRENDRE','Prendre son pouls',30,'❤️','Pose doucement 2 doigts sur un seul côté du cou, sous la mâchoire. Cherche les battements.','','videos/posture.mp4','audio/recre-apprendre-pouls.mp3'),
-P('MESURER','1re mesure – 30 s',30,'⏱️','Compte chaque battement pendant 30 secondes.','','videos/posture.mp4','audio/recre-mesure-1.mp3'),
-P('MÉMORISER','Mon repère de départ',15,'🧠','Retiens ton nombre. Ce sera ton repère de départ.','','videos/posture.mp4','audio/recre-memoriser.mp3'),
-P('RESPIRER','Respiration lente',180,'🌬️','Inspire lentement… Expire encore plus lentement. Relâche les épaules.','','videos/respire.mp4','audio/recre-respiration-lente.mp3'),
-P('MESURER','2e mesure – 30 s',30,'⏱️','Reprends ton pouls de la même façon. Compte les battements pendant 30 secondes.','','videos/posture.mp4','audio/recre-mesure-2.mp3'),
-P('COMPARER','Mon défi',15,'🎯','Compare avec ton premier nombre. Ton pouls a-t-il diminué ?','','videos/posture.mp4','audio/recre-comparer.mp3')]},
+P('APPRENDRE','Prendre son pouls',30,'❤️','Pose doucement 2 doigts sur un seul côté du cou, sous la mâchoire. Cherche les battements.','','videos/pouls-apprendre.mp4','audio/recre-apprendre-pouls.mp3'),
+P('MESURER','1re mesure – 30 s',30,'⏱️','Compte chaque battement pendant 30 secondes.','','videos/pouls-mesure-1.mp4','audio/recre-mesure-1.mp3'),
+P('MÉMORISER','Mon repère de départ',15,'🧠','Retiens ton nombre. Ce sera ton repère de départ.','','videos/pouls-memoriser.mp4','audio/recre-memoriser.mp3'),
+P('RESPIRER','Respiration lente',180,'🌬️','Inspire lentement… Expire encore plus lentement. Relâche les épaules.','','videos/pouls-respiration.mp4','audio/recre-respiration-lente.mp3'),
+P('MESURER','2e mesure – 30 s',30,'⏱️','Reprends ton pouls de la même façon. Compte les battements pendant 30 secondes.','','videos/pouls-mesure-2.mp4','audio/recre-mesure-2.mp3'),
+P('COMPARER','Mon défi',15,'🎯','Compare avec ton premier nombre. Ton pouls a-t-il diminué ?','','videos/pouls-comparer.mp4','audio/recre-comparer.mp3')]},
 {cat:'RELAX',title:'Fin de journée',tag:'Délier, relâcher et terminer calmement',intensity:1,steps:[
 P('MOBILITÉ','Poignets',35,'🤲','Bouge doucement les poignets.','Même mouvement.','videos/poignets.mp4','audio/poignets.mp3'),
 P('RELÂCHEMENT','Épaules',40,'🔄','Fais rouler les épaules.','Même mouvement.','videos/epaules.mp4','audio/cercles-epaules.mp3'),
