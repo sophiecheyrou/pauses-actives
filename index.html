@@ -749,7 +749,7 @@ body.pause-prestart.pulse-prestart .prestart-message span{font-size:clamp(36px,5
 </div>
 
 <div class="countdown" id="countdown" aria-live="assertive"><div><div class="num" id="countNum">3</div><div class="go" id="countGo" hidden>C'EST PARTI !</div><small>Préparez-vous à bouger</small></div></div>
-<script src="app.js?v=23f-20260919"></script>
+<script src="app.js?v=23g-20260919"></script>
 
 <style id="v23f-projector-layout-fix">
 /* V23f — séance projetée : zone centrale compacte + commandes garanties visibles */
@@ -792,6 +792,24 @@ body.pause-prestart.pulse-prestart .prestart-message span{font-size:clamp(36px,5
  #projectionPanel.projector-mode .demo{max-height:42dvh!important}
  #projectionPanel.projector-mode .phase{max-height:none!important;overflow:visible!important}
  #projectionPanel.projector-mode .controls{bottom:24px!important;max-width:calc(100vw - 16px)!important;flex-wrap:wrap!important}
+}
+</style>
+
+<style id="v23g-chrono-fix">
+/* V23g — garantit que le chronomètre de phase reste toujours visible */
+#projectionPanel.projector-mode .projection-layout{align-items:stretch!important;min-height:0!important}
+#projectionPanel.projector-mode .phase{display:grid!important;grid-template-rows:auto auto auto auto!important;align-content:center!important;gap:6px!important;min-height:0!important;max-height:calc(100dvh - 185px)!important;overflow:hidden!important}
+#projectionPanel.projector-mode .phase .phase-label{margin:0!important}
+#projectionPanel.projector-mode .phase h3{font-size:clamp(2rem,3.1vw,3.55rem)!important;line-height:.98!important;margin:0!important}
+#projectionPanel.projector-mode .phase p.instruction-card,
+#projectionPanel.projector-mode .seated-project{font-size:clamp(1.05rem,1.65vw,1.75rem)!important;line-height:1.08!important;padding:10px 14px!important;margin:0!important}
+#projectionPanel.projector-mode .phase .phase-time{font-size:clamp(2.7rem,4vw,4.3rem)!important;line-height:.9!important;margin:2px 0 0!important;min-height:1em!important;align-self:end!important}
+#projectionPanel.projector-mode .demo{max-height:calc(100dvh - 215px)!important}
+@media(max-height:800px){
+ #projectionPanel.projector-mode .phase h3{font-size:clamp(1.75rem,2.7vw,3rem)!important}
+ #projectionPanel.projector-mode .phase p.instruction-card,#projectionPanel.projector-mode .seated-project{font-size:clamp(.95rem,1.4vw,1.45rem)!important;padding:8px 11px!important}
+ #projectionPanel.projector-mode .phase .phase-time{font-size:clamp(2.35rem,3.4vw,3.6rem)!important}
+ #projectionPanel.projector-mode .demo{max-height:calc(100dvh - 225px)!important}
 }
 </style>
 </body>
