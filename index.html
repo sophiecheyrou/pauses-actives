@@ -830,3 +830,24 @@ body.session-active #soundToggle,
 .panel.projector-mode .timeline{position:fixed!important;left:10px;right:10px;bottom:8px;z-index:79;margin:0!important}
 @media (max-width:900px){.panel.projector-mode .controls{max-width:calc(100vw - 20px);flex-wrap:wrap;bottom:24px}.panel.projector-mode{padding-bottom:125px!important}.panel.projector-mode .projection-layout{max-height:calc(100dvh - 240px)}}
 </style>
+
+<style id="v23h-prestart-clean-fix">
+/* V23h — écran d'accueil de TOUTES les pauses : aucun exercice ne doit apparaître avant Démarrer.
+   Placé en dernier pour prendre le pas sur les styles de séance (notamment V23g). */
+body.pause-prestart #projectionPanel.projector-mode .phase,
+body.pause-prestart #projectionPanel.projector-mode #total {
+  display:none!important;
+  visibility:hidden!important;
+}
+body.pause-prestart #projectionPanel.projector-mode .projection-layout {
+  grid-template-columns:1fr!important;
+}
+body.pause-prestart #projectionPanel.projector-mode .demo.prestart {
+  grid-column:1 / -1!important;
+}
+/* À l'accueil : uniquement Démarrer + Accueil. */
+body.pause-prestart #projectionPanel.projector-mode #pause,
+body.pause-prestart #projectionPanel.projector-mode #next {
+  display:none!important;
+}
+</style>
