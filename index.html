@@ -758,4 +758,13 @@ body.pause-prestart.pulse-prestart .prestart-message span{font-size:clamp(36px,5
 #soundToggle{position:static!important;z-index:auto!important}
 body.session-active #soundToggle,
 
+
+/* V23e — commandes toujours visibles en mode projection */
+.panel.projector-mode:not(.prestart){padding-bottom:96px!important;overflow:hidden}
+.panel.projector-mode .projection-layout{max-height:calc(100dvh - 205px);overflow:hidden}
+.panel.projector-mode .demo{max-height:calc(100dvh - 220px);object-fit:contain}
+.panel.projector-mode .phase{max-height:calc(100dvh - 220px);overflow:auto}
+.panel.projector-mode .controls{position:fixed!important;left:50%;bottom:28px;transform:translateX(-50%);z-index:80;margin:0!important;padding:4px 10px;background:rgba(255,255,255,.96);border-radius:18px;box-shadow:0 4px 18px rgba(11,31,58,.10);flex-wrap:nowrap}
+.panel.projector-mode .timeline{position:fixed!important;left:10px;right:10px;bottom:8px;z-index:79;margin:0!important}
+@media (max-width:900px){.panel.projector-mode .controls{max-width:calc(100vw - 20px);flex-wrap:wrap;bottom:24px}.panel.projector-mode{padding-bottom:125px!important}.panel.projector-mode .projection-layout{max-height:calc(100dvh - 240px)}}
 </style>
