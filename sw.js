@@ -1,4 +1,4 @@
-const CACHE='pause5-v23e-20260919';
+const CACHE='pause5-v23f-20260919';
 const CORE=['./','./index.html','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./logo-academie-paris.jpg','./logo-college-actif.png','./hero-classroom.jpg','./hero-banner.jpg'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
@@ -12,8 +12,9 @@ self.addEventListener('fetch',e=>{
     e.respondWith(fetch(e.request,{cache:'no-store'}));
     return;
   }
-  e.respondWith(caches.match(e.request).then(cached=>cached||fetch(e.request).then(resp=>{
+  // V23f : réseau prioritaire aussi pour le code afin d'éviter un ancien app.js/index.html.
+  e.respondWith(fetch(e.request,{cache:'no-store'}).then(resp=>{
     if(resp.ok){const copy=resp.clone();caches.open(CACHE).then(c=>c.put(e.request,copy));}
     return resp;
-  })));
+  }).catch(()=>caches.match(e.request)));
 });

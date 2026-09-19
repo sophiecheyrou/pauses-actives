@@ -749,7 +749,51 @@ body.pause-prestart.pulse-prestart .prestart-message span{font-size:clamp(36px,5
 </div>
 
 <div class="countdown" id="countdown" aria-live="assertive"><div><div class="num" id="countNum">3</div><div class="go" id="countGo" hidden>C'EST PARTI !</div><small>Préparez-vous à bouger</small></div></div>
-<script src="app.js"></script>
+<script src="app.js?v=23f-20260919"></script>
+
+<style id="v23f-projector-layout-fix">
+/* V23f — séance projetée : zone centrale compacte + commandes garanties visibles */
+#projectionPanel.projector-mode{
+  box-sizing:border-box!important;
+  padding:10px 18px 78px!important;
+  overflow:hidden!important;
+  grid-template-rows:auto auto minmax(0,1fr) auto!important;
+}
+#projectionPanel.projector-mode .progress{margin-top:6px!important}
+#projectionPanel.projector-mode .projection-layout{
+  height:100%!important; min-height:0!important; max-height:none!important;
+  margin-top:4px!important; overflow:hidden!important;
+  align-items:center!important;
+  grid-template-columns:minmax(0,1.9fr) minmax(330px,.82fr)!important;
+}
+#projectionPanel.projector-mode .demo{
+  width:100%!important; height:auto!important; max-height:calc(100dvh - 205px)!important;
+  aspect-ratio:16/9!important; align-self:center!important; justify-self:center!important;
+}
+#projectionPanel.projector-mode .phase{
+  max-height:calc(100dvh - 190px)!important; overflow:hidden!important;
+  align-self:center!important; padding:0 4px!important;
+}
+#projectionPanel.projector-mode .phase h3{font-size:clamp(2.35rem,3.6vw,4rem)!important;margin:.2rem 0!important}
+#projectionPanel.projector-mode .phase p.instruction-card,
+#projectionPanel.projector-mode .seated-project{font-size:clamp(1.25rem,1.9vw,2.05rem)!important;line-height:1.08!important;padding:12px 15px!important;margin:.42rem 0!important}
+#projectionPanel.projector-mode .phase .phase-time{font-size:clamp(3.1rem,4.8vw,5rem)!important;margin-top:5px!important}
+#projectionPanel.projector-mode .controls{
+  position:fixed!important; left:50%!important; bottom:25px!important; transform:translateX(-50%)!important;
+  z-index:9999!important; display:flex!important; visibility:visible!important; opacity:1!important;
+  gap:10px!important; flex-wrap:nowrap!important; margin:0!important; padding:5px 10px!important;
+  background:rgba(255,255,255,.98)!important; border-radius:16px!important;
+  box-shadow:0 4px 18px rgba(11,31,58,.12)!important;
+}
+#projectionPanel.projector-mode .timeline{position:fixed!important;left:10px!important;right:10px!important;bottom:7px!important;z-index:9998!important;margin:0!important}
+@media(max-width:900px){
+ #projectionPanel.projector-mode{padding:8px 12px 112px!important}
+ #projectionPanel.projector-mode .projection-layout{grid-template-columns:1fr!important;overflow:auto!important;align-items:start!important}
+ #projectionPanel.projector-mode .demo{max-height:42dvh!important}
+ #projectionPanel.projector-mode .phase{max-height:none!important;overflow:visible!important}
+ #projectionPanel.projector-mode .controls{bottom:24px!important;max-width:calc(100vw - 16px)!important;flex-wrap:wrap!important}
+}
+</style>
 </body>
 </html>
 
