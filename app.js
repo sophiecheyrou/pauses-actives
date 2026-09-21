@@ -53,7 +53,7 @@ P('FIN','Immobilité',30,'🧘','Reste immobile.','Posture confortable.','videos
 let soundEnabled=true;
 let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false, finishing=false;
 const $=id=>document.getElementById(id);
-const MEDIA_VERSION='v23j-20260921-audio-respirer';
+const MEDIA_VERSION='v23k-20260921-expiration-longue';
 function freshMediaUrl(src){
   if(!src) return src;
   const sep=src.includes('?')?'&':'?';
