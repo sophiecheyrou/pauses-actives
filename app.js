@@ -53,7 +53,7 @@ P('FIN','Immobilité',30,'🧘','Reste immobile.','Posture confortable.','videos
 let soundEnabled=true;
 let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false, finishing=false;
 const $=id=>document.getElementById(id);
-const MEDIA_VERSION='v23e-20260919-1745';
+const MEDIA_VERSION='v23j-20260921-audio-respirer';
 function freshMediaUrl(src){
   if(!src) return src;
   const sep=src.includes('?')?'&':'?';
@@ -111,19 +111,35 @@ function playAudio(src,onDone){
   if(!soundEnabled){if(onDone)onDone();return;}
   const a=appAudio();
   if(!a || !src){onDone?.();return;}
-  let done=false;
+  let done=false, retried=false;
   const finish=()=>{
     if(done)return; done=true;
     a.onended=null; a.onerror=null;
     onDone?.();
   };
-  a.pause();
-  a.onended=finish; a.onerror=finish;
-  a.src=freshMediaUrl(src);
-  try{a.currentTime=0;}catch(e){}
-  // Important : ne pas appeler load() entre le clic et play() dans Safari.
-  const promise=a.play();
-  if(promise && typeof promise.catch==='function') promise.catch(finish);
+  const tryPlay=(url, allowRetry)=>{
+    a.pause();
+    a.onended=finish;
+    a.onerror=()=>{
+      if(allowRetry && !retried){
+        retried=true;
+        tryPlay(src, false); // secours : URL directe, sans paramètre de version
+      }else finish();
+    };
+    a.src=url;
+    try{a.currentTime=0;}catch(e){}
+    const promise=a.play();
+    if(promise && typeof promise.catch==='function'){
+      promise.catch(()=>{
+        if(allowRetry && !retried){
+          retried=true;
+          tryPlay(src, false);
+        }else finish();
+      });
+    }
+  };
+  // Premier essai avec cache-busting ; second essai automatique avec le chemin brut.
+  tryPlay(freshMediaUrl(src), true);
 }
 function playStepAudio(){
   if(currentIndex===null) return;
