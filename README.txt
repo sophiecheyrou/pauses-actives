@@ -137,3 +137,25 @@ V22h — correction de V22g
 V22i : textes À propos et catégories actualisés ; S’apaiser/Respirer ; écran PRÊT ? ; responsive iPhone/tablette/ordinateur renforcé.
 
 V22j — noms des pauses reformulés par situations de classe : Après être resté assis ; Besoin de se défouler ; Avant de se concentrer ; Entre deux activités ; Relâcher les tensions ; Besoin de bouger un peu. Contenus, médias et fichiers audio/vidéo inchangés.
+
+V22k
+- correction spécifique de « À propos » sur smartphone/iPhone ;
+- la fenêtre entière devient défilable verticalement ;
+- suppression de la hauteur maximale du cadre sur mobile ;
+- prise en compte de la zone sûre en bas de l’iPhone ;
+- la mention de conception Sophie Cheyrou est explicitement maintenue visible ;
+- toutes les fonctions et noms de pauses de la V22j sont conservés.
+
+V23b — Après être resté assis : challenge final remplacé par ‘Tous ensemble !’ (genou droit → genou gauche → squat), avec médias dédiés challenge-genoux-squat-synchro.mp4/.mp3. Cache et version médias actualisés.
+
+V23c — Après être resté assis : vidéo RESET Marche douce renommée avec un nom unique : marche-recuperation-apres-assis.mp4. Cache et version médias actualisés.
+
+V23d — audit complet des références vidéo : aucune référence challenge.mp4 ni respire.mp4 ne subsiste dans la PWA ; chaque respiration utilise désormais un nom de vidéo spécifique.
+
+V23e — correction challenge Après être resté assis : consigne simplifiée ; commandes Pause/Étape suivante/Accueil fixées en bas et toujours visibles ; média challenge unique confirmé videos/challenge-genoux-squat-synchro.mp4 ; cache/médias actualisés.
+
+
+V23h : correction globale des écrans PRÊT — le premier exercice et son chronomètre sont masqués jusqu'au clic sur Démarrer.
+
+
+V23i — nomenclature audio figée : 83 fichiers d'exercices, 83 noms MP3 uniques. Voir LISTE-AUDIOS-V23i.txt.
