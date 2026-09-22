@@ -683,6 +683,15 @@ body.pause-prestart.pulse-prestart .prestart-message span{font-size:clamp(36px,5
  .prestart-challenge{border-radius:18px;font-size:clamp(13px,3.5vw,18px)}
 }
 </style>
+
+<style id="v23m-playful-prototype">
+.surprise-active{position:fixed;top:82px;left:50%;transform:translateX(-50%);z-index:9996;border-radius:999px;padding:10px 20px;font-size:clamp(1rem,1.7vw,1.5rem);font-weight:950;background:#fff;border:3px solid #163b5c;box-shadow:0 5px 20px #0003;white-space:nowrap}
+.surprise-overlay{position:fixed;inset:0;z-index:10020;display:flex;pointer-events:none;opacity:0;transform:scale(.96);transition:.18s ease;align-items:center;justify-content:center;flex-direction:column;text-align:center;background:rgba(255,255,255,.92);color:#102f49}
+.surprise-overlay.show{opacity:1;transform:scale(1)}
+.surprise-overlay .surprise-icon{font-size:clamp(4rem,10vw,8rem);line-height:1}.surprise-overlay strong{font-size:clamp(3rem,8vw,7rem);line-height:1;margin:.1em 0}.surprise-overlay span{font-size:clamp(1.4rem,3vw,2.7rem);font-weight:850}
+.freeze-countdown{font-size:clamp(5rem,16vw,12rem);font-weight:1000;line-height:1;margin-top:.12em;color:#177ba5}.surprise-overlay.boost strong,.surprise-active.boost{color:#c94813}.surprise-overlay.freeze strong,.surprise-active.freeze{color:#177ba5}.surprise-overlay.mirror strong,.surprise-active.mirror{color:#6d3ba8}
+body.pause-prestart .surprise-active{display:none!important}
+@media(max-width:700px){</style>
 </head>
 <body>
 <div class="app" id="app">
@@ -715,10 +724,10 @@ body.pause-prestart.pulse-prestart .prestart-message span{font-size:clamp(36px,5
       <div class="sessionhead"><div><div class="eyebrow" id="playerCat"></div><h2 id="playerTitle"></h2></div><div class="session-tools"><div class="timer" id="total">05:00</div><button id="sessionSoundToggle" class="session-sound-btn" type="button" aria-pressed="true">🔊 Son</button></div></div>
       <div class="progress"><div id="progressBar"></div></div><div id="sessionChallenge" hidden style="display:none!important"></div>
       <div class="projection-layout">
-        <div class="demo" id="demo" aria-label="Démonstration vidéo du mouvement"><video id="demoVideo" loop muted playsinline preload="auto"></video><div class="prestart-message" aria-live="polite"><strong>PAUSE 5'…</strong><span>PRÊT ?</span><div id="prestartPulseExtras" class="prestart-pulse-extras" hidden><div class="prestart-heart" aria-hidden="true">❤️</div><div class="prestart-challenge"><b>MON DÉFI :</b> après la respiration, mon nombre de battements est-il plus bas ?</div></div></div><div class="loop" id="moveIcon">⚡</div><div class="caption">La vidéo de démonstration apparaîtra ici lorsqu’elle sera ajoutée au dossier videos.</div></div>
+        <div class="demo" id="demo" aria-label="Démonstration vidéo du mouvement"><video id="demoVideo" loop muted playsinline preload="auto"></video><div class="prestart-message" aria-live="polite"><strong>PAUSE 5'…</strong><span>PRÊT ?</span><div id="playfulMission" class="playful-mission"><b>🎯 MISSION DE LA CLASSE</b><span>Restez attentifs… des surprises peuvent surgir pendant la pause !</span></div><div id="prestartPulseExtras" class="prestart-pulse-extras" hidden><div class="prestart-heart" aria-hidden="true">❤️</div><div class="prestart-challenge"><b>MON DÉFI :</b> après la respiration, mon nombre de battements est-il plus bas ?</div></div></div><div class="loop" id="moveIcon">⚡</div><div class="caption">La vidéo de démonstration apparaîtra ici lorsqu’elle sera ajoutée au dossier videos.</div></div>
         <div class="phase"><div class="phase-label" id="phaseLabel">Prêts ?</div><h3 id="moveName">La pause va commencer</h3><p id="instruction" class="instruction-card standing-project">Restez à votre place. Aucun matériel nécessaire.</p><div id="seatedInstruction" class="seated-project" hidden></div><div class="phase-time" id="phaseTime">00:20</div></div>
       </div>
-      <div class="controls"><button class="primary" id="start">▶ Démarrer</button><button class="secondary" id="pause" hidden>⏸ Pause</button><button class="secondary" id="next">Étape suivante →</button><button class="secondary home-control" id="homeDuringSession">⏹ Accueil</button></div>
+      <div id="surpriseActive" class="surprise-active" hidden></div><div id="surpriseOverlay" class="surprise-overlay" aria-live="polite"></div><div class="controls"><button class="primary" id="start">▶ Démarrer</button><button class="secondary" id="pause" hidden>⏸ Pause</button><button class="secondary" id="next">Étape suivante →</button><button class="secondary home-control" id="homeDuringSession">⏹ Accueil</button></div>
       <div class="timeline" id="timeline"></div>
       <audio id="stepAudio" preload="none"></audio>
       <audio id="cueAudio" preload="none"></audio>
@@ -749,7 +758,33 @@ body.pause-prestart.pulse-prestart .prestart-message span{font-size:clamp(36px,5
 </div>
 
 <div class="countdown" id="countdown" aria-live="assertive"><div><div class="num" id="countNum">3</div><div class="go" id="countGo" hidden>C'EST PARTI !</div><small>Préparez-vous à bouger</small></div></div>
-<script src="app.js?v=23k-20260921-expiration-longue"></script>
+
+<style id="v23o-playful-mission">
+/* V23o — Mission compacte, sous PRÊT ?, sans concurrencer le titre principal */
+.playful-mission{display:none!important}
+body.pause-prestart.playful-prestart .prestart-message .playful-mission{
+  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+  gap:3px!important;width:auto!important;max-width:min(820px,88%)!important;
+  margin:clamp(10px,1.5vh,16px) auto 0!important;padding:clamp(7px,1vh,10px) clamp(14px,2vw,24px)!important;
+  border-radius:14px!important;background:rgba(255,255,255,.72)!important;border:1.5px solid rgba(16,47,73,.16)!important;
+  box-shadow:0 3px 10px rgba(16,47,73,.06)!important
+}
+body.pause-prestart.playful-prestart .prestart-message .playful-mission b{
+  width:auto!important;margin:0!important;padding:0!important;font-size:clamp(14px,1.35vw,20px)!important;
+  line-height:1.1!important;letter-spacing:0!important;color:#163b5c!important;font-weight:950!important
+}
+body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
+  width:auto!important;margin:0!important;padding:0!important;font-size:clamp(13px,1.15vw,18px)!important;
+  line-height:1.2!important;letter-spacing:0!important;color:#294b65!important;font-weight:750!important;
+  background:transparent!important;box-shadow:none!important
+}
+@media(max-width:700px){
+ body.pause-prestart.playful-prestart .prestart-message .playful-mission{max-width:94%!important;padding:6px 10px!important;margin-top:8px!important}
+ body.pause-prestart.playful-prestart .prestart-message .playful-mission b{font-size:14px!important}
+ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{font-size:12px!important}
+}
+</style>
+<script src="app.js?v=23o-20260922-mission-compact-freeze-audio"></script>
 
 <style id="v23f-projector-layout-fix">
 /* V23f — séance projetée : zone centrale compacte + commandes garanties visibles */

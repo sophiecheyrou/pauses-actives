@@ -52,6 +52,7 @@ P('FIN','Immobilité',30,'🧘','Reste immobile.','Posture confortable.','videos
 
 let soundEnabled=true;
 let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false, finishing=false;
+let surpriseSeen=new Set(), surpriseTimer=null, freezeCountdownTimer=null;
 const $=id=>document.getElementById(id);
 const MEDIA_VERSION='v23k-20260921-expiration-longue';
 function freshMediaUrl(src){
@@ -161,15 +162,20 @@ function openSession(i){
   enterFullscreen();
   
   stop(); resetAudio(); finishing=false; countdownRunning=false; sessionStarted=false;
-  currentIndex=i; stepIndex=0; totalRemaining=300;
+  currentIndex=i; stepIndex=0; totalRemaining=300; surpriseSeen=new Set(); clearSurprise();
   $('home').classList.add('hidden'); $('finish').classList.remove('open'); $('player').classList.add('open'); $('demo').classList.add('prestart');
   let s=sessions[i]; $('playerCat').textContent=`${cats[s.cat].icon} ${cats[s.cat].label}`; $('playerTitle').textContent=s.title;
   const isPulsePrestart=s.title==='Retour de récréation';
   document.body.classList.toggle('pulse-prestart',isPulsePrestart);
+  const playful=s.title==='Après être resté assis';
+  document.body.classList.toggle('playful-prestart',playful);
   const pulseExtras=$('prestartPulseExtras');
   if(pulseExtras) pulseExtras.hidden=!isPulsePrestart;
   const challenge=$('sessionChallenge');
-  if(challenge){ challenge.hidden=true; challenge.textContent=''; }
+  if(challenge){
+    challenge.hidden=true;
+    challenge.textContent='';
+  }
 
   $('start').hidden=false;$('pause').hidden=true;$('next').hidden=true;$('start').textContent='▶ Démarrer';
   loadStep();
@@ -230,9 +236,55 @@ function start(){
   $('demoVideo').play().catch(()=>{});
   playStepAudio();
 }
+function isPlayfulPrototype(){return currentIndex!==null && sessions[currentIndex].title==='Après être resté assis';}
+function clearSurprise(){
+  if(surpriseTimer){clearTimeout(surpriseTimer);surpriseTimer=null;}
+  if(freezeCountdownTimer){clearInterval(freezeCountdownTimer);freezeCountdownTimer=null;}
+  const o=$('surpriseOverlay'); if(o){o.classList.remove('show','boost','freeze','mirror');}
+  const b=$('surpriseActive'); if(b){b.hidden=true;b.textContent='';b.className='surprise-active';}
+}
+function showSurprise(key,icon,title,text,kind,duration){
+  if(surpriseSeen.has(key))return;
+  surpriseSeen.add(key);
+  const o=$('surpriseOverlay'), b=$('surpriseActive');
+  if(kind==='freeze'){
+    if(b){b.hidden=true;b.textContent='';}
+    // Audio dédié au FREEZE sur un lecteur séparé : il n'interrompt pas le lecteur principal.
+    const fa=$('stepAudio');
+    if(soundEnabled && fa){
+      try{fa.pause();fa.currentTime=0;}catch(e){}
+      fa.src=freshMediaUrl('audio/freeze-compte-rebours.mp3');
+      fa.play().catch(()=>{ fa.src='audio/freeze-compte-rebours.mp3'; fa.play().catch(()=>{}); });
+    }
+    // 5 secondes pour entendre/lire la consigne, puis 5 secondes de FREEZE décomptées.
+    if(o){o.className='surprise-overlay show freeze';o.innerHTML=`<div class="surprise-icon">🧊</div><strong>FREEZE !</strong><span>Tout le monde immobile pendant 5 secondes !</span>`;}
+    surpriseTimer=setTimeout(()=>{
+      surpriseTimer=null;
+      let n=5;
+      const render=()=>{if(o){o.className='surprise-overlay show freeze';o.innerHTML=`<div class="surprise-icon">🧊</div><strong>FREEZE !</strong><span>Tout le monde immobile pendant 5 secondes !</span><div class="freeze-countdown">${n}</div>`;}};
+      render();
+      freezeCountdownTimer=setInterval(()=>{
+        n--;
+        if(n>=1){render();}
+        else{clearInterval(freezeCountdownTimer);freezeCountdownTimer=null;if(o)o.classList.remove('show');}
+      },1000);
+    },5000);
+    return;
+  }
+  if(o){o.className=`surprise-overlay show ${kind}`;o.innerHTML=`<div class="surprise-icon">${icon}</div><strong>${title}</strong><span>${text}</span>`;surpriseTimer=setTimeout(()=>o.classList.remove('show'),3200);}
+  if(b){b.hidden=false;b.className=`surprise-active ${kind}`;b.textContent=`${icon} ${title} — ${text}`;setTimeout(()=>{b.hidden=true;b.textContent='';},duration*1000);}
+}
+function checkPlayfulSurprises(){
+  if(!isPlayfulPrototype()||!sessionStarted||!running)return;
+  const st=sessions[currentIndex].steps[stepIndex], elapsed=st.seconds-remaining;
+  // Trois surprises automatiques seulement : aucune action de l'enseignant.
+  if(stepIndex===2 && elapsed>=15) showSurprise('mirror','🪞','MIROIR','Suivez exactement la vidéo.','mirror',15);
+  if(stepIndex===3 && elapsed>=20) showSurprise('boost','🔥','BOOST 20 s','On accélère !','boost',20);
+  if(stepIndex===5 && elapsed>=25) showSurprise('freeze','🧊','FREEZE !','Tout le monde immobile pendant 5 secondes !','freeze',10);
+}
 function startSessionClock(){
   if(running)return;running=true;$('start').hidden=true;$('pause').hidden=false;$('pause').textContent='⏸ Pause';
-  interval=setInterval(()=>{remaining--;totalRemaining--;updateTimes();if(remaining<=0)nextStep();},1000);
+  interval=setInterval(()=>{remaining--;totalRemaining--;updateTimes();checkPlayfulSurprises();if(remaining<=0)nextStep();},1000);
 }
 function stop(){if(interval)clearInterval(interval);interval=null;running=false;}
 function pause(){
@@ -240,7 +292,13 @@ function pause(){
   else{startSessionClock();$('demoVideo').play().catch(()=>{});resumeStepAudio();$('pause').textContent='⏸ Pause';}
 }
 function nextStep(){
-  let was=running;stop(); stopStepAudio();
+  let was=running;stop(); stopStepAudio(); clearSurprise();
+  // Si l'utilisateur avance manuellement, le chrono général saute aussi le temps restant de l'étape.
+  if(remaining>0){
+    totalRemaining=Math.max(0,totalRemaining-remaining);
+    remaining=0;
+    updateTimes();
+  }
   if(stepIndex<sessions[currentIndex].steps.length-1){
     stepIndex++;loadStep();
     if(was){startSessionClock();$('demoVideo').play().catch(()=>{});playStepAudio();}
@@ -248,7 +306,7 @@ function nextStep(){
 }
 function finishSession(){
   if(finishing)return;finishing=true;
-  stop(); $('demoVideo').pause(); stopStepAudio();
+  stop(); clearSurprise(); $('demoVideo').pause(); stopStepAudio();
   exitFullscreen();
   const isPulse=currentIndex!==null && sessions[currentIndex].title==='Retour de récréation';
   const finish=$('finish'), finishText=$('finishText'), pulseAlt=$('pulseAlt');
