@@ -54,7 +54,7 @@ let soundEnabled=true;
 let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false, finishing=false;
 let surpriseSeen=new Set(), surpriseTimer=null, freezeCountdownTimer=null;
 const $=id=>document.getElementById(id);
-const MEDIA_VERSION='v23k-20260921-expiration-longue';
+const MEDIA_VERSION='v23p-20260922-surprises-audio-video-freeze';
 function freshMediaUrl(src){
   if(!src) return src;
   const sep=src.includes('?')?'&':'?';
@@ -249,7 +249,11 @@ function showSurprise(key,icon,title,text,kind,duration){
   const o=$('surpriseOverlay'), b=$('surpriseActive');
   if(kind==='freeze'){
     if(b){b.hidden=true;b.textContent='';}
-    // Audio dédié au FREEZE sur un lecteur séparé : il n'interrompt pas le lecteur principal.
+    // Le FREEZE fige réellement la démonstration vidéo, puis la relance automatiquement.
+    const v=$('demoVideo');
+    const videoWasPlaying=!!(v && !v.paused && !v.ended);
+    if(v) v.pause();
+    // Lecteur séparé pour les sons de surprise : n'altère pas le lecteur principal des consignes.
     const fa=$('stepAudio');
     if(soundEnabled && fa){
       try{fa.pause();fa.currentTime=0;}catch(e){}
@@ -266,10 +270,22 @@ function showSurprise(key,icon,title,text,kind,duration){
       freezeCountdownTimer=setInterval(()=>{
         n--;
         if(n>=1){render();}
-        else{clearInterval(freezeCountdownTimer);freezeCountdownTimer=null;if(o)o.classList.remove('show');}
+        else{
+          clearInterval(freezeCountdownTimer);freezeCountdownTimer=null;
+          if(o)o.classList.remove('show');
+          if(videoWasPlaying && v && sessionStarted && running) v.play().catch(()=>{});
+        }
       },1000);
     },5000);
     return;
+  }
+  // BOOST et MIROIR disposent eux aussi de leur son générique dédié.
+  const surpriseAudio={boost:'audio/boost.mp3',mirror:'audio/miroir.mp3'}[kind];
+  const sa=$('stepAudio');
+  if(soundEnabled && surpriseAudio && sa){
+    try{sa.pause();sa.currentTime=0;}catch(e){}
+    sa.src=freshMediaUrl(surpriseAudio);
+    sa.play().catch(()=>{sa.src=surpriseAudio;sa.play().catch(()=>{});});
   }
   if(o){o.className=`surprise-overlay show ${kind}`;o.innerHTML=`<div class="surprise-icon">${icon}</div><strong>${title}</strong><span>${text}</span>`;surpriseTimer=setTimeout(()=>o.classList.remove('show'),3200);}
   if(b){b.hidden=false;b.className=`surprise-active ${kind}`;b.textContent=`${icon} ${title} — ${text}`;setTimeout(()=>{b.hidden=true;b.textContent='';},duration*1000);}
