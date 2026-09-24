@@ -907,6 +907,27 @@ body.pause-prestart .surprise-active{display:none!important}
   body:not(.pause-prestart) #projectionPanel.projector-mode .controls button{padding:8px 10px!important;font-size:.9rem!important}
 }
 </style>
+
+<style id="v24e-home-logos-mobile-fix">
+/* V24e — logos institutionnels plus grands et toujours visibles sur smartphone */
+@media (max-width:700px){
+  .institutional{padding:8px 10px!important;gap:8px!important;overflow:visible!important}
+  .brand-logos{display:flex!important;width:100%!important;justify-content:center!important;align-items:center!important;gap:12px!important;min-height:76px!important;overflow:visible!important}
+  .academy-logo{display:block!important;height:68px!important;max-width:46vw!important;width:auto!important;object-fit:contain!important;visibility:visible!important;opacity:1!important}
+  .college-logo{display:block!important;height:76px!important;max-width:46vw!important;width:auto!important;object-fit:contain!important;visibility:visible!important;opacity:1!important}
+  .brand-divider{display:block!important;height:48px!important}
+}
+@media (max-width:430px){
+  .brand-logos{gap:8px!important;min-height:72px!important}
+  .academy-logo{height:62px!important;max-width:45vw!important}
+  .college-logo{height:70px!important;max-width:45vw!important}
+  .brand-divider{height:44px!important}
+}
+@media (max-width:360px){
+  .academy-logo{height:56px!important}
+  .college-logo{height:64px!important}
+}
+</style>
 </head>
 <body>
 <div class="app" id="app">
