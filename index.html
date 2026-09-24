@@ -845,6 +845,68 @@ body.pause-prestart .surprise-active{display:none!important}
 }
 </style>
 
+
+<style id="v24d-smartphone-no-overlay-fix">
+/* V24d — correctif global smartphone pour TOUTES les pauses actives.
+   Important : ne dépend pas de la classe session-active, absente de certaines versions Safari/iOS. */
+@media (max-width:700px) and (orientation:portrait){
+  body:not(.pause-prestart) #projectionPanel.projector-mode{
+    height:100dvh!important; min-height:100dvh!important;
+    padding:calc(6px + env(safe-area-inset-top)) 12px calc(12px + env(safe-area-inset-bottom))!important;
+    overflow-y:auto!important; overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important; display:block!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .projection-layout{
+    display:flex!important; flex-direction:column!important;
+    height:auto!important; min-height:0!important; max-height:none!important;
+    overflow:visible!important; margin:7px 0 0!important; gap:7px!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .demo{
+    display:block!important; flex:0 0 auto!important; width:100%!important;
+    height:auto!important; max-height:28dvh!important; aspect-ratio:16/9!important;
+    object-fit:contain!important; margin:0 auto!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .phase{
+    flex:0 0 auto!important; display:block!important; width:100%!important;
+    min-height:0!important; max-height:none!important; overflow:visible!important;
+    padding:0 5px!important; margin:0!important; text-align:center!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .phase .phase-label{
+    margin:0 0 2px!important; font-size:.76rem!important; line-height:1!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .phase h3{
+    font-size:clamp(1.5rem,6.6vw,2rem)!important; line-height:1!important; margin:0 0 5px!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .phase p.instruction-card,
+  body:not(.pause-prestart) #projectionPanel.projector-mode .seated-project{
+    font-size:clamp(.86rem,3.7vw,1.02rem)!important; line-height:1.15!important;
+    padding:8px 10px!important; margin:5px 0!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .phase .phase-time{
+    font-size:1.7rem!important; line-height:1!important; margin:5px 0!important;
+  }
+  /* Les commandes font partie du flux : elles ne peuvent plus recouvrir les consignes. */
+  body:not(.pause-prestart) #projectionPanel.projector-mode .controls{
+    position:static!important; inset:auto!important; left:auto!important; right:auto!important; bottom:auto!important; top:auto!important;
+    transform:none!important; width:100%!important; max-width:none!important;
+    margin:10px auto 0!important; padding:5px 2px!important;
+    display:flex!important; justify-content:center!important; align-items:center!important;
+    gap:7px!important; flex-wrap:wrap!important; background:transparent!important; box-shadow:none!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .controls button{
+    position:static!important; transform:none!important; margin:0!important;
+    padding:9px 12px!important; font-size:clamp(.92rem,4vw,1.05rem)!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .timeline{
+    position:static!important; inset:auto!important; left:auto!important; right:auto!important; bottom:auto!important;
+    width:100%!important; margin:7px 0 0!important;
+  }
+}
+@media (max-width:390px) and (orientation:portrait){
+  body:not(.pause-prestart) #projectionPanel.projector-mode .demo{max-height:25dvh!important}
+  body:not(.pause-prestart) #projectionPanel.projector-mode .controls button{padding:8px 10px!important;font-size:.9rem!important}
+}
+</style>
 </head>
 <body>
 <div class="app" id="app">
@@ -987,7 +1049,7 @@ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&m.classList.contains('open')) closeWhy(e); });
 })();
 </script>
-<script src="app.js?v=24c-20260924-smartphone-active-layout"></script>
+<script src="app.js?v=24d-20260924-smartphone-no-overlay"></script>
 
 <style id="v23f-projector-layout-fix">
 /* V23f — séance projetée : zone centrale compacte + commandes garanties visibles */
