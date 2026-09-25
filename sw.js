@@ -1,4 +1,4 @@
-const CACHE='pause5-v24i-20260924-about-logo-ios';
+const CACHE='pause5-v24j-20260924-about-logo-ios';
 const CORE=['./','./index.html','./app.js','./manifest.webmanifest','./icon-192.png','./icon-512.png','./logo-academie-paris.jpg','./logo-college-actif.png','./logo-pause5-about.png','./hero-classroom.jpg','./hero-banner.jpg'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
