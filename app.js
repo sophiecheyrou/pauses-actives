@@ -44,9 +44,9 @@ P('RELÂCHEMENT','Épaules',40,'🔄','Fais rouler les épaules.','Même mouveme
 P('OUVERTURE','Poitrine',40,'↔️','Ouvre… puis relâche.','Sans cambrer.','videos/fin-de-journee-03-poitrine.mp4','audio/fin-de-journee-03-poitrine.mp3'),
 P('MOBILITÉ','Rotation',40,'🌿','Tourne doucement le buste.','Amplitude confortable.','videos/fin-de-journee-04-rotation.mp4','audio/fin-de-journee-04-rotation.mp3'),
 P('ÉTIREMENT','Grandir',35,'🙌','Grandis-toi… relâche.','Même mouvement.','videos/fin-de-journee-05-grandir.mp4','audio/fin-de-journee-05-grandir.mp3'),
-P('DÉTENTE','Mains et bras',40,'🤲','Secoue doucement les mains.','Même mouvement.','videos/fin-de-journee-06-mains-et-bras.mp4','audio/fin-de-journee-06-mains-et-bras.mp3'),
-P('SOUFFLE','Respiration calme',40,'🌬️','Respirer lentement.','Épaules relâchées.','videos/fin-de-journee-07-respiration-calme.mp4','audio/fin-de-journee-07-respiration-calme.mp3'),
-P('FIN','Immobilité',30,'🧘','Reste immobile.','Posture confortable.','videos/fin-de-journee-08-immobilite.mp4','audio/fin-de-journee-08-immobilite.mp3')]}
+P('DÉTENTE','Genoux',40,'🦵','Mobilise tes genoux en faisant des petits cercles.','Lève une jambe et fais des petits cercles avec ton pied. Change de jambe.','videos/fin-de-journee-06-mains-et-bras.mp4','audio/fin-de-journee-06-mains-et-bras.mp3'),
+P('MOBILITÉ','Chevilles',40,'🦶',"Mobilise tes chevilles, l'une après l'autre.",'Même chose.','videos/fin-de-journee-07-respiration-calme.mp4','audio/fin-de-journee-07-respiration-calme.mp3'),
+P('FIN','Respiration',30,'🌬️','Relâche tes épaules et respire calmement.','Posture confortable.','videos/fin-de-journee-08-immobilite.mp4','audio/fin-de-journee-08-immobilite.mp3')]}
 
 ];
 
