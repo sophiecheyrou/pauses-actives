@@ -1157,6 +1157,17 @@ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
  #projectionPanel.projector-mode .demo{max-height:calc(100dvh - 225px)!important}
 }
 </style>
+
+<style id="v24k-universal-projector-video-fit">
+/* V24k — projection universelle : la vidéo reste toujours entière. */
+#projectionPanel.projector-mode .demo{box-sizing:border-box!important;width:min(100%,calc((100dvh - 225px)*16/9))!important;height:auto!important;max-width:100%!important;max-height:calc(100dvh - 225px)!important;aspect-ratio:16/9!important;justify-self:center!important;align-self:center!important;overflow:hidden!important}
+#projectionPanel.projector-mode .demo video{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center center!important;background:#071325!important}
+@media (max-aspect-ratio:4/3) and (min-width:701px){#projectionPanel.projector-mode{padding-left:12px!important;padding-right:12px!important}#projectionPanel.projector-mode .projection-layout{grid-template-columns:minmax(0,1.55fr) minmax(280px,.78fr)!important;gap:14px!important}#projectionPanel.projector-mode .demo{width:min(100%,calc((100dvh - 220px)*16/9))!important;max-height:calc(100dvh - 220px)!important}#projectionPanel.projector-mode .phase h3{font-size:clamp(1.7rem,3vw,3rem)!important}#projectionPanel.projector-mode .phase p.instruction-card,#projectionPanel.projector-mode .seated-project{font-size:clamp(.95rem,1.55vw,1.45rem)!important}}
+@media (max-height:760px) and (min-width:701px){#projectionPanel.projector-mode .demo{width:min(100%,calc((100dvh - 205px)*16/9))!important;max-height:calc(100dvh - 205px)!important}#projectionPanel.projector-mode .projection-layout{gap:12px!important}#projectionPanel.projector-mode .phase h3{font-size:clamp(1.55rem,2.7vw,2.7rem)!important}#projectionPanel.projector-mode .phase p.instruction-card,#projectionPanel.projector-mode .seated-project{font-size:clamp(.9rem,1.35vw,1.3rem)!important;padding:7px 10px!important}#projectionPanel.projector-mode .phase .phase-time{font-size:clamp(2.1rem,3.2vw,3.2rem)!important}}
+@media (max-width:900px) and (min-width:701px){#projectionPanel.projector-mode .demo{width:min(100%,calc(42dvh*16/9))!important;max-height:42dvh!important;margin-left:auto!important;margin-right:auto!important}}
+@media (max-width:700px) and (orientation:portrait){body:not(.pause-prestart) #projectionPanel.projector-mode .demo{width:min(100%,calc(28dvh*16/9))!important;max-height:28dvh!important;aspect-ratio:16/9!important;margin-left:auto!important;margin-right:auto!important}body:not(.pause-prestart) #projectionPanel.projector-mode .demo video{object-fit:contain!important;object-position:center center!important}}
+</style>
+
 </body>
 </html>
 
