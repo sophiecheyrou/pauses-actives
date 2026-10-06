@@ -167,13 +167,22 @@ function openSession(i){
   let s=sessions[i]; $('playerCat').textContent=`${cats[s.cat].icon} ${cats[s.cat].label}`; $('playerTitle').textContent=s.title;
   const isPulsePrestart=s.title==='Retour de récréation';
   document.body.classList.toggle('pulse-prestart',isPulsePrestart);
-  const playful=s.title==='Après être resté assis'||s.title==='Besoin de se défouler';
-  document.body.classList.toggle('playful-prestart',playful);
+  const missionTexts={
+    'Début de journée':'MISSION RÉVEIL — Restez attentifs : rythme, miroir et synchro peuvent surgir !',
+    'Début d’après-midi':'MISSION ÉNERGIE — Réveillez la classe ensemble sans vous épuiser.',
+    'Après être resté assis':'MISSION MOUVEMENT — Restez attentifs… des surprises peuvent surgir pendant la pause !',
+    'Besoin de se défouler':'MISSION DÉFOULOIR — Bougez, restez attentifs… le rythme peut changer à tout moment !',
+    'Avant un exercice':'MISSION CERVEAU — Coordination, clap et synchro : restez concentrés !',
+    'Relâcher les tensions':'MISSION ZÉRO TENSION — Bougez lentement et relâchez progressivement le corps.',
+    'Besoin de bouger un peu':'MISSION DISCRÈTE — Bougez ensemble en faisant le moins de bruit possible.',
+    'Respirer':'MISSION CALME — Ralentissez progressivement et terminez ensemble dans le calme.',
+    'Avant une évaluation':'MISSION CALME & FOCUS — Respirez, ralentissez et gardez votre attention.',
+    'Retour de récréation':'MISSION PULSATIONS — Observez votre corps : votre pouls sera-t-il plus bas à la fin ?',
+    'Fin de journée':'MISSION DÉCONNEXION — Ralentissez ensemble jusqu’à une respiration calme.'
+  };
+  document.body.classList.add('playful-prestart');
   const mission=$('playfulMission');
-  if(mission){
-    const mt=mission.querySelector('span');
-    if(mt) mt.textContent=s.title==='Besoin de se défouler'?'Bougez, restez attentifs… le rythme peut changer à tout moment !':'Restez attentifs… des surprises peuvent surgir pendant la pause !';
-  }
+  if(mission){const mt=mission.querySelector('span');if(mt) mt.textContent=missionTexts[s.title]||'MISSION DE LA CLASSE — Réussissez la pause ensemble !';}
   const pulseExtras=$('prestartPulseExtras');
   if(pulseExtras) pulseExtras.hidden=!isPulsePrestart;
   const challenge=$('sessionChallenge');
@@ -241,11 +250,11 @@ function start(){
   $('demoVideo').play().catch(()=>{});
   playStepAudio();
 }
-function isPlayfulPrototype(){return currentIndex!==null && ['Après être resté assis','Besoin de se défouler'].includes(sessions[currentIndex].title);}
+function isPlayfulPrototype(){return currentIndex!==null;}
 function clearSurprise(){
   if(surpriseTimer){clearTimeout(surpriseTimer);surpriseTimer=null;}
   if(freezeCountdownTimer){clearInterval(freezeCountdownTimer);freezeCountdownTimer=null;}
-  const o=$('surpriseOverlay'); if(o){o.classList.remove('show','boost','freeze','mirror','turbo','synchro');}
+  const o=$('surpriseOverlay'); if(o){o.classList.remove('show','boost','freeze','mirror','turbo','synchro','inverse','clap','slow','silence','challenge');}
   const b=$('surpriseActive'); if(b){b.hidden=true;b.textContent='';b.className='surprise-active';}
 }
 function showSurprise(key,icon,title,text,kind,duration){
@@ -296,20 +305,65 @@ function showSurprise(key,icon,title,text,kind,duration){
   if(b){b.hidden=false;b.className=`surprise-active ${kind}`;b.textContent=`${icon} ${title} — ${text}`;setTimeout(()=>{b.hidden=true;b.textContent='';},duration*1000);}
 }
 function checkPlayfulSurprises(){
-  if(!isPlayfulPrototype()||!sessionStarted||!running)return;
-  const title=sessions[currentIndex].title;
-  const st=sessions[currentIndex].steps[stepIndex], elapsed=st.seconds-remaining;
-  if(title==='Après être resté assis'){
-    if(stepIndex===1 && elapsed>=15) showSurprise('assis-mirror','🪞','MIROIR','Suivez exactement la vidéo.','mirror',15);
-    if(stepIndex===2 && elapsed>=20) showSurprise('assis-boost','🔥','BOOST 20 s','On accélère !','boost',20);
-    if(stepIndex===5 && elapsed>=25) showSurprise('assis-freeze','🧊','FREEZE !','Tout le monde immobile pendant 5 secondes !','freeze',10);
-  }
-  if(title==='Besoin de se défouler'){
-    if(stepIndex===2 && elapsed>=15) showSurprise('defouler-boost','🔥','BOOST 20 s','On accélère !','boost',20);
-    if(stepIndex===3 && elapsed>=20) showSurprise('defouler-freeze','🧊','FREEZE !','Tout le monde immobile pendant 5 secondes !','freeze',10);
-    if(stepIndex===5 && elapsed>=15) showSurprise('defouler-turbo','⚡','TURBO 15 s','Accélère tes mouvements tout en restant précis !','turbo',15);
-    if(stepIndex===6 && elapsed>=1) showSurprise('defouler-synchro','🎯','SYNCHRO 30 s','Toute la classe ensemble, exactement au même rythme !','synchro',28);
-  }
+ if(!isPlayfulPrototype()||!sessionStarted||!running)return;
+ const title=sessions[currentIndex].title, st=sessions[currentIndex].steps[stepIndex], elapsed=st.seconds-remaining;
+ const E=(key,icon,label,text,kind,dur)=>showSurprise(key,icon,label,text,kind,dur);
+ if(title==='Début de journée'){
+  if(stepIndex===1&&elapsed>=15)E('matin-mirror','🪞','MIROIR','Suivez exactement la vidéo.','mirror',15);
+  if(stepIndex===4&&elapsed>=15)E('matin-boost','🔥','BOOST 15 s','Un peu plus vite, en restant précis !','boost',15);
+  if(stepIndex===6&&elapsed>=1)E('matin-synchro','🤝','SYNCHRO','Toute la classe au même rythme !','synchro',20);
+ }
+ if(title==='Début d’après-midi'){
+  if(stepIndex===2&&elapsed>=15)E('aprem-mirror','🪞','MIROIR','Suivez exactement la vidéo.','mirror',15);
+  if(stepIndex===4&&elapsed>=15)E('aprem-boost','⚡','BOOST 15 s','Relancez le rythme !','boost',15);
+  if(stepIndex===6&&elapsed>=1)E('aprem-synchro','🤝','SYNCHRO','Toute la classe ensemble !','synchro',20);
+ }
+ if(title==='Après être resté assis'){
+  if(stepIndex===1&&elapsed>=15)E('assis-mirror','🪞','MIROIR','Suivez exactement la vidéo.','mirror',15);
+  if(stepIndex===2&&elapsed>=20)E('assis-boost','🔥','BOOST 20 s','On accélère !','boost',20);
+  if(stepIndex===5&&elapsed>=25)E('assis-freeze','🧊','FREEZE !','Tout le monde immobile pendant 5 secondes !','freeze',10);
+ }
+ if(title==='Besoin de se défouler'){
+  if(stepIndex===2&&elapsed>=15)E('defouler-boost','🔥','BOOST 20 s','On accélère !','boost',20);
+  if(stepIndex===3&&elapsed>=20)E('defouler-freeze','🧊','FREEZE !','Tout le monde immobile pendant 5 secondes !','freeze',10);
+  if(stepIndex===5&&elapsed>=15)E('defouler-turbo','⚡','TURBO 15 s','Accélère tes mouvements tout en restant précis !','turbo',15);
+  if(stepIndex===6&&elapsed>=1)E('defouler-synchro','🎯','SYNCHRO 30 s','Toute la classe ensemble, exactement au même rythme !','synchro',28);
+ }
+ if(title==='Avant un exercice'){
+  if(stepIndex===1&&elapsed>=15)E('exo-inverse','🔄','INVERSE','Change de côté sans perdre le rythme !','inverse',12);
+  if(stepIndex===3&&elapsed>=15)E('exo-clap','👏','CLAP','Ajoutez le clap sans perdre la coordination !','clap',15);
+  if(stepIndex===6&&elapsed>=1)E('exo-synchro','🤝','SYNCHRO','Toute la classe au même rythme, sans erreur !','synchro',20);
+ }
+ if(title==='Relâcher les tensions'){
+  if(stepIndex===1&&elapsed>=15)E('tensions-mirror','🪞','MIROIR LENT','Suivez la vidéo le plus doucement possible.','mirror',15);
+  if(stepIndex===4&&elapsed>=15)E('tensions-slow','🐢','RALENTI','Encore plus lentement… sans forcer.','slow',15);
+  if(stepIndex===6&&elapsed>=15)E('tensions-release','🌿','ZÉRO TENSION','À chaque expiration, relâchez un peu plus.','challenge',20);
+ }
+ if(title==='Besoin de bouger un peu'){
+  if(stepIndex===1&&elapsed>=12)E('bouger-silence','🤫','SILENCE','Continuez sans faire de bruit.','silence',18);
+  if(stepIndex===3&&elapsed>=12)E('bouger-mirror','🪞','MIROIR','Suivez exactement la vidéo.','mirror',15);
+  if(stepIndex===6&&elapsed>=12)E('bouger-synchro','🤝','SYNCHRO','Toute la classe bouge ensemble, en silence !','synchro',20);
+ }
+ if(title==='Respirer'){
+  if(stepIndex===1&&elapsed>=12)E('respire-slow','🐢','RALENTI','Laissez la respiration ralentir.','slow',18);
+  if(stepIndex===3&&elapsed>=12)E('respire-synchro','🌬️','SYNCHRO','Montez et baissez les bras au même rythme.','synchro',18);
+  if(stepIndex===6&&elapsed>=10)E('respire-silence','🤫','SILENCE','Quatre respirations lentes, tous ensemble.','silence',25);
+ }
+ if(title==='Avant une évaluation'){
+  if(stepIndex===1&&elapsed>=8)E('eval-square','◻️','DÉFI RÉGULARITÉ','Suivez le carré sans accélérer ni ralentir.','challenge',25);
+  if(stepIndex===4&&elapsed>=12)E('eval-still','🤫','IMMOBILE','Gardez le corps calme et le regard posé.','silence',18);
+  if(stepIndex===6&&elapsed>=10)E('eval-focus','🎯','FOCUS','Une respiration après l’autre.','challenge',22);
+ }
+ if(title==='Retour de récréation'){
+  if(stepIndex===1&&elapsed>=1)E('pulse-one','❤️','PREMIER REPÈRE','Comptez précisément vos pulsations.','challenge',22);
+  if(stepIndex===3&&elapsed>=45)E('pulse-slow','🐢','RALENTI','Allongez doucement l’expiration.','slow',25);
+  if(stepIndex===4&&elapsed>=1)E('pulse-two','❤️','DEUXIÈME REPÈRE','Même méthode : comptez vos pulsations.','challenge',22);
+ }
+ if(title==='Fin de journée'){
+  if(stepIndex===1&&elapsed>=12)E('fin-slow','🐢','RALENTI','Faites le mouvement encore plus lentement.','slow',18);
+  if(stepIndex===4&&elapsed>=12)E('fin-silence','🤫','SILENCE','Continuez sans aucun bruit.','silence',18);
+  if(stepIndex===7&&elapsed>=5)E('fin-synchro','🌬️','SYNCHRO','Terminez par une respiration calme, tous ensemble.','synchro',20);
+ }
 }
 function startSessionClock(){
   if(running)return;running=true;$('start').hidden=true;$('pause').hidden=false;$('pause').textContent='⏸ Pause';
