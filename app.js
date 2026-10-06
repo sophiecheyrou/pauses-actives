@@ -94,7 +94,7 @@ function renderFilters(){
 }
 function renderSessions(){
   const list=sessions.map((s,i)=>({s,i})).filter(x=>filter==='ALL'||x.s.cat===filter);
-  $('sessions').innerHTML=list.map(({s,i})=>`<button class="session cat-${s.cat}" type="button" data-i="${i}"><div class="cat">${cats[s.cat].icon} ${cats[s.cat].label}</div><h3>${s.title}</h3><p>${s.tag}</p>${s.steps.every(st=>st.seated && st.seated.trim())?'<div class="seated-badge" title="Tous les exercices disposent d’une adaptation en position assise">🪑 <span>Adaptation assise possible</span></div>':''}<div class="meta"><span>${s.express?'⚡ EXPRESS · 2 minutes':'5 minutes'}</span><span>Intensité ${'●'.repeat(s.intensity)}${'○'.repeat(3-s.intensity)}</span></div></button>`).join('');
+  $('sessions').innerHTML=list.map(({s,i})=>`<button class="session cat-${s.cat}${s.express?' session-express':' session-reference'}" type="button" data-i="${i}"><div class="cat">${cats[s.cat].icon} ${cats[s.cat].label}</div><h3>${s.title}</h3><p>${s.tag}</p>${s.steps.every(st=>st.seated && st.seated.trim())?'<div class="seated-badge" title="Tous les exercices disposent d’une adaptation en position assise">🪑 <span>Adaptation assise possible</span></div>':''}<div class="meta"><span class="duration-badge">${s.express?'EXPRESS · 2 min':'★ FORMAT RECOMMANDÉ · 5 min'}</span><span>Intensité ${'●'.repeat(s.intensity)}${'○'.repeat(3-s.intensity)}</span></div></button>`).join('');
   document.querySelectorAll('.session').forEach(btn=>btn.onclick=()=>openSession(Number(btn.dataset.i)));
 }
 function audioPathFor(step){
@@ -194,6 +194,10 @@ function openSession(i){
   document.body.classList.add('playful-prestart');
   const mission=$('playfulMission');
   if(mission){const mt=mission.querySelector('span');if(mt) mt.textContent=missionTexts[s.title]||'MISSION DE LA CLASSE — Réussissez la pause ensemble !';}
+  const prestartPauseLabel=$('prestartPauseLabel');
+  if(prestartPauseLabel) prestartPauseLabel.textContent=s.express?"PAUSE 2'…":"PAUSE 5'…";
+  const prestartReadyLabel=$('prestartReadyLabel');
+  if(prestartReadyLabel) prestartReadyLabel.textContent='PRÊT ?';
   const pulseExtras=$('prestartPulseExtras');
   if(pulseExtras) pulseExtras.hidden=!isPulsePrestart;
   const challenge=$('sessionChallenge');
@@ -204,7 +208,7 @@ function openSession(i){
 
   $('start').hidden=false;$('pause').hidden=true;$('next').hidden=true;$('start').textContent='▶ Démarrer';
   loadStep();
-  playAudio('audio/depart.mp3');
+  playAudio(s.express?'audio/depart-2-minutes.mp3?v=25d':'audio/depart.mp3');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function loadStep(){
