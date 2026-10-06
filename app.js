@@ -46,7 +46,13 @@ P('MOBILITÉ','Rotation',40,'🌿','Tourne doucement le buste.','Amplitude confo
 P('ÉTIREMENT','Grandir',35,'🙌','Grandis-toi… relâche.','Même mouvement.','videos/fin-de-journee-05-grandir.mp4','audio/fin-de-journee-05-grandir.mp3'),
 P('DÉTENTE','Genoux',40,'🦵','Mobilise tes genoux en faisant des petits cercles.','Lève une jambe et fais des petits cercles avec ton pied. Change de jambe.','videos/fin-de-journee-06-mains-et-bras.mp4','audio/fin-de-journee-06-mains-et-bras.mp3'),
 P('MOBILITÉ','Chevilles',40,'🦶',"Mobilise tes chevilles, l'une après l'autre.",'Même chose.','videos/fin-de-journee-07-respiration-calme.mp4','audio/fin-de-journee-07-respiration-calme.mp3'),
-P('FIN','Respiration',30,'🌬️','Relâche tes épaules et respire calmement.','Posture confortable.','videos/fin-de-journee-08-immobilite.mp4','audio/fin-de-journee-08-immobilite.mp3')]}
+P('FIN','Respiration',30,'🌬️','Relâche tes épaules et respire calmement.','Posture confortable.','videos/fin-de-journee-08-immobilite.mp4','audio/fin-de-journee-08-immobilite.mp3')]},
+{cat:'BOOST',title:'Express Réveil – 2′',tag:'2 minutes pour se réveiller et se remettre en action',intensity:2,express:true,steps:[P('ACTIVATION','Marche active',30,'⚡','Accélère. Les bras accompagnent le mouvement.','Pieds et bras dynamiques.','videos/debut-de-journee-02-marche-active.mp4','audio/debut-de-journee-02-marche-active.mp3'),P('JAMBES','Squats',30,'⬇️','Recule légèrement le bassin et remonte. Va à ton rythme.','Extensions alternées des jambes.','videos/debut-de-journee-04-squats.mp4','audio/debut-de-journee-04-squats.mp3'),P('CARDIO','Genoux alternés',30,'🔥','Monte un genou puis l’autre. Trouve ton rythme.','Genoux alternés assis.','videos/debut-de-journee-05-genoux-alternes.mp4','audio/debut-de-journee-05-genoux-alternes.mp3'),P('RESET','Respirer',30,'🌬️','Ralentis. Inspire… expire lentement. Relâche les épaules.','Identique assis.','videos/debut-de-journee-08-respirer.mp4','audio/debut-de-journee-08-respirer.mp3')]},
+{cat:'MOVE',title:'Express Bouger – 2′',tag:'2 minutes pour rompre rapidement un temps assis',intensity:2,express:true,steps:[P('MOBILITÉ','Cercles d’épaules',30,'🔄','Grands cercles vers l’arrière.','Identique assis.','videos/apres-etre-reste-assis-01-cercles-depaules.mp4','audio/apres-etre-reste-assis-01-cercles-depaules.mp3'),P('JAMBES','Demi-squats',30,'⬇️','Descends légèrement et remonte. Mouvement fluide.','Extensions alternées.','videos/apres-etre-reste-assis-02-demi-squats.mp4','audio/apres-etre-reste-assis-02-demi-squats.mp3'),P('CARDIO','Genoux alternés',30,'🔥','Genou droit, gauche. Accélère progressivement.','Genoux alternés assis.','videos/apres-etre-reste-assis-04-genoux-alternes.mp4','audio/apres-etre-reste-assis-04-genoux-alternes.mp3'),P('RESET','Marche douce',30,'🌬️','Marche doucement. Relâche les bras. Respire.','Pieds doux + respiration.','videos/apres-etre-reste-assis-08-marche-douce.mp4','audio/apres-etre-reste-assis-08-marche-douce.mp3')]},
+{cat:'FOCUS',title:'Express Focus – 2′',tag:'2 minutes pour mobiliser coordination et attention',intensity:2,express:true,steps:[P('COORDINATION','Même côté',30,'✋','Main droite sur genou droit. Puis gauche.','Identique assis.','videos/avant-un-exercice-01-meme-cote.mp4','audio/avant-un-exercice-01-meme-cote.mp3'),P('COORDINATION','Croisé main-genou',30,'✕','Main droite sur genou gauche. Puis inverse.','Identique assis.','videos/avant-un-exercice-02-croise-main-genou.mp4','audio/avant-un-exercice-02-croise-main-genou.mp3'),P('COORDINATION','Coude vers genou opposé',30,'🧠','Coude droit vers genou gauche. Puis coude gauche vers genou droit.','Identique assis.','videos/avant-un-exercice-03-coude-genou-oppose.mp4','audio/avant-un-exercice-03-coude-genou-oppose.mp3'),P('RESET','Regard fixe',30,'👁️','Fixe un point et ralentis ta respiration.','Identique assis.','videos/avant-un-exercice-08-regard-fixe.mp4','audio/avant-un-exercice-08-regard-fixe.mp3')]},
+{cat:'RESET',title:'Express Détente – 2′',tag:'2 minutes pour relâcher les principales tensions',intensity:1,express:true,steps:[P('MOBILITÉ','Cercles épaules',30,'🔄','Lentement vers l’arrière.','Identique assis.','videos/relacher-les-tensions-01-cercles-epaules.mp4','audio/relacher-les-tensions-01-cercles-epaules.mp3'),P('OUVERTURE','Ouvrir la poitrine',30,'↔️','Ouvre les bras. Rapproche doucement les omoplates.','Identique assis.','videos/relacher-les-tensions-02-ouvrir-la-poitrine.mp4','audio/relacher-les-tensions-02-ouvrir-la-poitrine.mp3'),P('MOBILITÉ','Rotation du buste',30,'🌿','Droite… centre… gauche.','Identique assis.','videos/relacher-les-tensions-04-rotation-du-buste.mp4','audio/relacher-les-tensions-04-rotation-du-buste.mp3'),P('RESET','Respiration',30,'🌬️','Inspire en grandissant. Expire en relâchant.','Identique assis.','videos/relacher-les-tensions-07-respiration.mp4','audio/relacher-les-tensions-07-respiration.mp3')]},
+{cat:'RELAX',title:'Express Calme – 2′',tag:'2 minutes pour respirer et revenir au calme',intensity:1,express:true,steps:[P('INSTALLATION','Position confortable',30,'🧘','Dos droit, épaules relâchées, regard devant.','Les 2 pieds au sol, dos droit, regard devant.','videos/respirer-01-position-confortable.mp4','audio/respirer-01-position-confortable.mp3'),P('SOUFFLE','Inspire 3 sec. / Expire 4 sec.',30,'🌬️','Inspire 3 secondes. Expire 4 secondes.','Identique assis.','videos/respirer-02-inspire-3-sec-expire-4-sec.mp4','audio/respirer-02-inspire-3-sec-expire-4-sec.mp3'),P('RELÂCHEMENT','Monter / relâcher épaules',30,'🌿','Monte les épaules à l’inspiration. Relâche à l’expiration.','Identique assis.','videos/respirer-03-monter-relacher-epaules.mp4','audio/respirer-03-monter-relacher-epaules.mp3'),P('RESET','4 respirations lentes',30,'🧘','Quatre respirations tranquilles.','Identique assis.','videos/respirer-07-4-respirations-lentes.mp4','audio/respirer-07-4-respirations-lentes.mp3')]}
+
 
 ];
 
@@ -88,7 +94,7 @@ function renderFilters(){
 }
 function renderSessions(){
   const list=sessions.map((s,i)=>({s,i})).filter(x=>filter==='ALL'||x.s.cat===filter);
-  $('sessions').innerHTML=list.map(({s,i})=>`<button class="session cat-${s.cat}" type="button" data-i="${i}"><div class="cat">${cats[s.cat].icon} ${cats[s.cat].label}</div><h3>${s.title}</h3><p>${s.tag}</p>${s.steps.every(st=>st.seated && st.seated.trim())?'<div class="seated-badge" title="Tous les exercices disposent d’une adaptation en position assise">🪑 <span>Adaptation assise possible</span></div>':''}<div class="meta"><span>5 minutes</span><span>Intensité ${'●'.repeat(s.intensity)}${'○'.repeat(3-s.intensity)}</span></div></button>`).join('');
+  $('sessions').innerHTML=list.map(({s,i})=>`<button class="session cat-${s.cat}" type="button" data-i="${i}"><div class="cat">${cats[s.cat].icon} ${cats[s.cat].label}</div><h3>${s.title}</h3><p>${s.tag}</p>${s.steps.every(st=>st.seated && st.seated.trim())?'<div class="seated-badge" title="Tous les exercices disposent d’une adaptation en position assise">🪑 <span>Adaptation assise possible</span></div>':''}<div class="meta"><span>${s.express?'⚡ EXPRESS · 2 minutes':'5 minutes'}</span><span>Intensité ${'●'.repeat(s.intensity)}${'○'.repeat(3-s.intensity)}</span></div></button>`).join('');
   document.querySelectorAll('.session').forEach(btn=>btn.onclick=()=>openSession(Number(btn.dataset.i)));
 }
 function audioPathFor(step){
@@ -162,7 +168,7 @@ function openSession(i){
   enterFullscreen();
   
   stop(); resetAudio(); finishing=false; countdownRunning=false; sessionStarted=false;
-  currentIndex=i; stepIndex=0; totalRemaining=300; surpriseSeen=new Set(); clearSurprise();
+  currentIndex=i; stepIndex=0; totalRemaining=sessions[i].steps.reduce((n,st)=>n+st.seconds,0); surpriseSeen=new Set(); clearSurprise();
   $('home').classList.add('hidden'); $('finish').classList.remove('open'); $('player').classList.add('open'); $('demo').classList.add('prestart');
   let s=sessions[i]; $('playerCat').textContent=`${cats[s.cat].icon} ${cats[s.cat].label}`; $('playerTitle').textContent=s.title;
   const isPulsePrestart=s.title==='Retour de récréation';
@@ -178,7 +184,12 @@ function openSession(i){
     'Respirer':'MISSION CALME — Ralentissez progressivement et terminez ensemble dans le calme.',
     'Avant une évaluation':'MISSION CALME & FOCUS — Respirez, ralentissez et gardez votre attention.',
     'Retour de récréation':'MISSION PULSATIONS — Observez votre corps : votre pouls sera-t-il plus bas à la fin ?',
-    'Fin de journée':'MISSION DÉCONNEXION — Ralentissez ensemble jusqu’à une respiration calme.'
+    'Fin de journée':'MISSION DÉCONNEXION — Ralentissez ensemble jusqu’à une respiration calme.',
+    'Express Réveil – 2′':'MISSION EXPRESS — Réveillez le corps en 2 minutes : un MIROIR peut surgir !',
+    'Express Bouger – 2′':'MISSION EXPRESS — Deux minutes pour bouger ensemble : restez synchronisés !',
+    'Express Focus – 2′':'MISSION EXPRESS — Coordination et attention : toute la classe au même rythme !',
+    'Express Détente – 2′':'MISSION EXPRESS — Deux minutes pour ralentir et relâcher les tensions.',
+    'Express Calme – 2′':'MISSION EXPRESS — Deux minutes pour ralentir la respiration et revenir au calme.'
   };
   document.body.classList.add('playful-prestart');
   const mission=$('playfulMission');
@@ -220,7 +231,7 @@ function loadVideo(src){
 }
 function renderTimeline(){let steps=sessions[currentIndex].steps;$('timeline').innerHTML=steps.map((_,i)=>`<span class="${i<stepIndex?'done':i===stepIndex?'current':''}"></span>`).join('');}
 function fmt(n){n=Math.max(0,n);return String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0')}
-function updateTimes(){$('phaseTime').textContent=fmt(remaining);$('total').textContent=fmt(totalRemaining);$('progressBar').style.width=((300-totalRemaining)/3)+'%';}
+function updateTimes(){const duration=sessions[currentIndex]?sessions[currentIndex].steps.reduce((n,st)=>n+st.seconds,0):300;$('phaseTime').textContent=fmt(remaining);$('total').textContent=fmt(totalRemaining);$('progressBar').style.width=(duration?((duration-totalRemaining)/duration*100):0)+'%';}
 
 function runCountdown(){
   if(countdownRunning)return;countdownRunning=true;
@@ -294,7 +305,7 @@ function showSurprise(key,icon,title,text,kind,duration){
     return;
   }
   // BOOST et MIROIR disposent eux aussi de leur son générique dédié.
-  const surpriseAudio={boost:'audio/boost.mp3',mirror:'audio/miroir.mp3',turbo:'audio/turbo.mp3'}[kind];
+  const surpriseAudio={boost:'audio/boost.mp3',mirror:'audio/miroir.mp3',turbo:'audio/turbo.mp3',synchro:'audio/synchro.mp3'}[kind];
   const sa=$('cueAudio');
   if(soundEnabled && surpriseAudio && sa){
     try{sa.pause();sa.currentTime=0;}catch(e){}
@@ -358,6 +369,21 @@ function checkPlayfulSurprises(){
   if(stepIndex===3&&elapsed>=45)E('pulse-slow','🐢','RALENTI','Allongez doucement l’expiration.','slow',25);
   if(stepIndex===4&&elapsed>=1)E('pulse-two','❤️','DEUXIÈME REPÈRE','Même méthode : comptez vos pulsations.','challenge',22);
  }
+ if(title==='Express Réveil – 2′'){
+  if(stepIndex===1&&elapsed>=8)E('express-reveil-mirror','🪞','MIROIR','Suivez exactement les squats de la vidéo.','mirror',12);
+ }
+ if(title==='Express Bouger – 2′'){
+  if(stepIndex===2&&elapsed>=8)E('express-bouger-synchro','🤝','SYNCHRO','Toute la classe au même rythme !','synchro',15);
+ }
+ if(title==='Express Focus – 2′'){
+  if(stepIndex===1&&elapsed>=8)E('express-focus-synchro','🤝','SYNCHRO','Même rythme, même coordination, tous ensemble !','synchro',15);
+ }
+ if(title==='Express Détente – 2′'){
+  if(stepIndex===2&&elapsed>=8)E('express-detente-slow','🐢','RALENTI','Ralentissez encore le mouvement, sans forcer.','slow',15);
+ }
+ if(title==='Express Calme – 2′'){
+  if(stepIndex===3&&elapsed>=5)E('express-calme-silence','🤫','SILENCE','Terminez ensemble par des respirations lentes.','silence',20);
+ }
  if(title==='Fin de journée'){
   if(stepIndex===1&&elapsed>=12)E('fin-slow','🐢','RALENTI','Faites le mouvement encore plus lentement.','slow',18);
   if(stepIndex===4&&elapsed>=12)E('fin-silence','🤫','SILENCE','Continuez sans aucun bruit.','silence',18);
@@ -402,7 +428,7 @@ function finishSession(){
   }else{
     finish.querySelector('h2').textContent='On reprend le cours !';
     finishText.hidden=false;
-    finishText.textContent='5 minutes de mouvement. La classe peut reprendre le cours.';
+    finishText.textContent=(sessions[currentIndex]?.express?'2 minutes de pause express. La classe peut reprendre le cours.':'5 minutes de mouvement. La classe peut reprendre le cours.');
     pulseAlt.hidden=true;
     pulseAlt.textContent='';
   }
