@@ -1029,7 +1029,131 @@ body.math-mode .home,body.math-mode .player{display:none!important}
 .math-skip{margin-top:8px;border:1px solid #cbd5e1;background:#fff;color:#475569;border-radius:11px;padding:8px 14px;font-size:.88rem;font-weight:800;cursor:pointer}
 @media(max-height:760px){.math-intro .math-demo-grid{margin:5px 0}.math-intro .math-demo-grid video{height:min(21vh,170px)}.math-intro-title{font-size:clamp(1.8rem,4vh,3rem)!important;margin:2px 0 5px!important}.math-intro-rule{font-size:clamp(1rem,2vh,1.28rem)!important;margin:2px!important}.math-start-big{margin-top:5px!important;padding:10px 26px!important}}
 @media(max-width:700px){.math-intro-rule{font-size:clamp(1rem,4vw,1.22rem)!important}.math-start-big{padding:10px 22px!important}}
-</style></head>
+</style>
+<style id="v25o-math-spacing">
+/* Introduction : consigne plus grande, centrée et davantage séparée des vidéos */
+.math-intro-title{
+  width:100%;
+  text-align:center!important;
+  font-size:clamp(2.7rem,5.6vw,5.3rem)!important;
+  margin:0 0 14px!important;
+}
+.math-intro-rule{
+  width:min(1100px,94%);
+  text-align:center!important;
+  font-size:clamp(1.45rem,2.45vw,2.05rem)!important;
+  line-height:1.32!important;
+  margin:0 auto clamp(18px,2.8vh,32px)!important;
+}
+.math-intro .math-demo-grid{
+  margin-top:0!important;
+}
+/* Fin : vraie respiration entre le compte à rebours et le bouton */
+#mathFinish .math-autostart{
+  margin-bottom:24px!important;
+}
+#mathFinishHome{
+  margin-top:0!important;
+}
+@media(max-height:760px){
+  .math-intro-title{
+    font-size:clamp(2rem,4.2vh,3.1rem)!important;
+    margin-bottom:8px!important;
+  }
+  .math-intro-rule{
+    width:min(1050px,96%);
+    font-size:clamp(1.08rem,2.25vh,1.38rem)!important;
+    line-height:1.22!important;
+    margin-bottom:10px!important;
+  }
+  .math-intro .math-demo-grid video{height:min(19vh,155px)!important}
+  #mathFinish .math-autostart{margin-bottom:18px!important}
+}
+@media(max-width:700px){
+  .math-intro-title{font-size:clamp(2rem,9vw,3rem)!important}
+  .math-intro-rule{
+    width:96%;
+    font-size:clamp(1.08rem,4.5vw,1.35rem)!important;
+    margin-bottom:12px!important;
+  }
+}
+</style>
+
+<style id="v25p-math-fullscreen">
+/* Bouger & Apprendre occupe tout l'écran disponible */
+body.math-mode{overflow:hidden!important;background:#f4f7fb!important}
+body.math-mode #mathProto{
+ position:fixed!important;inset:0!important;z-index:99999!important;
+ width:100vw!important;height:100dvh!important;min-height:100dvh!important;
+ padding:clamp(5px,1vh,12px)!important;overflow:hidden!important;
+ display:grid!important;place-items:start center!important;
+}
+body.math-mode #mathProto[hidden]{display:none!important}
+body.math-mode .math-shell{width:100%!important;height:100%!important;max-width:1800px!important;display:flex!important;flex-direction:column!important}
+body.math-mode .math-top{flex:0 0 auto!important;min-height:clamp(50px,7vh,72px)!important;padding:clamp(6px,1vh,12px) clamp(9px,1.4vw,18px)!important}
+body.math-mode .math-stage{
+ flex:1 1 auto!important;min-height:0!important;height:auto!important;width:100%!important;max-width:1600px!important;
+ margin:clamp(5px,.8vh,10px) auto 0!important;padding:clamp(8px,1.4vh,20px)!important;
+ overflow:hidden!important;justify-content:center!important;
+}
+/* Vidéos : aucun fond noir, aucun recadrage. Le cadre épouse la vidéo 16:9. */
+body.math-mode .math-demo-grid>div,body.math-mode .math-video-answers>div{
+ background:#fff!important;overflow:hidden!important;padding:clamp(3px,.55vw,8px)!important;
+}
+body.math-mode .math-demo-grid video,body.math-mode .math-video-answers video,body.math-mode #mathVideo{
+ display:block!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;
+ object-fit:contain!important;object-position:center!important;background:transparent!important;
+ border-radius:10px!important;max-width:100%!important;
+}
+/* Les 3 vidéos utilisent au maximum la largeur ET la hauteur disponibles */
+body.math-mode .math-demo-grid,body.math-mode .math-video-answers{
+ width:min(100%,calc((100dvh - 280px)*16/3))!important;
+ max-width:1500px!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:clamp(5px,1vw,16px)!important;margin:clamp(6px,1vh,14px) auto!important;
+}
+body.math-mode #mathVideo{
+ width:min(900px,92vw,calc((100dvh - 260px)*16/9))!important;
+ max-height:calc(100dvh - 260px)!important;
+}
+/* Texte plus lisible grâce au plein écran */
+body.math-mode .math-q{font-size:clamp(3rem,8vh,7rem)!important;line-height:1!important}
+body.math-mode .math-video-answers strong{font-size:clamp(1.8rem,3.5vw,3.7rem)!important}
+body.math-mode .math-correct{font-size:clamp(3rem,7vh,6rem)!important}
+body.math-mode .math-intro-title{font-size:clamp(2.8rem,6vh,5.5rem)!important}
+body.math-mode .math-intro-rule{font-size:clamp(1.3rem,2.6vh,2rem)!important;margin-bottom:clamp(8px,1.5vh,20px)!important}
+
+/* 4:3 / projecteurs : priorité à la hauteur disponible */
+@media(max-aspect-ratio:4/3){
+ body.math-mode .math-demo-grid,body.math-mode .math-video-answers{width:min(100%,calc((100dvh - 245px)*16/3))!important}
+ body.math-mode .math-demo-grid video,body.math-mode .math-video-answers video{max-height:27vh!important}
+ body.math-mode .math-q{font-size:clamp(2.7rem,6.5vh,5rem)!important;margin:4px!important}
+}
+/* Smartphone portrait : toujours 3 réponses visibles simultanément, mais dimensionnées à la hauteur */
+@media(max-width:700px){
+ body.math-mode #mathProto{padding:4px!important}
+ body.math-mode .math-top{min-height:48px!important}
+ body.math-mode .math-stage{padding:6px 4px!important}
+ body.math-mode .math-demo-grid,body.math-mode .math-video-answers{
+   width:100%!important;gap:3px!important;margin:5px auto!important;
+ }
+ body.math-mode .math-demo-grid video,body.math-mode .math-video-answers video{aspect-ratio:16/9!important;height:auto!important}
+ body.math-mode .math-video-answers strong{font-size:clamp(1.15rem,5vw,1.8rem)!important}
+ body.math-mode .math-q{font-size:clamp(2.3rem,11vw,4rem)!important}
+ body.math-mode .math-intro-title{font-size:clamp(2rem,9vw,3.3rem)!important}
+ body.math-mode .math-intro-rule{font-size:clamp(1rem,4.4vw,1.3rem)!important;line-height:1.18!important}
+ body.math-mode #mathVideo{width:min(96vw,calc((100dvh - 220px)*16/9))!important;max-height:calc(100dvh - 220px)!important}
+}
+/* Très petits écrans / faible hauteur */
+@media(max-height:650px){
+ body.math-mode .math-top{min-height:44px!important}
+ body.math-mode .math-top h2{font-size:1rem!important}
+ body.math-mode .math-demo-grid,body.math-mode .math-video-answers{width:min(100%,calc((100dvh - 205px)*16/3))!important;margin:3px auto!important}
+ body.math-mode .math-intro-title{font-size:clamp(1.8rem,5vh,2.8rem)!important;margin-bottom:4px!important}
+ body.math-mode .math-intro-rule{font-size:clamp(.95rem,2.4vh,1.2rem)!important;margin-bottom:5px!important}
+ body.math-mode .math-start-big{padding:8px 22px!important;margin-top:3px!important}
+}
+</style>
+</head>
 <body>
 <div class="app" id="app">
   <header class="institutional" aria-label="Académie de Paris">

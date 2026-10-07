@@ -500,8 +500,21 @@ function mathClear(){clearInterval(mathTimer);clearTimeout(mathTimeout);document
 function mathPlayVisible(){document.querySelectorAll('#mathProto .math-stage:not([hidden]) video').forEach(v=>v.play().catch(()=>{}));}
 function mathShow(id){['mathIntro','mathQuestion','mathResult','mathFinish'].forEach(x=>{const e=document.getElementById(x);if(e)e.hidden=x!==id;});setTimeout(mathPlayVisible,30);}
 function countdown(id,seconds,onDone,onTick){let n=seconds;const e=document.getElementById(id);if(e)e.textContent=n;if(onTick)onTick(n,seconds);clearInterval(mathTimer);mathTimer=setInterval(()=>{n--;if(e)e.textContent=Math.max(0,n);if(onTick)onTick(Math.max(0,n),seconds);if(n<=0){clearInterval(mathTimer);onDone();}},1000);}
-function openMathProto(){mathClear();document.body.classList.add('math-mode');document.getElementById('home').hidden=true;document.getElementById('mathProto').hidden=false;mathI=0;document.getElementById('mathProgress').textContent='1 / 5';mathShow('mathIntro');window.scrollTo(0,0);mathPlayAudio('audio/maths-consigne.mp3');}
-function closeMathProto(){mathClear();mathStopAudio();document.body.classList.remove('math-mode');document.getElementById('mathProto').hidden=true;document.getElementById('home').hidden=false;window.scrollTo(0,0);}
+function mathRequestFullscreen(){
+ const el=document.documentElement;
+ try{
+   const p=el.requestFullscreen?el.requestFullscreen():el.webkitRequestFullscreen?el.webkitRequestFullscreen():null;
+   if(p&&p.catch)p.catch(()=>{});
+ }catch(e){}
+}
+function mathExitFullscreen(){
+ try{
+   const p=document.fullscreenElement&&document.exitFullscreen?document.exitFullscreen():document.webkitFullscreenElement&&document.webkitExitFullscreen?document.webkitExitFullscreen():null;
+   if(p&&p.catch)p.catch(()=>{});
+ }catch(e){}
+}
+function openMathProto(){mathRequestFullscreen();mathClear();document.body.classList.add('math-mode');document.getElementById('home').hidden=true;document.getElementById('mathProto').hidden=false;mathI=0;document.getElementById('mathProgress').textContent='1 / 5';mathShow('mathIntro');window.scrollTo(0,0);mathPlayAudio('audio/maths-consigne.mp3');}
+function closeMathProto(){mathClear();mathStopAudio();mathExitFullscreen();document.body.classList.remove('math-mode');document.getElementById('mathProto').hidden=true;document.getElementById('home').hidden=false;window.scrollTo(0,0);}
 let mathCurrentAudio=null;
 function mathPlayAudio(src){try{if(mathCurrentAudio){mathCurrentAudio.pause();mathCurrentAudio.currentTime=0;}mathCurrentAudio=new Audio(src);mathCurrentAudio.play().catch(()=>{});}catch(e){}}
 function mathStopAudio(){try{if(mathCurrentAudio){mathCurrentAudio.pause();mathCurrentAudio.currentTime=0;mathCurrentAudio=null;}}catch(e){}}
