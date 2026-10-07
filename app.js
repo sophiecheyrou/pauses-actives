@@ -10,6 +10,17 @@ if(aboutClose) aboutClose.addEventListener('click', closeAbout);
 if(aboutModal) aboutModal.addEventListener('click', (e)=>{ if(e.target===aboutModal) closeAbout(); });
 document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAbout(); });
 
+// --- Fenêtre "Mentions légales" ---
+const legalBtn = document.getElementById('legalBtn');
+const legalModal = document.getElementById('legalModal');
+const legalClose = document.getElementById('legalClose');
+function openLegal(){ if(legalModal) legalModal.classList.add('open'); }
+function closeLegal(){ if(legalModal) legalModal.classList.remove('open'); }
+if(legalBtn) legalBtn.addEventListener('click', openLegal);
+if(legalClose) legalClose.addEventListener('click', closeLegal);
+if(legalModal) legalModal.addEventListener('click', (e)=>{ if(e.target===legalModal) closeLegal(); });
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLegal(); });
+
 const cats={
  BOOST:{icon:'⚡',label:'Se réveiller',desc:'Retrouver de l’énergie'},MOVE:{icon:'🔥',label:'Bouger',desc:'Mettre le corps en mouvement'},FOCUS:{icon:'🎯',label:'Se concentrer',desc:'Mobiliser son attention'},RESET:{icon:'🌿',label:"S’étirer",desc:'Délier et mobiliser le corps'},RELAX:{icon:'🌙',label:'Se calmer',desc:'Respirerr et relâcher'}
 };
