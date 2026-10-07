@@ -485,7 +485,7 @@ if($('sessionSoundToggle')) $('sessionSoundToggle').addEventListener('click', to
 updateSoundUI();
 
 
-// V25h — Bouger & Apprendre · Mathématiques 6e · lecture 100 % automatique
+// V25h — Bouger & Apprendre · Mathématiques · lecture 100 % automatique
 const mathQuiz=[
  {q:'7 × 8 = ?',a:['54','56','64'],ok:1},
  {q:'125 + 75 = ?',a:['200','190','180'],ok:0},
