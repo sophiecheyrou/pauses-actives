@@ -1093,7 +1093,43 @@ body.math-mode .math-q{font-size:clamp(3rem,7vh,6rem)!important}body.math-mode .
 @media(max-aspect-ratio:4/3) and (min-width:701px){body.math-mode .math-stage{min-height:calc(100dvh - 130px)!important;padding:10px!important}body.math-mode .math-demo-grid,body.math-mode .math-video-answers{width:min(100%,calc((100dvh - 275px)*16/3))!important}}
 @media(max-width:700px){body.math-mode #mathProto{padding:7px!important}body.math-mode .math-top{grid-template-columns:auto 1fr!important;border-bottom-width:7px!important;padding-bottom:7px!important;margin-bottom:7px!important}body.math-mode .math-top>div:last-child{display:none!important}body.math-mode .math-stage{min-height:calc(100dvh - 90px)!important;border-radius:18px!important;padding:7px 4px!important}body.math-mode .math-demo-grid,body.math-mode .math-video-answers{width:100%!important;gap:4px!important;margin:5px auto!important}body.math-mode .math-demo-grid>div,body.math-mode .math-video-answers>div{padding:3px!important}body.math-mode .math-q{font-size:clamp(2.2rem,10vw,3.8rem)!important}body.math-mode #mathVideo{width:min(94vw,calc((100dvh - 230px)*16/9))!important;max-height:calc(100dvh - 230px)!important}}
 @media(max-height:650px){body.math-mode .math-stage{min-height:calc(100dvh - 95px)!important;padding:6px!important}body.math-mode .math-demo-grid,body.math-mode .math-video-answers{width:min(100%,calc((100dvh - 215px)*16/3))!important;margin:3px auto!important}}
-</style></head>
+</style>
+<style id="v25r-ios-modal-fix">
+/* iOS : une modale fermée doit réellement rester invisible */
+@media(max-width:700px){
+  .about-modal{display:none!important}
+  .about-modal.open{
+    display:block!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain;
+    padding:10px 8px calc(28px + env(safe-area-inset-bottom))!important;
+  }
+  #legalModal .about-card{
+    position:relative!important;
+    margin:0 auto!important;
+    max-height:none!important;
+    overflow:visible!important;
+  }
+  #legalClose{
+    position:sticky!important;
+    top:0!important;
+    float:right!important;
+    z-index:1005!important;
+    width:46px!important;
+    height:46px!important;
+    min-width:46px!important;
+    min-height:46px!important;
+    display:grid!important;
+    place-items:center!important;
+    cursor:pointer!important;
+    touch-action:manipulation!important;
+    -webkit-tap-highlight-color:transparent;
+  }
+}
+</style>
+</head>
 <body>
 <div class="app" id="app">
   <header class="institutional" aria-label="Académie de Paris">

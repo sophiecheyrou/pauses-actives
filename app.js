@@ -14,10 +14,13 @@ document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeAbout(); }
 const legalBtn = document.getElementById('legalBtn');
 const legalModal = document.getElementById('legalModal');
 const legalClose = document.getElementById('legalClose');
-function openLegal(){ if(legalModal) legalModal.classList.add('open'); }
-function closeLegal(){ if(legalModal) legalModal.classList.remove('open'); }
+function openLegal(){ if(legalModal){ legalModal.scrollTop=0; legalModal.classList.add('open'); } }
+function closeLegal(){ if(legalModal){ legalModal.classList.remove('open'); legalModal.scrollTop=0; } }
 if(legalBtn) legalBtn.addEventListener('click', openLegal);
-if(legalClose) legalClose.addEventListener('click', closeLegal);
+if(legalClose){
+  legalClose.addEventListener('click', closeLegal);
+  legalClose.addEventListener('touchend', (e)=>{ e.preventDefault(); closeLegal(); }, {passive:false});
+}
 if(legalModal) legalModal.addEventListener('click', (e)=>{ if(e.target===legalModal) closeLegal(); });
 document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLegal(); });
 
