@@ -533,7 +533,7 @@ function geoClear(){clearInterval(geoTimer);document.querySelectorAll('#geoProto
 function geoPlayVisible(){document.querySelectorAll('#geoProto .math-stage:not([hidden]) video').forEach(v=>v.play().catch(()=>{}));}
 function geoShow(id){['geoIntro','geoQuestion','geoResult','geoFinish'].forEach(x=>{const e=document.getElementById(x);if(e)e.hidden=x!==id;});setTimeout(geoPlayVisible,30);}
 function geoCountdown(id,seconds,onDone,onTick){let n=seconds;const e=document.getElementById(id);if(e)e.textContent=n;if(onTick)onTick(n,seconds);clearInterval(geoTimer);geoTimer=setInterval(()=>{n--;if(e)e.textContent=Math.max(0,n);if(onTick)onTick(Math.max(0,n),seconds);if(n<=0){clearInterval(geoTimer);onDone();}},1000);}
-function openGeoProto(){geoClear();document.body.classList.add('math-mode');document.getElementById('home').hidden=true;document.getElementById('geoProto').hidden=false;geoI=0;document.getElementById('geoProgress').textContent='1 / 5';geoShow('geoIntro');window.scrollTo(0,0);}
+function openGeoProto(){geoClear();document.body.classList.add('math-mode');document.getElementById('home').hidden=true;document.getElementById('geoProto').hidden=false;geoI=0;document.getElementById('geoProgress').textContent='1 / 5';geoShow('geoIntro');window.scrollTo(0,0);mathPlayAudio('audio/maths-consigne.mp3');}
 function closeGeoProto(){geoClear();mathStopAudio();document.body.classList.remove('math-mode');document.getElementById('geoProto').hidden=true;document.getElementById('home').hidden=false;window.scrollTo(0,0);}
 function geoLoad(){geoClear();const x=geoQuiz[geoI];document.getElementById('geoNum').textContent=geoI+1;document.getElementById('geoProgress').textContent=(geoI+1)+' / '+geoQuiz.length;document.getElementById('geoQ').textContent=x.q;['geoA','geoB','geoC'].forEach((id,i)=>document.getElementById(id).textContent=x.a[i]);geoShow('geoQuestion');geoCountdown('geoQuestionCount',15,geoReveal,(n,total)=>{const f=document.getElementById('geoClockFill');if(f)f.style.width=(n/total*100)+'%';});}
 function geoReveal(){geoClear();const x=geoQuiz[geoI],m=geoMoves[x.ok];document.getElementById('geoCorrect').textContent='✓ '+x.a[x.ok]+' !';const v=document.getElementById('geoVideo');v.src=m.video;v.currentTime=0;geoShow('geoResult');geoCountdown('geoCountdown',10,()=>{if(++geoI>=geoQuiz.length)geoFinish();else geoLoad();});}
@@ -542,7 +542,7 @@ function geoAdvanceFromResult(){geoClear();if(++geoI>=geoQuiz.length)geoFinish()
 document.addEventListener('DOMContentLoaded',()=>{
  const b=document.getElementById('geoProtoBtn');if(b)b.onclick=openGeoProto;
  const back=document.getElementById('geoBack');if(back)back.onclick=closeGeoProto;
- const start=document.getElementById('geoStart');if(start)start.onclick=geoLoad;
+ const start=document.getElementById('geoStart');if(start)start.onclick=()=>{mathStopAudio();geoLoad();};
  const skip=document.getElementById('geoSkip');if(skip)skip.onclick=geoReveal;
  const resultSkip=document.getElementById('geoResultSkip');if(resultSkip)resultSkip.onclick=geoAdvanceFromResult;
  const finishHome=document.getElementById('geoFinishHome');if(finishHome)finishHome.onclick=closeGeoProto;
