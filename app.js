@@ -485,10 +485,10 @@ updateSoundUI();
 // V25h — Bouger & Apprendre · Mathématiques 6e · lecture 100 % automatique
 const mathQuiz=[
  {q:'7 × 8 = ?',a:['54','56','64'],ok:1},
- {q:'125 + 75 = ?',a:['180','190','200'],ok:2},
+ {q:'125 + 75 = ?',a:['200','190','180'],ok:0},
  {q:'La moitié de 90 est…',a:['40','45','50'],ok:1},
- {q:'6 × 9 = ?',a:['48','54','56'],ok:1},
- {q:'300 ÷ 6 = ?',a:['50','60','40'],ok:0}
+ {q:'6 × 9 = ?',a:['54','48','56'],ok:0},
+ {q:'300 ÷ 6 = ?',a:['40','60','50'],ok:2}
 ];
 const mathMoves=[
  {label:"🙌 Bras en l'air",video:'videos/besoin-de-se-defouler-02-directs.mp4'},
