@@ -1129,7 +1129,32 @@ body.math-mode .math-q{font-size:clamp(3rem,7vh,6rem)!important}body.math-mode .
   }
 }
 </style>
-</head>
+<style id="v25t-learn-actions">
+.learn-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+@media(max-width:700px){.learn-actions{width:100%;justify-content:stretch}.learn-actions button{flex:1 1 100%}}
+</style><style id="v25u-challenge-readability">
+body.math-mode .math-move-title{
+  font-size:clamp(1.45rem,2.5vw,2.25rem)!important;
+  line-height:1.2!important;
+  font-weight:800!important;
+  text-align:center!important;
+  margin:8px auto 14px!important;
+}
+body.math-mode .math-autostart{
+  margin-bottom:26px!important;
+}
+body.math-mode #mathFinishHome,
+body.math-mode #geoFinishHome{
+  margin-top:0!important;
+}
+@media(max-height:650px){
+  body.math-mode .math-move-title{
+    font-size:clamp(1.1rem,3.2vh,1.55rem)!important;
+    margin:4px auto 8px!important;
+  }
+  body.math-mode .math-autostart{margin-bottom:18px!important}
+}
+</style></head>
 <body>
 <div class="app" id="app">
   <header class="institutional" aria-label="Académie de Paris">
@@ -1157,7 +1182,10 @@ body.math-mode .math-q{font-size:clamp(3rem,7vh,6rem)!important}body.math-mode .
         <h3>Bouger &amp; Apprendre</h3>
         <p>Réviser autrement en mettant toute la classe en mouvement.</p>
       </div>
-      <button id="mathProtoBtn" type="button">➗ Tester · Mathématiques</button>
+      <div class="learn-actions">
+        <button id="mathProtoBtn" type="button">➗ Tester · Mathématiques</button>
+        <button id="geoProtoBtn" type="button">🌍 Tester · Géographie</button>
+      </div>
     </div>
   </section>
 
@@ -1206,6 +1234,53 @@ body.math-mode .math-q{font-size:clamp(3rem,7vh,6rem)!important}body.math-mode .
         <p>5 questions de calcul mental et du mouvement.</p>
         <div class="math-autostart">Retour automatique à l'accueil dans <b id="mathFinishCount">8</b> s</div>
         <button id="mathFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="math-proto" id="geoProto" hidden>
+    <div class="math-shell">
+      <div class="math-top">
+        <button id="geoBack" class="math-ghost" type="button">← Accueil</button>
+        <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>Géographie · Capitales</h2></div>
+        <div id="geoProgress">1 / 5</div>
+      </div>
+      <div id="geoIntro" class="math-stage math-intro">
+        <h3 class="math-intro-title">Réponds avec ton corps !</h3>
+        <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
+        <div class="math-demo-grid">
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong>BRAS EN L’AIR</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/apres-etre-reste-assis-02-demi-squats.mp4"></video><strong>DEMI-SQUAT</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong>GENOUX ALTERNÉS</strong></div>
+        </div>
+        <button id="geoStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
+      </div>
+      <div id="geoQuestion" class="math-stage" hidden>
+        <div class="math-label">QUESTION <span id="geoNum">1</span></div>
+        <div id="geoQ" class="math-q"></div>
+        <div class="math-answers math-video-answers">
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong id="geoA"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/apres-etre-reste-assis-02-demi-squats.mp4"></video><strong id="geoB"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong id="geoC"></strong></div>
+        </div>
+        <div class="math-think">Fais le mouvement de ta réponse</div>
+        <div class="math-question-clock"><span id="geoQuestionCount">30</span> s</div>
+        <div class="math-clockbar"><i id="geoClockFill"></i></div>
+        <button id="geoSkip" class="math-skip" type="button">Suivant →</button>
+      </div>
+      <div id="geoResult" class="math-stage" hidden>
+        <div id="geoCorrect" class="math-correct"></div>
+        <div class="math-move-title">Bonne réponse : toute la classe continue ce mouvement !</div>
+        <video id="geoVideo" muted loop playsinline></video>
+        <div class="math-count">Question suivante dans <span id="geoCountdown">10</span> s</div>
+        <button id="geoResultSkip" class="math-skip" type="button">Suivant →</button>
+      </div>
+      <div id="geoFinish" class="math-stage" hidden>
+        <div class="math-finish-main">DÉFI TERMINÉ</div>
+        <div class="math-finish-course">On reprend le cours !</div>
+        <p>5 questions de géographie et du mouvement.</p>
+        <div class="math-autostart">Retour automatique à l'accueil dans <b id="geoFinishCount">8</b> s</div>
+        <button id="geoFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
   </section>

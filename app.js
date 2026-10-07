@@ -513,3 +513,37 @@ function mathReveal(){mathClear();const x=mathQuiz[mathI],m=mathMoves[x.ok];docu
 function mathFinish(){mathClear();mathPlayAudio('audio/maths-defi-termine.mp3');document.getElementById('mathProgress').textContent='5 / 5';mathShow('mathFinish');countdown('mathFinishCount',8,closeMathProto);}
 function mathAdvanceFromResult(){mathClear();if(++mathI>=mathQuiz.length)mathFinish();else mathLoad();}
 document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('mathProtoBtn');if(b)b.onclick=openMathProto;const back=document.getElementById('mathBack');if(back)back.onclick=closeMathProto;const start=document.getElementById('mathStart');if(start)start.onclick=()=>{mathStopAudio();mathLoad();};const skip=document.getElementById('mathSkip');if(skip)skip.onclick=mathReveal;const resultSkip=document.getElementById('mathResultSkip');if(resultSkip)resultSkip.onclick=mathAdvanceFromResult;const finishHome=document.getElementById('mathFinishHome');if(finishHome)finishHome.onclick=closeMathProto;});
+
+
+// V25t — Bouger & Apprendre · Géographie · Capitales
+const geoQuiz=[
+ {q:"Quelle est la capitale de l’Italie ?",a:['Rome','Milan','Naples'],ok:0},
+ {q:"Quelle est la capitale de l’Espagne ?",a:['Barcelone','Madrid','Séville'],ok:1},
+ {q:"Quelle est la capitale de l’Allemagne ?",a:['Munich','Hambourg','Berlin'],ok:2},
+ {q:"Quelle est la capitale du Portugal ?",a:['Lisbonne','Porto','Faro'],ok:0},
+ {q:"Quelle est la capitale de la Grèce ?",a:['Thessalonique','Athènes','Patras'],ok:1}
+];
+const geoMoves=[
+ {label:"Bras en l'air",video:'videos/besoin-de-se-defouler-02-directs.mp4'},
+ {label:'Demi-squats',video:'videos/apres-etre-reste-assis-02-demi-squats.mp4'},
+ {label:'Genoux alternés',video:'videos/avant-un-exercice-01-meme-cote.mp4'}
+];
+let geoI=0,geoTimer=null;
+function geoClear(){clearInterval(geoTimer);document.querySelectorAll('#geoProto video').forEach(v=>v.pause());}
+function geoPlayVisible(){document.querySelectorAll('#geoProto .math-stage:not([hidden]) video').forEach(v=>v.play().catch(()=>{}));}
+function geoShow(id){['geoIntro','geoQuestion','geoResult','geoFinish'].forEach(x=>{const e=document.getElementById(x);if(e)e.hidden=x!==id;});setTimeout(geoPlayVisible,30);}
+function geoCountdown(id,seconds,onDone,onTick){let n=seconds;const e=document.getElementById(id);if(e)e.textContent=n;if(onTick)onTick(n,seconds);clearInterval(geoTimer);geoTimer=setInterval(()=>{n--;if(e)e.textContent=Math.max(0,n);if(onTick)onTick(Math.max(0,n),seconds);if(n<=0){clearInterval(geoTimer);onDone();}},1000);}
+function openGeoProto(){geoClear();document.body.classList.add('math-mode');document.getElementById('home').hidden=true;document.getElementById('geoProto').hidden=false;geoI=0;document.getElementById('geoProgress').textContent='1 / 5';geoShow('geoIntro');window.scrollTo(0,0);}
+function closeGeoProto(){geoClear();mathStopAudio();document.body.classList.remove('math-mode');document.getElementById('geoProto').hidden=true;document.getElementById('home').hidden=false;window.scrollTo(0,0);}
+function geoLoad(){geoClear();const x=geoQuiz[geoI];document.getElementById('geoNum').textContent=geoI+1;document.getElementById('geoProgress').textContent=(geoI+1)+' / '+geoQuiz.length;document.getElementById('geoQ').textContent=x.q;['geoA','geoB','geoC'].forEach((id,i)=>document.getElementById(id).textContent=x.a[i]);geoShow('geoQuestion');geoCountdown('geoQuestionCount',15,geoReveal,(n,total)=>{const f=document.getElementById('geoClockFill');if(f)f.style.width=(n/total*100)+'%';});}
+function geoReveal(){geoClear();const x=geoQuiz[geoI],m=geoMoves[x.ok];document.getElementById('geoCorrect').textContent='✓ '+x.a[x.ok]+' !';const v=document.getElementById('geoVideo');v.src=m.video;v.currentTime=0;geoShow('geoResult');geoCountdown('geoCountdown',10,()=>{if(++geoI>=geoQuiz.length)geoFinish();else geoLoad();});}
+function geoFinish(){geoClear();mathPlayAudio('audio/maths-defi-termine.mp3');document.getElementById('geoProgress').textContent='5 / 5';geoShow('geoFinish');geoCountdown('geoFinishCount',8,closeGeoProto);}
+function geoAdvanceFromResult(){geoClear();if(++geoI>=geoQuiz.length)geoFinish();else geoLoad();}
+document.addEventListener('DOMContentLoaded',()=>{
+ const b=document.getElementById('geoProtoBtn');if(b)b.onclick=openGeoProto;
+ const back=document.getElementById('geoBack');if(back)back.onclick=closeGeoProto;
+ const start=document.getElementById('geoStart');if(start)start.onclick=geoLoad;
+ const skip=document.getElementById('geoSkip');if(skip)skip.onclick=geoReveal;
+ const resultSkip=document.getElementById('geoResultSkip');if(resultSkip)resultSkip.onclick=geoAdvanceFromResult;
+ const finishHome=document.getElementById('geoFinishHome');if(finishHome)finishHome.onclick=closeGeoProto;
+});
