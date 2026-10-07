@@ -480,3 +480,30 @@ updateSoundUI();
 
 if($('sessionSoundToggle')) $('sessionSoundToggle').addEventListener('click', toggleSound);
 updateSoundUI();
+
+
+// V25h — Bouger & Apprendre · Mathématiques 6e · lecture 100 % automatique
+const mathQuiz=[
+ {q:'7 × 8 = ?',a:['54','56','64'],ok:1},
+ {q:'125 + 75 = ?',a:['180','190','200'],ok:2},
+ {q:'La moitié de 90 est…',a:['40','45','50'],ok:1},
+ {q:'6 × 9 = ?',a:['48','54','56'],ok:1},
+ {q:'300 ÷ 6 = ?',a:['50','60','40'],ok:0}
+];
+const mathMoves=[
+ {label:"🙌 Bras en l'air",video:'videos/besoin-de-se-defouler-02-directs.mp4'},
+ {label:'🪑 Demi-squats',video:'videos/apres-etre-reste-assis-02-demi-squats.mp4'},
+ {label:'🦵 Genoux alternés',video:'videos/apres-etre-reste-assis-04-genoux-alternes.mp4'}
+];
+let mathI=0,mathTimer=null,mathTimeout=null;
+function mathClear(){clearInterval(mathTimer);clearTimeout(mathTimeout);document.querySelectorAll('#mathProto video').forEach(v=>v.pause());}
+function mathPlayVisible(){document.querySelectorAll('#mathProto .math-stage:not([hidden]) video').forEach(v=>v.play().catch(()=>{}));}
+function mathShow(id){['mathIntro','mathQuestion','mathResult','mathFinish'].forEach(x=>{const e=document.getElementById(x);if(e)e.hidden=x!==id;});setTimeout(mathPlayVisible,30);}
+function countdown(id,seconds,onDone,onTick){let n=seconds;const e=document.getElementById(id);if(e)e.textContent=n;if(onTick)onTick(n,seconds);clearInterval(mathTimer);mathTimer=setInterval(()=>{n--;if(e)e.textContent=Math.max(0,n);if(onTick)onTick(Math.max(0,n),seconds);if(n<=0){clearInterval(mathTimer);onDone();}},1000);}
+function openMathProto(){mathClear();document.body.classList.add('math-mode');document.getElementById('home').hidden=true;document.getElementById('mathProto').hidden=false;mathI=0;document.getElementById('mathProgress').textContent='1 / 5';mathShow('mathIntro');window.scrollTo(0,0);}
+function closeMathProto(){mathClear();document.body.classList.remove('math-mode');document.getElementById('mathProto').hidden=true;document.getElementById('home').hidden=false;window.scrollTo(0,0);}
+function mathPlayAudio(src){try{const a=new Audio(src);a.play().catch(()=>{});}catch(e){}}
+function mathLoad(){mathClear();const x=mathQuiz[mathI];document.getElementById('mathNum').textContent=mathI+1;document.getElementById('mathProgress').textContent=(mathI+1)+' / '+mathQuiz.length;document.getElementById('mathQ').textContent=x.q;['mathA','mathB','mathC'].forEach((id,i)=>document.getElementById(id).textContent=x.a[i]);mathShow('mathQuestion');countdown('mathQuestionCount',15,mathReveal,(n,total)=>{const f=document.getElementById('mathClockFill');if(f)f.style.width=(n/total*100)+'%';});}
+function mathReveal(){mathClear();const x=mathQuiz[mathI],m=mathMoves[x.ok];document.getElementById('mathCorrect').textContent='✓ '+x.a[x.ok]+' !';const v=document.getElementById('mathVideo');v.src=m.video;v.currentTime=0;mathShow('mathResult');countdown('mathCountdown',10,()=>{if(++mathI>=mathQuiz.length)mathFinish();else mathLoad();});}
+function mathFinish(){mathClear();mathPlayAudio('audio/maths-defi-termine.mp3');document.getElementById('mathProgress').textContent='5 / 5';mathShow('mathFinish');countdown('mathFinishCount',8,closeMathProto);}
+document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('mathProtoBtn');if(b)b.onclick=openMathProto;const back=document.getElementById('mathBack');if(back)back.onclick=closeMathProto;const start=document.getElementById('mathStart');if(start)start.onclick=()=>{mathPlayAudio('audio/maths-consigne.mp3');mathLoad();};const skip=document.getElementById('mathSkip');if(skip)skip.onclick=mathReveal;});
