@@ -1154,7 +1154,34 @@ body.math-mode #geoFinishHome{
   }
   body.math-mode .math-autostart{margin-bottom:18px!important}
 }
-</style></head>
+</style>
+<style id="v25w-why-projection">
+/* Lisibilité pour une projection en classe */
+.why-card-item .why-copy{display:flex;flex-direction:column;justify-content:center;gap:10px}
+.why-card-item .why-copy p{font-size:clamp(1.18rem,1.65vw,1.45rem);line-height:1.48;margin:0}
+.why-card-item .why-copy .why-message{font-size:clamp(1.12rem,1.5vw,1.35rem);line-height:1.4;margin-top:8px}
+.why-card-item .cog-grid span{font-size:clamp(1.03rem,1.25vw,1.17rem);line-height:1.4}
+.why-card-item .cog-grid b{font-size:clamp(1.05rem,1.35vw,1.2rem)}
+.why-middle{grid-template-columns:minmax(110px,.5fr) minmax(350px,1.8fr) minmax(110px,.5fr);gap:14px}
+.why-middle .why-video-wrap{width:min(100%,180px);aspect-ratio:9/16;background:#fff}
+.why-middle .why-video-wrap video{background:transparent!important;object-fit:contain!important}
+.why-middle-copy p{font-size:clamp(1.15rem,1.55vw,1.38rem);line-height:1.5}
+.why-middle-copy .why-message{font-size:clamp(1.05rem,1.35vw,1.22rem);line-height:1.45}
+.why-middle-copy .brain-flow span{font-size:clamp(.9rem,1.15vw,1.08rem)}
+@media(max-width:900px){
+.why-middle{grid-template-columns:1fr 1fr}
+.why-middle-copy{grid-column:1/-1;grid-row:1}
+.why-middle .why-video-wrap{width:min(100%,200px)}
+}
+@media(max-width:600px){
+.why-card-item .why-copy p{font-size:1.14rem}
+.why-card-item .why-copy .why-message{font-size:1.08rem}
+.why-middle{grid-template-columns:1fr}
+.why-middle-copy{grid-column:auto;grid-row:auto}
+.why-middle .why-video-wrap{width:min(68vw,210px)}
+}
+</style>
+</head>
 <body>
 <div class="app" id="app">
   <header class="institutional" aria-label="Académie de Paris">
@@ -1313,7 +1340,7 @@ body.math-mode #geoFinishHome{
     <div class="why-head"><div><span class="why-eyebrow">COMPRENDRE LA PAUSE ACTIVE</span><h2 id="whyTitle">💡 Pourquoi bouger ?</h2><p>Notre corps et notre cerveau ont besoin de mouvement au cours de la journée. Voici ce qui se passe quand on reste longtemps assis… et quand on se remet à bouger.</p></div></div>
     <div class="why-cards">
       <article class="why-card-item"><img src="why-bouger-1.jpg" alt="Collégien fatigué restant longtemps assis à son bureau en classe"><div class="why-copy"><h3>🪑 Quand je reste longtemps assis...</h3><p><b>Mes muscles travaillent très peu</b> et mon corps dépense peu d’énergie. Je peux me sentir engourdi, fatigué ou avoir envie de changer de position.</p><div class="why-message">👉 5 minutes de pause active permettent de casser un long temps passé assis.</div></div></article>
-      <article class="why-middle" aria-labelledby="whyMiddleTitle"><div class="why-insta-video"><div class="why-video-wrap"><video controls playsinline preload="metadata" title="Pr François Carré — rester assis" aria-label="Pr François Carré — rester assis"><source src="videos/francois-carre-01-rester-assis.mp4" type="video/mp4">Votre navigateur ne permet pas de lire cette vidéo.</video></div><div class="why-video-caption">Pr François Carré, cardiologue</div></div><div class="why-middle-copy"><h3 id="whyMiddleTitle">🏃 Mon corps a besoin de bouger</h3><p>Quand je me lève et que je bouge, <b>mes muscles se remettent en action</b>, mon cœur s’active, le sang circule davantage et l’oxygénation de mon corps et de mon cerveau est meilleure.</p><div class="brain-flow"><span>❤️ Corps en mouvement</span><b>→</b><span>🧠 Cerveau stimulé</span><b>→</b><span>⚡ Vigilance</span></div><div class="why-message">Les travaux de <b>Boris Cheval</b> mettent notamment en avant les liens entre mouvement, fonctionnement du cerveau et fonctions cognitives.</div></div><div class="why-insta-video"><div class="why-video-wrap"><video controls playsinline preload="metadata" title="Pr François Carré — se remettre en mouvement" aria-label="Pr François Carré — se remettre en mouvement"><source src="videos/francois-carre-02-se-remettre-en-mouvement.mp4" type="video/mp4">Votre navigateur ne permet pas de lire cette vidéo.</video></div><div class="why-video-caption">Pr François Carré, cardiologue</div></div></article>
+      <article class="why-middle" aria-labelledby="whyMiddleTitle"><div class="why-insta-video"><div class="why-video-wrap"><video controls playsinline preload="metadata" title="Pr François Carré — rester assis" aria-label="Pr François Carré — rester assis"><source src="videos/francois-carre-01-rester-assis.mp4" type="video/mp4">Votre navigateur ne permet pas de lire cette vidéo.</video></div><div class="why-video-caption">Pr François Carré, cardiologue</div></div><div class="why-middle-copy"><h3 id="whyMiddleTitle">🏃 Mon corps a besoin de bouger</h3><p>Quand je me lève et que je bouge, <b>mes muscles se remettent en action</b>, mon cœur s’active, le sang circule davantage et l’oxygénation de mon corps et de mon cerveau est meilleure.</p><div class="brain-flow"><span>❤️ Corps en mouvement</span><b>→</b><span>🧠 Cerveau stimulé</span><b>→</b><span>⚡ Vigilance</span></div><div class="why-message">Les travaux de <b>Boris Cheval</b> (enseignant-chercheur à l’ENS de Rennes) mettent notamment en avant les liens entre mouvement, fonctionnement du cerveau et fonctions cognitives.</div></div><div class="why-insta-video"><div class="why-video-wrap"><video controls playsinline preload="metadata" title="Pr François Carré — se remettre en mouvement" aria-label="Pr François Carré — se remettre en mouvement"><source src="videos/francois-carre-02-se-remettre-en-mouvement.mp4" type="video/mp4">Votre navigateur ne permet pas de lire cette vidéo.</video></div><div class="why-video-caption">Pr François Carré, cardiologue</div></div></article>
       <article class="why-card-item"><img src="why-bouger-3.jpg" alt="Deux collégiens attentifs et disponibles pour apprendre, dont un élève levant la main"><div class="why-copy"><h3>🎯 Bouger peut m’aider à apprendre</h3><p>Pour apprendre, mon cerveau doit être <b>disponible</b>. Les pauses actives peuvent favoriser plusieurs fonctions utiles en classe :</p><div class="cog-grid"><div><b>👀 ATTENTION</b><span>Je dirige plus facilement mon attention vers ce que je dois faire.</span></div><div><b>🎯 CONCENTRATION</b><span>Je reste davantage engagé dans la tâche.</span></div><div><b>🧠 MÉMORISATION</b><span>Être attentif et engagé aide mon cerveau à enregistrer les informations.</span></div><div><b>🛑 CONTRÔLE</b><span>Je résiste mieux aux distractions et je change plus facilement de consigne.</span></div></div><div class="why-message strong">Bouger régulièrement contribue ainsi à créer de meilleures conditions pour être attentif, mémoriser et apprendre.</div></div></article>
     </div>
     <div class="why-summary"><b>5 MINUTES POUR BOUGER</b><span>❤️ Je réveille mon corps <i>→</i> 🧠 je stimule mon cerveau <i>→</i> 🎯 je retrouve de l’attention <i>→</i> 📚 je me rends disponible pour apprendre</span></div>
