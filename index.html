@@ -1292,6 +1292,7 @@ body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilV
       <img class="college-logo" src="logo-college-actif.png" alt="Collège Actif · Avenir Positif">
     </div>
     <div class="header-actions">
+      <button class="about-btn tutorial-launch" id="tutorialBtn" type="button">🎓&nbsp; Mode d’emploi</button>
       <button class="about-btn why-btn" id="whyBtn" type="button">💡&nbsp; Pourquoi bouger ?</button>
       <button class="about-btn" id="aboutBtn" type="button">ⓘ&nbsp; À propos</button>
       <button class="about-btn fullscreen-btn" id="fullscreenBtn" type="button" aria-pressed="false" title="Afficher PAUSE 5’ en plein écran">⛶&nbsp; Plein écran</button>
@@ -2021,7 +2022,82 @@ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
  document.addEventListener('fullscreenchange',update);
  update();
 })();
-</script></body>
+</script><style id="v26o-tutorial-css">
+.tuto-overlay{position:fixed;inset:0;z-index:100000;background:rgba(9,26,57,.78);display:none;align-items:center;justify-content:center;padding:18px;box-sizing:border-box}
+.tuto-overlay.open{display:flex}
+.tuto-panel{width:min(790px,100%);max-height:min(91dvh,850px);overflow:auto;border-radius:26px;background:#fff;box-shadow:0 25px 90px #061d4c66;color:#17355b;padding:clamp(18px,3vw,34px);box-sizing:border-box}
+.tuto-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tuto-kicker{font-weight:850;color:#2470a8;font-size:.9rem;letter-spacing:.08em}
+.tuto-skip{background:#f0f5fa;border:0;border-radius:24px;padding:10px 17px;color:#254366;font-weight:800;cursor:pointer}
+.tuto-progress{display:flex;gap:7px;margin:18px 0 22px}
+.tuto-dot{height:7px;flex:1;border-radius:10px;background:#dbe7f3}
+.tuto-dot.current{background:#168ed1}
+.tuto-visual{height:clamp(130px,24dvh,215px);border-radius:19px;display:grid;place-items:center;background:linear-gradient(125deg,#e2f7ff,#f1f6ff);margin-bottom:19px;position:relative;overflow:hidden}
+.tuto-visual .tuto-big{font-size:clamp(4rem,9vw,7rem);filter:drop-shadow(0 8px 6px #385c7933)}
+.tuto-visual .tuto-icons{display:flex;gap:14px;align-items:center;justify-content:center;font-size:clamp(2.6rem,6vw,5rem)}
+.tuto-panel h2{font-size:clamp(1.45rem,3.4vw,2.1rem);margin:0 0 10px;color:#123b70}
+.tuto-panel p{font-size:clamp(1rem,1.9vw,1.19rem);line-height:1.55;margin:0 0 8px}
+.tuto-note{background:#edf9f5;border-left:4px solid #39aa85;padding:11px 14px;border-radius:9px;margin-top:13px;font-weight:650}
+.tuto-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:23px;flex-wrap:wrap}
+.tuto-count{font-size:.9rem;color:#657a94;font-weight:750}
+.tuto-nav{display:flex;gap:9px}
+.tuto-nav button{border:1px solid #bad4e9;background:white;border-radius:24px;padding:11px 18px;color:#173d6c;font-weight:800;cursor:pointer}
+.tuto-nav button.primary{background:#1669af;color:white;border-color:#1669af}
+.tuto-nav button:disabled{opacity:.35;cursor:default}
+@media(max-width:540px){.tuto-overlay{padding:9px}.tuto-panel{border-radius:18px}.tuto-visual{height:145px}.tuto-bottom{align-items:stretch}.tuto-nav{width:100%}.tuto-nav button{flex:1}}
+.tuto-visual{background:linear-gradient(120deg,#bde5f5,#eaf7fb);height:clamp(160px,26dvh,240px);aspect-ratio:3.4/1;max-height:240px}
+.tuto-visual img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
+</style>
+<div id="tutorialOverlay" class="tuto-overlay" role="dialog" aria-modal="true" aria-labelledby="tutorialTitle" aria-hidden="true">
+  <section class="tuto-panel" tabindex="-1">
+    <div class="tuto-top"><span class="tuto-kicker">🎓 MODE D’EMPLOI · ENSEIGNANTS</span><button type="button" id="tutorialSkip" class="tuto-skip">Passer ✕</button></div>
+    <div class="tuto-progress" id="tutorialProgress" aria-label="Progression du tutoriel"></div>
+    <div class="tuto-visual" id="tutorialVisual" aria-hidden="true"></div>
+    <h2 id="tutorialTitle"></h2><p id="tutorialText"></p><div id="tutorialNote" class="tuto-note"></div>
+    <div class="tuto-bottom"><span class="tuto-count" id="tutorialCount"></span><div class="tuto-nav"><button type="button" id="tutorialPrev">← Précédent</button><button type="button" id="tutorialNext" class="primary">Suivant →</button></div></div>
+  </section>
+</div>
+<script id="v26o-tutorial-js">
+(()=>{
+ const $=id=>document.getElementById(id);
+ const slides=[
+  {title:"Bienvenue dans PAUSE 5’",text:"Quelques minutes pour bouger, respirer, se recentrer ou apprendre autrement, directement en classe.",note:"Sur place · Sans matériel · Pour toutes les disciplines.",icons:"🏫 🌿 ✨"},
+  {title:"Choisissez votre format",text:"Trois possibilités : Pauses actives (5 minutes), Pauses Express (2 minutes) et Défis éducatifs actifs (environ 2 minutes).",note:"Sélectionnez le format qui correspond au temps dont vous disposez.",icons:"🟢 🟠 🟣"},
+  {title:"Identifiez le besoin de la classe",text:"Se réveiller, bouger, se concentrer, s’étirer ou se calmer : choisissez la pause adaptée au moment de la journée.",note:"Les défis éducatifs permettent aussi de réviser en mouvement.",icons:"⚡ 🏃 🎯 🌿 🌙"},
+  {title:"Projetez et lancez la séance",text:"Projetez PAUSE 5’ au tableau ou au vidéoprojecteur. Allumez les enceintes, si vous en avez, pour entendre les consignes audio, puis cliquez sur Démarrer.",note:"Les boutons Pause, Étape suivante et Plein écran restent à votre disposition. Le bouton « Pourquoi bouger ? » vous aide à expliquer aux élèves pourquoi ces pauses actives sont instaurées en classe.",icons:"🖥️ ▶️ ⏸️"},
+  {title:"Installez un rituel souple et inclusif",text:"Invitez chacun à participer à son rythme. Plusieurs mouvements sont adaptables en position assise. Reprenez ensuite votre cours.",note:"Pas besoin d’être professeur d’EPS pour faire bouger sa classe !",icons:"🤝 🪑 🌟"}
+ ];
+ let step=0,previousFocus=null;
+ const modal=$('tutorialOverlay'),panel=modal.querySelector('.tuto-panel');
+ function render(){
+  const slide=slides[step];
+  $('tutorialTitle').textContent=slide.title;
+  $('tutorialText').textContent=slide.text;
+  $('tutorialNote').textContent=slide.note;
+  $('tutorialVisual').innerHTML='<img src="tutorial-classe-'+(step+1)+'.jpg" alt="Élèves réalisant une pause active en classe" loading="eager">';
+  $('tutorialCount').textContent='Étape '+(step+1)+' sur '+slides.length;
+  $('tutorialProgress').innerHTML=slides.map((_,i)=>'<span class="tuto-dot'+(i<=step?' current':'')+'"></span>').join('');
+  $('tutorialPrev').disabled=step===0;
+  $('tutorialNext').textContent=step===slides.length-1?'Commencer ✓':'Suivant →';
+ }
+ function open(){previousFocus=document.activeElement;step=0;render();modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';panel.focus();}
+ function close(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow='';try{localStorage.setItem('pause5-tutorial-seen-v1','yes')}catch(e){};if(previousFocus&&previousFocus.focus)previousFocus.focus();}
+ $('tutorialBtn').addEventListener('click',open);
+ $('tutorialSkip').addEventListener('click',close);
+ $('tutorialPrev').addEventListener('click',()=>{if(step>0){step--;render()}});
+ $('tutorialNext').addEventListener('click',()=>{if(step===slides.length-1){close()}else{step++;render()}});
+ modal.addEventListener('click',e=>{if(e.target===modal)close()});
+ document.addEventListener('keydown',e=>{
+  if(!modal.classList.contains('open'))return;
+  if(e.key==='Escape'){e.preventDefault();close()}
+  if(e.key==='ArrowRight'&&step<slides.length-1){step++;render()}
+  if(e.key==='ArrowLeft'&&step>0){step--;render()}
+  if(e.key==='Tab'){const nodes=[...modal.querySelectorAll('button:not(:disabled)')];const i=nodes.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();nodes[nodes.length-1].focus()}else if(!e.shiftKey&&i===nodes.length-1){e.preventDefault();nodes[0].focus()}}
+ });
+ try{if(!localStorage.getItem('pause5-tutorial-seen-v1'))setTimeout(open,700)}catch(e){}
+})();
+</script>
+</body>
 </html>
 
 <style>
