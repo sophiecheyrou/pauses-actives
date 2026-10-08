@@ -1181,7 +1181,16 @@ body.math-mode #geoFinishHome{
 .why-middle .why-video-wrap{width:min(68vw,210px)}
 }
 </style>
-<style id="v25x-challenges">.learn-entry{align-items:flex-start;flex-direction:column}.learn-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:10px}.learn-actions button{text-align:left;min-height:56px}@media(max-width:850px){.learn-actions{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.learn-actions{grid-template-columns:1fr}}</style></head>
+<style id="v25x-challenges">.learn-entry{align-items:flex-start;flex-direction:column}.learn-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:10px}.learn-actions button{text-align:left;min-height:56px}@media(max-width:850px){.learn-actions{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.learn-actions{grid-template-columns:1fr}}</style>
+<style id="v26a-challenge-buttons">
+/* Les défis restent secondaires aux pauses 5', avec des teintes douces par parcours. */
+.learn-actions button{background:#e7f5ee!important;color:#176348!important;border:1.5px solid #a8d9c2!important;box-shadow:none!important;transition:background .15s,transform .15s}
+.learn-actions button:nth-child(n+4){background:#e9efff!important;color:#294f9c!important;border-color:#b9cbf6!important}
+.learn-actions button:hover,.learn-actions button:focus-visible{background:#d1eddf!important;transform:translateY(-1px)}
+.learn-actions button:nth-child(n+4):hover,.learn-actions button:nth-child(n+4):focus-visible{background:#d6e2ff!important}
+.learn-actions button:focus-visible{outline:3px solid #f59e0b!important;outline-offset:2px}
+</style>
+</head>
 <body>
 <div class="app" id="app">
   <header class="institutional" aria-label="Académie de Paris">
@@ -1249,7 +1258,7 @@ body.math-mode #geoFinishHome{
       <div id="mathFinish" class="math-stage" hidden>
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
-        <p>5 questions de calcul mental et du mouvement.</p>
+        <p>5 questions pour mieux connaître sa santé et prendre soin de soi.</p>
         <div class="math-autostart">Retour automatique à l'accueil dans <b id="mathFinishCount">8</b> s</div>
         <button id="mathFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
@@ -1296,7 +1305,7 @@ body.math-mode #geoFinishHome{
       <div id="geoFinish" class="math-stage" hidden>
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
-        <p>5 questions de géographie et du mouvement.</p>
+        <p>5 questions pour mieux connaître sa santé et prendre soin de soi.</p>
         <div class="math-autostart">Retour automatique à l'accueil dans <b id="geoFinishCount">8</b> s</div>
         <button id="geoFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
@@ -1343,7 +1352,7 @@ body.math-mode #geoFinishHome{
       <div id="santeSommeilFinish" class="math-stage" hidden>
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
-        <p>5 questions de géographie et du mouvement.</p>
+        <p>5 questions pour mieux connaître sa santé et prendre soin de soi.</p>
         <div class="math-autostart">Retour automatique à l'accueil dans <b id="santeSommeilFinishCount">8</b> s</div>
         <button id="santeSommeilFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
@@ -1390,7 +1399,7 @@ body.math-mode #geoFinishHome{
       <div id="citRespectFinish" class="math-stage" hidden>
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
-        <p>5 questions de géographie et du mouvement.</p>
+        <p>5 questions pour mieux vivre ensemble et agir en citoyen.</p>
         <div class="math-autostart">Retour automatique à l'accueil dans <b id="citRespectFinishCount">8</b> s</div>
         <button id="citRespectFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
@@ -1437,7 +1446,7 @@ body.math-mode #geoFinishHome{
       <div id="citEgaliteFinish" class="math-stage" hidden>
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
-        <p>5 questions de géographie et du mouvement.</p>
+        <p>5 questions pour mieux vivre ensemble et agir en citoyen.</p>
         <div class="math-autostart">Retour automatique à l'accueil dans <b id="citEgaliteFinishCount">8</b> s</div>
         <button id="citEgaliteFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
@@ -1484,7 +1493,7 @@ body.math-mode #geoFinishHome{
       <div id="citNumeriqueFinish" class="math-stage" hidden>
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
-        <p>5 questions de géographie et du mouvement.</p>
+        <p>5 questions pour mieux vivre ensemble et agir en citoyen.</p>
         <div class="math-autostart">Retour automatique à l'accueil dans <b id="citNumeriqueFinishCount">8</b> s</div>
         <button id="citNumeriqueFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
