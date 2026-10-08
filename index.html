@@ -1190,7 +1190,11 @@ body.math-mode #geoFinishHome{
 .learn-actions button:nth-child(n+4):hover,.learn-actions button:nth-child(n+4):focus-visible{background:#d6e2ff!important}
 .learn-actions button:focus-visible{outline:3px solid #f59e0b!important;outline-offset:2px}
 </style>
-</head>
+<style id="v26b-answer-video">
+body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilVideo,body.math-mode #citRespectVideo,body.math-mode #citEgaliteVideo,body.math-mode #citNumeriqueVideo{display:block!important;width:min(760px,90%,calc((100dvh - 310px)*16/9))!important;height:auto!important;max-height:calc(100dvh - 310px)!important;aspect-ratio:16/9!important;object-fit:contain!important;background:transparent!important;border:2px solid #d6e4ed!important;border-radius:18px!important;box-shadow:0 8px 22px rgba(15,41,71,.09)!important;margin:10px auto 14px!important}
+.math-stage .math-finish-course + p{margin-bottom:clamp(20px,4vh,38px)!important}
+@media(max-width:700px){body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilVideo,body.math-mode #citRespectVideo,body.math-mode #citEgaliteVideo,body.math-mode #citNumeriqueVideo{width:min(94vw,calc((100dvh - 235px)*16/9))!important;max-height:calc(100dvh - 235px)!important;border-radius:12px!important}}
+</style></head>
 <body>
 <div class="app" id="app">
   <header class="institutional" aria-label="Académie de Paris">
@@ -1259,7 +1263,6 @@ body.math-mode #geoFinishHome{
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
         <p>5 questions pour mieux connaître sa santé et prendre soin de soi.</p>
-        <div class="math-autostart">Retour automatique à l'accueil dans <b id="mathFinishCount">8</b> s</div>
         <button id="mathFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
@@ -1306,7 +1309,6 @@ body.math-mode #geoFinishHome{
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
         <p>5 questions pour mieux connaître sa santé et prendre soin de soi.</p>
-        <div class="math-autostart">Retour automatique à l'accueil dans <b id="geoFinishCount">8</b> s</div>
         <button id="geoFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
@@ -1353,7 +1355,6 @@ body.math-mode #geoFinishHome{
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
         <p>5 questions pour mieux connaître sa santé et prendre soin de soi.</p>
-        <div class="math-autostart">Retour automatique à l'accueil dans <b id="santeSommeilFinishCount">8</b> s</div>
         <button id="santeSommeilFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
@@ -1400,7 +1401,6 @@ body.math-mode #geoFinishHome{
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
         <p>5 questions pour mieux vivre ensemble et agir en citoyen.</p>
-        <div class="math-autostart">Retour automatique à l'accueil dans <b id="citRespectFinishCount">8</b> s</div>
         <button id="citRespectFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
@@ -1447,7 +1447,6 @@ body.math-mode #geoFinishHome{
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
         <p>5 questions pour mieux vivre ensemble et agir en citoyen.</p>
-        <div class="math-autostart">Retour automatique à l'accueil dans <b id="citEgaliteFinishCount">8</b> s</div>
         <button id="citEgaliteFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
@@ -1494,7 +1493,6 @@ body.math-mode #geoFinishHome{
         <div class="math-finish-main">DÉFI TERMINÉ</div>
         <div class="math-finish-course">On reprend le cours !</div>
         <p>5 questions pour mieux vivre ensemble et agir en citoyen.</p>
-        <div class="math-autostart">Retour automatique à l'accueil dans <b id="citNumeriqueFinishCount">8</b> s</div>
         <button id="citNumeriqueFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
