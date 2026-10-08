@@ -1,0 +1,7 @@
+Remplacer les 2 MP3 silencieux par les enregistrements de Sophie Cheyrou, sans changer leurs noms.
+
+audio/maths-consigne.mp3
+« Réponds avec ton corps ! Observe les trois mouvements. À chaque question, réalise le mouvement correspondant à ta réponse. »
+
+audio/maths-defi-termine.mp3
+« DÉFI TERMINÉ, On reprend le cours ! »
