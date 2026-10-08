@@ -486,18 +486,8 @@ updateSoundUI();
 
 
 // V25h — Bouger & Apprendre · Mathématiques · lecture 100 % automatique
-const mathQuiz=[
- {q:'7 × 8 = ?',a:['54','56','64'],ok:1},
- {q:'125 + 75 = ?',a:['200','190','180'],ok:0},
- {q:'La moitié de 90 est…',a:['40','45','50'],ok:1},
- {q:'6 × 9 = ?',a:['54','48','56'],ok:0},
- {q:'300 ÷ 6 = ?',a:['40','60','50'],ok:2}
-];
-const mathMoves=[
- {label:"🙌 Bras en l'air",video:'videos/besoin-de-se-defouler-02-directs.mp4'},
- {label:'🪑 Demi-squats',video:'videos/apres-etre-reste-assis-02-demi-squats.mp4'},
- {label:'🦵 Genoux alternés',video:'videos/apres-etre-reste-assis-04-genoux-alternes.mp4'}
-];
+const mathQuiz=[{"q":"Combien de temps bouger par jour ?","a":["15 minutes","30 minutes","60 minutes"],"ok":2},{"q":"Qu'est-ce que la sédentarité ?","a":["Rester longtemps assis","Courir lentement","Dormir la nuit"],"ok":0},{"q":"Quelle activité renforce le cœur ?","a":["Courir","Lire","Regarder un film"],"ok":0},{"q":"Pourquoi faire des pauses actives ?","a":["Pour interrompre le temps assis","Pour éviter de réfléchir","Pour remplacer le sommeil"],"ok":0},{"q":"Quel déplacement permet de bouger ?","a":["La voiture","La marche","Le bus"],"ok":1}];
+const mathMoves=[{label:'Bras en l’air',video:'videos/besoin-de-se-defouler-02-directs.mp4'},{label:'Squats',video:'videos/debut-de-journee-04-squats.mp4'},{label:'Genoux alternés',video:'videos/avant-un-exercice-01-meme-cote.mp4'}];
 let mathI=0,mathTimer=null,mathTimeout=null;
 function mathClear(){clearInterval(mathTimer);clearTimeout(mathTimeout);document.querySelectorAll('#mathProto video').forEach(v=>v.pause());}
 function mathPlayVisible(){document.querySelectorAll('#mathProto .math-stage:not([hidden]) video').forEach(v=>v.play().catch(()=>{}));}
@@ -516,18 +506,8 @@ document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementByI
 
 
 // V25t — Bouger & Apprendre · Géographie · Capitales
-const geoQuiz=[
- {q:"Quelle est la capitale de l’Italie ?",a:['Rome','Milan','Naples'],ok:0},
- {q:"Quelle est la capitale de l’Espagne ?",a:['Barcelone','Madrid','Séville'],ok:1},
- {q:"Quelle est la capitale de l’Allemagne ?",a:['Munich','Hambourg','Berlin'],ok:2},
- {q:"Quelle est la capitale du Portugal ?",a:['Lisbonne','Porto','Faro'],ok:0},
- {q:"Quelle est la capitale de la Grèce ?",a:['Thessalonique','Athènes','Patras'],ok:1}
-];
-const geoMoves=[
- {label:"Bras en l'air",video:'videos/besoin-de-se-defouler-02-directs.mp4'},
- {label:'Demi-squats',video:'videos/apres-etre-reste-assis-02-demi-squats.mp4'},
- {label:'Genoux alternés',video:'videos/avant-un-exercice-01-meme-cote.mp4'}
-];
+const geoQuiz=[{"q":"Quelle boisson privilégier chaque jour ?","a":["Soda","Eau","Boisson énergisante"],"ok":1},{"q":"Quel aliment est riche en fibres ?","a":["Bonbons","Beurre","Lentilles"],"ok":2},{"q":"Quel repas est le plus équilibré ?","a":["Poulet, riz et légumes","Chips et soda","Bonbons et biscuits"],"ok":0},{"q":"Quel nutriment aide à construire les muscles ?","a":["Protéines","Sucres","Vitamines"],"ok":0},{"q":"Pourquoi manger des fruits et légumes ?","a":["Pour leurs vitamines et fibres","Pour remplacer l'eau","Pour éviter de dormir"],"ok":0}];
+const geoMoves=[{label:'Bras en l’air',video:'videos/debut-dapres-midi-04-coude-genou-croise.mp4'},{label:'Squats',video:'videos/debut-dapres-midi-06-squat-bras.mp4'},{label:'Genoux alternés',video:'videos/debut-de-journee-06-boxe.mp4'}];
 let geoI=0,geoTimer=null;
 function geoClear(){clearInterval(geoTimer);document.querySelectorAll('#geoProto video').forEach(v=>v.pause());}
 function geoPlayVisible(){document.querySelectorAll('#geoProto .math-stage:not([hidden]) video').forEach(v=>v.play().catch(()=>{}));}
@@ -546,4 +526,97 @@ document.addEventListener('DOMContentLoaded',()=>{
  const skip=document.getElementById('geoSkip');if(skip)skip.onclick=geoReveal;
  const resultSkip=document.getElementById('geoResultSkip');if(resultSkip)resultSkip.onclick=geoAdvanceFromResult;
  const finishHome=document.getElementById('geoFinishHome');if(finishHome)finishHome.onclick=closeGeoProto;
+});
+
+
+// V25t — Bouger & Apprendre · Géographie · Capitales
+const santeSommeilQuiz=[{"q":"Combien d'heures dormir à 14 ans ?","a":["5 à 6 heures","8 à 10 heures","12 à 14 heures"],"ok":1},{"q":"Quelle activité privilégier avant de dormir ?","a":["Regarder des vidéos","Lire un livre","Jouer en ligne"],"ok":1},{"q":"Quel effet peuvent avoir les écrans le soir ?","a":["Endormir plus vite","Retarder l'endormissement","Remplacer le sommeil"],"ok":1},{"q":"Quand faut-il se coucher ?","a":["À une heure différente chaque soir","À des horaires réguliers","Le plus tard possible"],"ok":1},{"q":"Que favorise un bon sommeil ?","a":["Le stress","La fatigue","La mémorisation"],"ok":2}];
+const santeSommeilMoves=[{label:'Bras en l’air',video:'videos/debut-de-journee-03-talons-fesses.mp4'},{label:'Squats',video:'videos/debut-dapres-midi-05-marche-turbo.mp4'},{label:'Genoux alternés',video:'videos/relacher-les-tensions-04-rotation-du-buste.mp4'}];
+let santeSommeilI=0,santeSommeilTimer=null;
+function santeSommeilClear(){clearInterval(santeSommeilTimer);document.querySelectorAll('#santeSommeilProto video').forEach(v=>v.pause());}
+function santeSommeilPlayVisible(){document.querySelectorAll('#santeSommeilProto .math-stage:not([hidden]) video').forEach(v=>v.play().catch(()=>{}));}
+function santeSommeilShow(id){['santeSommeilIntro','santeSommeilQuestion','santeSommeilResult','santeSommeilFinish'].forEach(x=>{const e=document.getElementById(x);if(e)e.hidden=x!==id;});setTimeout(santeSommeilPlayVisible,30);}
+function santeSommeilCountdown(id,seconds,onDone,onTick){let n=seconds;const e=document.getElementById(id);if(e)e.textContent=n;if(onTick)onTick(n,seconds);clearInterval(santeSommeilTimer);santeSommeilTimer=setInterval(()=>{n--;if(e)e.textContent=Math.max(0,n);if(onTick)onTick(Math.max(0,n),seconds);if(n<=0){clearInterval(santeSommeilTimer);onDone();}},1000);}
+function openSanteSommeilProto(){santeSommeilClear();document.body.classList.add('math-mode');document.getElementById('home').hidden=true;document.getElementById('santeSommeilProto').hidden=false;santeSommeilI=0;document.getElementById('santeSommeilProgress').textContent='1 / 5';santeSommeilShow('santeSommeilIntro');window.scrollTo(0,0);mathPlayAudio('audio/maths-consigne.mp3');}
+function closeSanteSommeilProto(){santeSommeilClear();mathStopAudio();document.body.classList.remove('math-mode');document.getElementById('santeSommeilProto').hidden=true;document.getElementById('home').hidden=false;window.scrollTo(0,0);}
+function santeSommeilLoad(){santeSommeilClear();const x=santeSommeilQuiz[santeSommeilI];document.getElementById('santeSommeilNum').textContent=santeSommeilI+1;document.getElementById('santeSommeilProgress').textContent=(santeSommeilI+1)+' / '+santeSommeilQuiz.length;document.getElementById('santeSommeilQ').textContent=x.q;['santeSommeilA','santeSommeilB','santeSommeilC'].forEach((id,i)=>document.getElementById(id).textContent=x.a[i]);santeSommeilShow('santeSommeilQuestion');santeSommeilCountdown('santeSommeilQuestionCount',15,santeSommeilReveal,(n,total)=>{const f=document.getElementById('santeSommeilClockFill');if(f)f.style.width=(n/total*100)+'%';});}
+function santeSommeilReveal(){santeSommeilClear();const x=santeSommeilQuiz[santeSommeilI],m=santeSommeilMoves[x.ok];document.getElementById('santeSommeilCorrect').textContent='✓ '+x.a[x.ok]+' !';const v=document.getElementById('santeSommeilVideo');v.src=m.video;v.currentTime=0;santeSommeilShow('santeSommeilResult');santeSommeilCountdown('santeSommeilCountdown',10,()=>{if(++santeSommeilI>=santeSommeilQuiz.length)santeSommeilFinish();else santeSommeilLoad();});}
+function santeSommeilFinish(){santeSommeilClear();mathPlayAudio('audio/maths-defi-termine.mp3');document.getElementById('santeSommeilProgress').textContent='5 / 5';santeSommeilShow('santeSommeilFinish');santeSommeilCountdown('santeSommeilFinishCount',8,closeSanteSommeilProto);}
+function santeSommeilAdvanceFromResult(){santeSommeilClear();if(++santeSommeilI>=santeSommeilQuiz.length)santeSommeilFinish();else santeSommeilLoad();}
+document.addEventListener('DOMContentLoaded',()=>{
+ const b=document.getElementById('santeSommeilProtoBtn');if(b)b.onclick=openSanteSommeilProto;
+ const back=document.getElementById('santeSommeilBack');if(back)back.onclick=closeSanteSommeilProto;
+ const start=document.getElementById('santeSommeilStart');if(start)start.onclick=()=>{mathStopAudio();santeSommeilLoad();};
+ const skip=document.getElementById('santeSommeilSkip');if(skip)skip.onclick=santeSommeilReveal;
+ const resultSkip=document.getElementById('santeSommeilResultSkip');if(resultSkip)resultSkip.onclick=santeSommeilAdvanceFromResult;
+ const finishHome=document.getElementById('santeSommeilFinishHome');if(finishHome)finishHome.onclick=closeSanteSommeilProto;
+});
+
+// V25t — Bouger & Apprendre · Géographie · Capitales
+const citRespectQuiz=[{"q":"Que signifie respecter les autres ?","a":["Imposer ses idées","Accepter les différences","Se moquer des autres"],"ok":1},{"q":"Comment régler un conflit ?","a":["Dialoguer calmement","Se battre","Insulter"],"ok":0},{"q":"Qu'est-ce que la tolérance ?","a":["Penser tous pareil","Ignorer les autres","Accepter les différences"],"ok":2},{"q":"Que faire face à une moquerie ?","a":["Rire avec les autres","Soutenir la victime","Encourager les moqueries"],"ok":1},{"q":"Comment favoriser le vivre-ensemble ?","a":["Exclure les nouveaux élèves","Coopérer et s'entraider","Rester uniquement entre amis"],"ok":1}];
+const citRespectMoves=[{label:'Bras en l’air',video:'videos/debut-dapres-midi-04-coude-genou-croise.mp4'},{label:'Squats',video:'videos/debut-dapres-midi-06-squat-bras.mp4'},{label:'Genoux alternés',video:'videos/debut-de-journee-06-boxe.mp4'}];
+let citRespectI=0,citRespectTimer=null;
+function citRespectClear(){clearInterval(citRespectTimer);document.querySelectorAll('#citRespectProto video').forEach(v=>v.pause());}
+function citRespectPlayVisible(){document.querySelectorAll('#citRespectProto .math-stage:not([hidden]) video').forEach(v=>v.play().catch(()=>{}));}
+function citRespectShow(id){['citRespectIntro','citRespectQuestion','citRespectResult','citRespectFinish'].forEach(x=>{const e=document.getElementById(x);if(e)e.hidden=x!==id;});setTimeout(citRespectPlayVisible,30);}
+function citRespectCountdown(id,seconds,onDone,onTick){let n=seconds;const e=document.getElementById(id);if(e)e.textContent=n;if(onTick)onTick(n,seconds);clearInterval(citRespectTimer);citRespectTimer=setInterval(()=>{n--;if(e)e.textContent=Math.max(0,n);if(onTick)onTick(Math.max(0,n),seconds);if(n<=0){clearInterval(citRespectTimer);onDone();}},1000);}
+function openCitRespectProto(){citRespectClear();document.body.classList.add('math-mode');document.getElementById('home').hidden=true;document.getElementById('citRespectProto').hidden=false;citRespectI=0;document.getElementById('citRespectProgress').textContent='1 / 5';citRespectShow('citRespectIntro');window.scrollTo(0,0);mathPlayAudio('audio/maths-consigne.mp3');}
+function closeCitRespectProto(){citRespectClear();mathStopAudio();document.body.classList.remove('math-mode');document.getElementById('citRespectProto').hidden=true;document.getElementById('home').hidden=false;window.scrollTo(0,0);}
+function citRespectLoad(){citRespectClear();const x=citRespectQuiz[citRespectI];document.getElementById('citRespectNum').textContent=citRespectI+1;document.getElementById('citRespectProgress').textContent=(citRespectI+1)+' / '+citRespectQuiz.length;document.getElementById('citRespectQ').textContent=x.q;['citRespectA','citRespectB','citRespectC'].forEach((id,i)=>document.getElementById(id).textContent=x.a[i]);citRespectShow('citRespectQuestion');citRespectCountdown('citRespectQuestionCount',15,citRespectReveal,(n,total)=>{const f=document.getElementById('citRespectClockFill');if(f)f.style.width=(n/total*100)+'%';});}
+function citRespectReveal(){citRespectClear();const x=citRespectQuiz[citRespectI],m=citRespectMoves[x.ok];document.getElementById('citRespectCorrect').textContent='✓ '+x.a[x.ok]+' !';const v=document.getElementById('citRespectVideo');v.src=m.video;v.currentTime=0;citRespectShow('citRespectResult');citRespectCountdown('citRespectCountdown',10,()=>{if(++citRespectI>=citRespectQuiz.length)citRespectFinish();else citRespectLoad();});}
+function citRespectFinish(){citRespectClear();mathPlayAudio('audio/maths-defi-termine.mp3');document.getElementById('citRespectProgress').textContent='5 / 5';citRespectShow('citRespectFinish');citRespectCountdown('citRespectFinishCount',8,closeCitRespectProto);}
+function citRespectAdvanceFromResult(){citRespectClear();if(++citRespectI>=citRespectQuiz.length)citRespectFinish();else citRespectLoad();}
+document.addEventListener('DOMContentLoaded',()=>{
+ const b=document.getElementById('citRespectProtoBtn');if(b)b.onclick=openCitRespectProto;
+ const back=document.getElementById('citRespectBack');if(back)back.onclick=closeCitRespectProto;
+ const start=document.getElementById('citRespectStart');if(start)start.onclick=()=>{mathStopAudio();citRespectLoad();};
+ const skip=document.getElementById('citRespectSkip');if(skip)skip.onclick=citRespectReveal;
+ const resultSkip=document.getElementById('citRespectResultSkip');if(resultSkip)resultSkip.onclick=citRespectAdvanceFromResult;
+ const finishHome=document.getElementById('citRespectFinishHome');if(finishHome)finishHome.onclick=closeCitRespectProto;
+});
+
+// V25t — Bouger & Apprendre · Géographie · Capitales
+const citEgaliteQuiz=[{"q":"Que signifie l'égalité filles-garçons ?","a":["Les garçons sont prioritaires","Les filles décident toujours","Avoir les mêmes droits"],"ok":2},{"q":"Filles et garçons ont-ils les mêmes droits ?","a":["Non","Oui","Seulement à l'école"],"ok":1},{"q":"Qui peut pratiquer le football ?","a":["Les garçons uniquement","Les filles uniquement","Tout le monde"],"ok":2},{"q":"Qui peut devenir scientifique ?","a":["Les garçons uniquement","Les filles et les garçons","Uniquement les meilleurs élèves"],"ok":1},{"q":"Que faire face à une remarque sexiste ?","a":["La signaler à un adulte","En rire systématiquement","L'encourager"],"ok":0}];
+const citEgaliteMoves=[{label:'Bras en l’air',video:'videos/debut-de-journee-03-talons-fesses.mp4'},{label:'Squats',video:'videos/debut-dapres-midi-05-marche-turbo.mp4'},{label:'Genoux alternés',video:'videos/relacher-les-tensions-04-rotation-du-buste.mp4'}];
+let citEgaliteI=0,citEgaliteTimer=null;
+function citEgaliteClear(){clearInterval(citEgaliteTimer);document.querySelectorAll('#citEgaliteProto video').forEach(v=>v.pause());}
+function citEgalitePlayVisible(){document.querySelectorAll('#citEgaliteProto .math-stage:not([hidden]) video').forEach(v=>v.play().catch(()=>{}));}
+function citEgaliteShow(id){['citEgaliteIntro','citEgaliteQuestion','citEgaliteResult','citEgaliteFinish'].forEach(x=>{const e=document.getElementById(x);if(e)e.hidden=x!==id;});setTimeout(citEgalitePlayVisible,30);}
+function citEgaliteCountdown(id,seconds,onDone,onTick){let n=seconds;const e=document.getElementById(id);if(e)e.textContent=n;if(onTick)onTick(n,seconds);clearInterval(citEgaliteTimer);citEgaliteTimer=setInterval(()=>{n--;if(e)e.textContent=Math.max(0,n);if(onTick)onTick(Math.max(0,n),seconds);if(n<=0){clearInterval(citEgaliteTimer);onDone();}},1000);}
+function openCitEgaliteProto(){citEgaliteClear();document.body.classList.add('math-mode');document.getElementById('home').hidden=true;document.getElementById('citEgaliteProto').hidden=false;citEgaliteI=0;document.getElementById('citEgaliteProgress').textContent='1 / 5';citEgaliteShow('citEgaliteIntro');window.scrollTo(0,0);mathPlayAudio('audio/maths-consigne.mp3');}
+function closeCitEgaliteProto(){citEgaliteClear();mathStopAudio();document.body.classList.remove('math-mode');document.getElementById('citEgaliteProto').hidden=true;document.getElementById('home').hidden=false;window.scrollTo(0,0);}
+function citEgaliteLoad(){citEgaliteClear();const x=citEgaliteQuiz[citEgaliteI];document.getElementById('citEgaliteNum').textContent=citEgaliteI+1;document.getElementById('citEgaliteProgress').textContent=(citEgaliteI+1)+' / '+citEgaliteQuiz.length;document.getElementById('citEgaliteQ').textContent=x.q;['citEgaliteA','citEgaliteB','citEgaliteC'].forEach((id,i)=>document.getElementById(id).textContent=x.a[i]);citEgaliteShow('citEgaliteQuestion');citEgaliteCountdown('citEgaliteQuestionCount',15,citEgaliteReveal,(n,total)=>{const f=document.getElementById('citEgaliteClockFill');if(f)f.style.width=(n/total*100)+'%';});}
+function citEgaliteReveal(){citEgaliteClear();const x=citEgaliteQuiz[citEgaliteI],m=citEgaliteMoves[x.ok];document.getElementById('citEgaliteCorrect').textContent='✓ '+x.a[x.ok]+' !';const v=document.getElementById('citEgaliteVideo');v.src=m.video;v.currentTime=0;citEgaliteShow('citEgaliteResult');citEgaliteCountdown('citEgaliteCountdown',10,()=>{if(++citEgaliteI>=citEgaliteQuiz.length)citEgaliteFinish();else citEgaliteLoad();});}
+function citEgaliteFinish(){citEgaliteClear();mathPlayAudio('audio/maths-defi-termine.mp3');document.getElementById('citEgaliteProgress').textContent='5 / 5';citEgaliteShow('citEgaliteFinish');citEgaliteCountdown('citEgaliteFinishCount',8,closeCitEgaliteProto);}
+function citEgaliteAdvanceFromResult(){citEgaliteClear();if(++citEgaliteI>=citEgaliteQuiz.length)citEgaliteFinish();else citEgaliteLoad();}
+document.addEventListener('DOMContentLoaded',()=>{
+ const b=document.getElementById('citEgaliteProtoBtn');if(b)b.onclick=openCitEgaliteProto;
+ const back=document.getElementById('citEgaliteBack');if(back)back.onclick=closeCitEgaliteProto;
+ const start=document.getElementById('citEgaliteStart');if(start)start.onclick=()=>{mathStopAudio();citEgaliteLoad();};
+ const skip=document.getElementById('citEgaliteSkip');if(skip)skip.onclick=citEgaliteReveal;
+ const resultSkip=document.getElementById('citEgaliteResultSkip');if(resultSkip)resultSkip.onclick=citEgaliteAdvanceFromResult;
+ const finishHome=document.getElementById('citEgaliteFinishHome');if(finishHome)finishHome.onclick=closeCitEgaliteProto;
+});
+
+// V25t — Bouger & Apprendre · Géographie · Capitales
+const citNumeriqueQuiz=[{"q":"Qu'est-ce que le harcèlement ?","a":["Une plaisanterie entre amis","Des violences répétées","Un désaccord ponctuel"],"ok":1},{"q":"Que faire si tu es harcelé ?","a":["Garder le silence","Se venger","En parler à un adulte"],"ok":2},{"q":"Que faire si un camarade est harcelé ?","a":["Ignorer la situation","Le soutenir et alerter un adulte","Filmer la scène"],"ok":1},{"q":"Peut-on publier une photo sans accord ?","a":["Oui, entre amis","Oui, sur un groupe privé","Non, si la personne est identifiable"],"ok":2},{"q":"Quel numéro appeler contre le harcèlement ?","a":["15","3018","17"],"ok":1}];
+const citNumeriqueMoves=[{label:'Bras en l’air',video:'videos/besoin-de-se-defouler-02-directs.mp4'},{label:'Squats',video:'videos/debut-de-journee-04-squats.mp4'},{label:'Genoux alternés',video:'videos/avant-un-exercice-01-meme-cote.mp4'}];
+let citNumeriqueI=0,citNumeriqueTimer=null;
+function citNumeriqueClear(){clearInterval(citNumeriqueTimer);document.querySelectorAll('#citNumeriqueProto video').forEach(v=>v.pause());}
+function citNumeriquePlayVisible(){document.querySelectorAll('#citNumeriqueProto .math-stage:not([hidden]) video').forEach(v=>v.play().catch(()=>{}));}
+function citNumeriqueShow(id){['citNumeriqueIntro','citNumeriqueQuestion','citNumeriqueResult','citNumeriqueFinish'].forEach(x=>{const e=document.getElementById(x);if(e)e.hidden=x!==id;});setTimeout(citNumeriquePlayVisible,30);}
+function citNumeriqueCountdown(id,seconds,onDone,onTick){let n=seconds;const e=document.getElementById(id);if(e)e.textContent=n;if(onTick)onTick(n,seconds);clearInterval(citNumeriqueTimer);citNumeriqueTimer=setInterval(()=>{n--;if(e)e.textContent=Math.max(0,n);if(onTick)onTick(Math.max(0,n),seconds);if(n<=0){clearInterval(citNumeriqueTimer);onDone();}},1000);}
+function openCitNumeriqueProto(){citNumeriqueClear();document.body.classList.add('math-mode');document.getElementById('home').hidden=true;document.getElementById('citNumeriqueProto').hidden=false;citNumeriqueI=0;document.getElementById('citNumeriqueProgress').textContent='1 / 5';citNumeriqueShow('citNumeriqueIntro');window.scrollTo(0,0);mathPlayAudio('audio/maths-consigne.mp3');}
+function closeCitNumeriqueProto(){citNumeriqueClear();mathStopAudio();document.body.classList.remove('math-mode');document.getElementById('citNumeriqueProto').hidden=true;document.getElementById('home').hidden=false;window.scrollTo(0,0);}
+function citNumeriqueLoad(){citNumeriqueClear();const x=citNumeriqueQuiz[citNumeriqueI];document.getElementById('citNumeriqueNum').textContent=citNumeriqueI+1;document.getElementById('citNumeriqueProgress').textContent=(citNumeriqueI+1)+' / '+citNumeriqueQuiz.length;document.getElementById('citNumeriqueQ').textContent=x.q;['citNumeriqueA','citNumeriqueB','citNumeriqueC'].forEach((id,i)=>document.getElementById(id).textContent=x.a[i]);citNumeriqueShow('citNumeriqueQuestion');citNumeriqueCountdown('citNumeriqueQuestionCount',15,citNumeriqueReveal,(n,total)=>{const f=document.getElementById('citNumeriqueClockFill');if(f)f.style.width=(n/total*100)+'%';});}
+function citNumeriqueReveal(){citNumeriqueClear();const x=citNumeriqueQuiz[citNumeriqueI],m=citNumeriqueMoves[x.ok];document.getElementById('citNumeriqueCorrect').textContent='✓ '+x.a[x.ok]+' !';const v=document.getElementById('citNumeriqueVideo');v.src=m.video;v.currentTime=0;citNumeriqueShow('citNumeriqueResult');citNumeriqueCountdown('citNumeriqueCountdown',10,()=>{if(++citNumeriqueI>=citNumeriqueQuiz.length)citNumeriqueFinish();else citNumeriqueLoad();});}
+function citNumeriqueFinish(){citNumeriqueClear();mathPlayAudio('audio/maths-defi-termine.mp3');document.getElementById('citNumeriqueProgress').textContent='5 / 5';citNumeriqueShow('citNumeriqueFinish');citNumeriqueCountdown('citNumeriqueFinishCount',8,closeCitNumeriqueProto);}
+function citNumeriqueAdvanceFromResult(){citNumeriqueClear();if(++citNumeriqueI>=citNumeriqueQuiz.length)citNumeriqueFinish();else citNumeriqueLoad();}
+document.addEventListener('DOMContentLoaded',()=>{
+ const b=document.getElementById('citNumeriqueProtoBtn');if(b)b.onclick=openCitNumeriqueProto;
+ const back=document.getElementById('citNumeriqueBack');if(back)back.onclick=closeCitNumeriqueProto;
+ const start=document.getElementById('citNumeriqueStart');if(start)start.onclick=()=>{mathStopAudio();citNumeriqueLoad();};
+ const skip=document.getElementById('citNumeriqueSkip');if(skip)skip.onclick=citNumeriqueReveal;
+ const resultSkip=document.getElementById('citNumeriqueResultSkip');if(resultSkip)resultSkip.onclick=citNumeriqueAdvanceFromResult;
+ const finishHome=document.getElementById('citNumeriqueFinishHome');if(finishHome)finishHome.onclick=closeCitNumeriqueProto;
 });
