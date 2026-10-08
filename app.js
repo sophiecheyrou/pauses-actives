@@ -100,6 +100,7 @@ function toggleSound(){
   }
   updateSoundUI();
 }
+let activeFormat='five';
 function renderFilters(){
   const order=['BOOST','MOVE','FOCUS','RESET','RELAX'];
   const extra={BOOST:'Pour bien commencer la journée',MOVE:'Pour oxygéner le cerveau',FOCUS:'Pour être plus attentif',RESET:'Pour relâcher les tensions corporelles',RELAX:'Pour se recentrer sur les tâches scolaires'};
@@ -107,8 +108,8 @@ function renderFilters(){
   document.querySelectorAll('.filter').forEach(btn=>btn.onclick=()=>{filter=btn.dataset.cat;renderFilters();renderSessions();$('sessionHeading').innerHTML=`${cats[filter].label}<small class="choose-under">(Choisir une pause)</small>`;setTimeout(()=>$('sessions').scrollIntoView({behavior:'smooth',block:'start'}),60);});
 }
 function renderSessions(){
-  const list=sessions.map((s,i)=>({s,i})).filter(x=>filter==='ALL'||x.s.cat===filter);
-  $('sessions').innerHTML=list.map(({s,i})=>`<button class="session cat-${s.cat}${s.express?' session-express':' session-reference'}" type="button" data-i="${i}"><div class="cat">${cats[s.cat].icon} ${cats[s.cat].label}</div><h3>${s.title}</h3><p>${s.tag}</p>${s.steps.every(st=>st.seated && st.seated.trim())?'<div class="seated-badge" title="Tous les exercices disposent d’une adaptation en position assise">🪑 <span>Adaptation assise possible</span></div>':''}<div class="meta"><span class="duration-badge">${s.express?'EXPRESS · 2 min':'★ FORMAT RECOMMANDÉ · 5 min'}</span><span>Intensité ${'●'.repeat(s.intensity)}${'○'.repeat(3-s.intensity)}</span></div></button>`).join('');
+  const list=sessions.map((s,i)=>({s,i})).filter(x=>(activeFormat==='two'?!!x.s.express:!x.s.express) && (filter==='ALL'||x.s.cat===filter));
+  $('sessions').innerHTML=list.map(({s,i})=>`<button class="session cat-${s.cat}${s.express?' session-express':' session-reference'}" type="button" data-i="${i}"><div class="cat">${cats[s.cat].icon} ${cats[s.cat].label}</div><h3>${s.title}</h3><p>${s.tag}</p>${s.steps.every(st=>st.seated && st.seated.trim())?'<div class="seated-badge" title="Tous les exercices disposent d’une adaptation en position assise">🪑 <span>Adaptation assise possible</span></div>':''}<div class="meta"><span class="duration-badge">${s.express?'EXPRESS · 2 min':'PAUSE · 5 min'}</span><span>Intensité ${'●'.repeat(s.intensity)}${'○'.repeat(3-s.intensity)}</span></div></button>`).join('');
   document.querySelectorAll('.session').forEach(btn=>btn.onclick=()=>openSession(Number(btn.dataset.i)));
 }
 function audioPathFor(step){
@@ -459,7 +460,7 @@ function goHome(){
   
   stop(); resetAudio(); finishing=false;countdownRunning=false;sessionStarted=false;$('countdown').classList.remove('open');exitFullscreen();
   const v=$('demoVideo');v.pause();v.removeAttribute('src');v.load();
-  $('player').classList.remove('open');$('finish').classList.remove('open');$('home').classList.remove('hidden');$('demo').classList.remove('prestart');$('start').hidden=false;$('pause').hidden=true;$('next').hidden=true;currentIndex=null;window.scrollTo({top:0,behavior:'smooth'});
+  $('player').classList.remove('open');$('finish').classList.remove('open');$('home').classList.remove('hidden');$('demo').classList.remove('prestart');$('start').hidden=false;$('pause').hidden=true;$('next').hidden=true;currentIndex=null;selectFormat('home');window.scrollTo({top:0,behavior:'smooth'});
 }
 function enterFullscreen(){
   const panel=$('projectionPanel');
@@ -711,4 +712,31 @@ document.addEventListener('DOMContentLoaded',()=>{
  const skip=document.getElementById('citEspritCritiqueSkip');if(skip)skip.onclick=citEspritCritiqueReveal;
  const resultSkip=document.getElementById('citEspritCritiqueResultSkip');if(resultSkip)resultSkip.onclick=citEspritCritiqueAdvanceFromResult;
  const finishHome=document.getElementById('citEspritCritiqueFinishHome');if(finishHome)finishHome.onclick=closeCitEspritCritiqueProto;
+});
+
+
+
+function selectFormat(which){
+ activeFormat=which;
+ const choices=document.getElementById('formatChoices');
+ const intro=document.querySelector('.format-intro');
+ const pausePanel=document.getElementById('formatPausePanel');
+ const challengePanel=document.getElementById('formatChallengePanel');
+ const onHome=which==='home';
+ choices.hidden=!onHome;intro.hidden=!onHome;
+ pausePanel.hidden=onHome||which==='challenges';
+ challengePanel.hidden=which!=='challenges';
+ if(which==='five'||which==='two'){
+   filter='ALL';
+   renderFilters();
+   renderSessions();
+   document.getElementById('formatPauseTitle').textContent=which==='five'?'Pauses actives · 5 minutes':'Pauses Express · 2 minutes';
+   document.getElementById('sessionHeading').textContent='Choisir une pause';
+ }
+ window.scrollTo({top:0,behavior:'instant'});
+}
+document.addEventListener('DOMContentLoaded',()=>{
+ document.querySelectorAll('[data-format]').forEach(b=>b.addEventListener('click',()=>selectFormat(b.dataset.format)));
+ document.querySelectorAll('.format-back').forEach(b=>b.addEventListener('click',()=>selectFormat('home')));
+ selectFormat('home');
 });
