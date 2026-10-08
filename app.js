@@ -179,6 +179,7 @@ function stopStepAudio(){
 
 let sessionStarted=false;
 function openSession(i){
+  if(sessions[i] && sessions[i].title==='Avant une évaluation') { window.location.href='respiration-avant-evaluation.html'; return; }
   document.body.classList.add('pause-prestart');
   enterFullscreen();
   
