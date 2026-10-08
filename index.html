@@ -1217,7 +1217,7 @@ body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilV
     <div class="topline"><h2 id="sessionHeading">Choisir une pause</h2></div>
     <div class="grid" id="sessions"></div>
     <div class="learn-entry"><div><span class="learn-kicker">🧠 BOUGER &amp; APPRENDRE</span><h3>Défis éducatifs actifs</h3><p>Parcours éducatif de santé et parcours citoyen · 5 questions par défi</p></div>
-<div class="learn-actions"><button id="mathProtoBtn" type="button">❤️ Santé · Bouger chaque jour</button><button id="geoProtoBtn" type="button">💧 Santé · Manger et boire</button><button id="santeSommeilProtoBtn" type="button">🌙 Santé · Sommeil et écrans</button><button id="citRespectProtoBtn" type="button">🤝 Citoyen · Respect et vivre ensemble</button><button id="citEgaliteProtoBtn" type="button">⚖️ Citoyen · Égalité filles-garçons</button><button id="citNumeriqueProtoBtn" type="button">🛡️ Citoyen · Harcèlement et numérique</button><button id="citRepubliqueProtoBtn" type="button">🏛️ Citoyen · Valeurs de la République et laïcité</button><button id="citEngagementProtoBtn" type="button">🗳️ Citoyen · Démocratie et engagement</button></div></div>
+<div class="learn-actions"><button id="mathProtoBtn" type="button">❤️ Santé · Bouger chaque jour</button><button id="geoProtoBtn" type="button">💧 Santé · Manger et boire</button><button id="santeSommeilProtoBtn" type="button">🌙 Santé · Sommeil et écrans</button><button id="citRespectProtoBtn" type="button">🤝 Citoyen · Respect et vivre ensemble</button><button id="citEgaliteProtoBtn" type="button">⚖️ Citoyen · Égalité filles-garçons</button><button id="citNumeriqueProtoBtn" type="button">🛡️ Citoyen · Harcèlement et numérique</button><button id="citRepubliqueProtoBtn" type="button">🏛️ Citoyen · Valeurs de la République et laïcité</button><button id="citEngagementProtoBtn" type="button">🗳️ Citoyen · Démocratie et engagement</button><button id="citEnvironnementProtoBtn" type="button">🌱 Citoyen · Environnement et écocitoyenneté</button><button id="citEspritCritiqueProtoBtn" type="button">🔎 Citoyen · Esprit critique et information</button></div></div>
   </section>
 
   <div class="legal-footer"><button class="legal-link" id="legalBtn" type="button">Mentions légales</button></div>
@@ -1586,6 +1586,98 @@ body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilV
         <div class="math-finish-course">On reprend le cours !</div>
         <p>5 questions pour mieux vivre ensemble et agir en citoyen.</p>
         <button id="citEngagementFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="math-proto" id="citEnvironnementProto" hidden>
+    <div class="math-shell">
+      <div class="math-top">
+        <button id="citEnvironnementBack" class="math-ghost" type="button">← Accueil</button>
+        <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🌱 Citoyen · Environnement et écocitoyenneté</h2></div>
+        <div id="citEnvironnementProgress">1 / 5</div>
+      </div>
+      <div id="citEnvironnementIntro" class="math-stage math-intro">
+        <h3 class="math-intro-title">Réponds avec ton corps !</h3>
+        <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
+        <div class="math-demo-grid">
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong>TALONS-FESSES</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong>MARCHE TURBO</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong>ROTATION DU BUSTE</strong></div>
+        </div>
+        <button id="citEnvironnementStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
+      </div>
+      <div id="citEnvironnementQuestion" class="math-stage" hidden>
+        <div class="math-label">QUESTION <span id="citEnvironnementNum">1</span></div>
+        <div id="citEnvironnementQ" class="math-q"></div>
+        <div class="math-answers math-video-answers">
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong id="citEnvironnementA"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong id="citEnvironnementB"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong id="citEnvironnementC"></strong></div>
+        </div>
+        <div class="math-think">Fais le mouvement de ta réponse</div>
+        <div class="math-question-clock"><span id="citEnvironnementQuestionCount">30</span> s</div>
+        <div class="math-clockbar"><i id="citEnvironnementClockFill"></i></div>
+        <button id="citEnvironnementSkip" class="math-skip" type="button">Suivant →</button>
+      </div>
+      <div id="citEnvironnementResult" class="math-stage" hidden>
+        <div id="citEnvironnementCorrect" class="math-correct"></div>
+        <div class="math-move-title">Bonne réponse : toute la classe continue ce mouvement !</div>
+        <video id="citEnvironnementVideo" muted loop playsinline></video>
+        <div class="math-count">Question suivante dans <span id="citEnvironnementCountdown">10</span> s</div>
+        <button id="citEnvironnementResultSkip" class="math-skip" type="button">Suivant →</button>
+      </div>
+      <div id="citEnvironnementFinish" class="math-stage" hidden>
+        <div class="math-finish-main">DÉFI TERMINÉ</div>
+        <div class="math-finish-course">On reprend le cours !</div>
+        <p>5 questions pour mieux vivre ensemble et agir en citoyen.</p>
+        <button id="citEnvironnementFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="math-proto" id="citEspritCritiqueProto" hidden>
+    <div class="math-shell">
+      <div class="math-top">
+        <button id="citEspritCritiqueBack" class="math-ghost" type="button">← Accueil</button>
+        <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🔎 Citoyen · Esprit critique et information</h2></div>
+        <div id="citEspritCritiqueProgress">1 / 5</div>
+      </div>
+      <div id="citEspritCritiqueIntro" class="math-stage math-intro">
+        <h3 class="math-intro-title">Réponds avec ton corps !</h3>
+        <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
+        <div class="math-demo-grid">
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong>TALONS-FESSES</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong>MARCHE TURBO</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong>ROTATION DU BUSTE</strong></div>
+        </div>
+        <button id="citEspritCritiqueStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
+      </div>
+      <div id="citEspritCritiqueQuestion" class="math-stage" hidden>
+        <div class="math-label">QUESTION <span id="citEspritCritiqueNum">1</span></div>
+        <div id="citEspritCritiqueQ" class="math-q"></div>
+        <div class="math-answers math-video-answers">
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong id="citEspritCritiqueA"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong id="citEspritCritiqueB"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong id="citEspritCritiqueC"></strong></div>
+        </div>
+        <div class="math-think">Fais le mouvement de ta réponse</div>
+        <div class="math-question-clock"><span id="citEspritCritiqueQuestionCount">30</span> s</div>
+        <div class="math-clockbar"><i id="citEspritCritiqueClockFill"></i></div>
+        <button id="citEspritCritiqueSkip" class="math-skip" type="button">Suivant →</button>
+      </div>
+      <div id="citEspritCritiqueResult" class="math-stage" hidden>
+        <div id="citEspritCritiqueCorrect" class="math-correct"></div>
+        <div class="math-move-title">Bonne réponse : toute la classe continue ce mouvement !</div>
+        <video id="citEspritCritiqueVideo" muted loop playsinline></video>
+        <div class="math-count">Question suivante dans <span id="citEspritCritiqueCountdown">10</span> s</div>
+        <button id="citEspritCritiqueResultSkip" class="math-skip" type="button">Suivant →</button>
+      </div>
+      <div id="citEspritCritiqueFinish" class="math-stage" hidden>
+        <div class="math-finish-main">DÉFI TERMINÉ</div>
+        <div class="math-finish-course">On reprend le cours !</div>
+        <p>5 questions pour mieux vivre ensemble et agir en citoyen.</p>
+        <button id="citEspritCritiqueFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
   </section>
