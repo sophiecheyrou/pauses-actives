@@ -724,6 +724,11 @@ function selectFormat(which){
  const pausePanel=document.getElementById('formatPausePanel');
  const challengePanel=document.getElementById('formatChallengePanel');
  const onHome=which==='home';
+ document.getElementById('home').classList.toggle('format-detail-open',!onHome);
+ const banner=document.getElementById('pauseFormatBanner');
+ const bannerImg=document.getElementById('pauseFormatBannerImage');
+ if(banner){banner.classList.toggle('format-slim-five',which!=='two');banner.classList.toggle('format-slim-two',which==='two');}
+ if(bannerImg){bannerImg.src=which==='two'?'format-banner-two.jpg':'format-banner-five.jpg';bannerImg.alt=which==='two'?'Élèves réalisant une pause Express dynamique en classe':'Élèves effectuant une pause active en classe';}
  choices.hidden=!onHome;intro.hidden=!onHome;
  pausePanel.hidden=onHome||which==='challenges';
  challengePanel.hidden=which!=='challenges';
@@ -731,7 +736,6 @@ function selectFormat(which){
    filter='ALL';
    renderFilters();
    renderSessions();
-   document.getElementById('formatPauseTitle').textContent=which==='five'?'Pauses actives · 5 min':'Pauses Express · 2 min';
    document.getElementById('sessionHeading').textContent='Choisir une pause';
  }
  window.scrollTo({top:0,behavior:'instant'});

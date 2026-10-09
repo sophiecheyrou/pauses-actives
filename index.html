@@ -1461,6 +1461,63 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
  #aboutModal .about-card{padding:18px 24px!important}
 }
 </style>
+
+<style id="v26ab-slim-format-banners">
+/* The large identity hero belongs only to the three-format landing page. */
+#home.format-detail-open>.homehero{display:none!important}
+#home.format-detail-open>.format-intro{display:none!important}
+#home.format-detail-open .format-panel-header{margin:8px 0 11px!important;gap:15px}
+#home.format-detail-open .format-panel-header h2{font-size:clamp(1.4rem,2.5vw,1.95rem)}
+#home.format-detail-open .format-panel-header p{font-size:.96rem}
+.format-slim-banner{position:relative;width:100%;aspect-ratio:2048/248;height:auto;overflow:hidden;border-radius:17px;margin:0 0 14px;border:0;box-sizing:border-box;background:#e5f1eb}
+.format-slim-banner img{width:100%;height:auto;aspect-ratio:2048/248;object-fit:contain;display:block}
+.format-slim-five{background:#fff}
+.format-slim-two{background:#fff}
+.format-slim-challenges{background:#fff}
+#home.format-detail-open .needs{margin-top:6px!important}
+#home.format-detail-open .needs h2{margin:0 0 11px!important;font-size:clamp(1.1rem,1.8vw,1.45rem)}
+#home.format-detail-open .filters{gap:9px}
+#home.format-detail-open .topline{margin-top:14px!important}
+#home.format-detail-open .challenge-groups{gap:14px}
+@media(max-width:700px){
+ #home.format-detail-open .format-panel-header{margin:4px 0 10px!important;gap:8px}
+ #home.format-detail-open .format-panel-header .format-back{min-height:40px!important;padding:9px 14px!important}
+ .format-slim-banner{height:auto;margin-bottom:12px;border-radius:13px;border-width:0}
+ #home.format-detail-open .needs h2{margin-bottom:10px!important}
+ #home.format-detail-open .filters{gap:8px}
+}
+</style>
+<style id="v26ac-instructions-in-banners">
+/* The image already carries the format name and duration: keep only Back above it. */
+#home.format-detail-open .format-panel-header{margin:3px 0 8px!important;justify-content:flex-start!important}
+.format-slim-banner .format-banner-instruction{
+ position:absolute;bottom:7px;left:3.3%;z-index:2;
+ margin:0!important;padding:0!important;
+ font-size:clamp(11px,1.16vw,17px)!important;
+ line-height:1.2!important;font-weight:650!important;
+ color:#1b4b30;white-space:nowrap;
+ text-shadow:0 1px 1px #ffffffb8;
+}
+.format-slim-two .format-banner-instruction{color:#a64513}
+.format-slim-challenges .format-banner-instruction{color:#51268a}
+@media(max-width:700px){
+ .format-slim-banner{aspect-ratio:auto!important;overflow:hidden!important}
+ .format-slim-banner img{aspect-ratio:2048/248!important;width:100%;height:auto;object-fit:contain}
+ .format-slim-banner .format-banner-instruction{position:relative;bottom:auto;left:auto;white-space:normal;
+  padding:7px 12px 9px!important;font-size:clamp(12px,3.3vw,15px)!important;
+  background:#eef7f1;text-shadow:none;}
+ .format-slim-two .format-banner-instruction{background:#fff3e9}
+ .format-slim-challenges .format-banner-instruction{background:#f3edfb}
+}
+</style>
+<style id="v26ad-instruction-placements">
+/* The photographic banners are intentionally free of instructional overlays. */
+.format-slim-banner .format-banner-instruction{display:none!important}
+#home.format-detail-open .needs .format-choice-guidance{font-size:clamp(.95rem,1.45vw,1.1rem);font-weight:500;line-height:1.45;margin:0 0 15px!important;color:#315c51;text-align:center}
+#home.format-detail-open .needs h2{margin-bottom:5px!important}
+#home.format-detail-open .challenge-choice-guidance{font-size:clamp(1rem,1.65vw,1.17rem);line-height:1.45;font-weight:550;color:#513782;text-align:center;margin:4px auto 16px!important;padding:0 10px}
+@media(max-width:700px){#home.format-detail-open .needs .format-choice-guidance{margin-bottom:12px!important}#home.format-detail-open .challenge-choice-guidance{margin-bottom:12px!important}}
+</style>
 </head>
 <body>
 <div class="app" id="app">
@@ -1497,13 +1554,16 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
     </div>
     
     <div id="formatPausePanel" class="format-panel" hidden>
-      <div class="format-panel-header"><button type="button" class="format-back"><span aria-hidden="true">←</span><span>Les trois formats</span></button><div><h2 id="formatPauseTitle">Pauses actives · 5 min</h2><p>Choisissez un besoin, puis une pause.</p></div></div>
-    <div class="needs"><h2>De quoi les élèves de ma classe ont-ils besoin maintenant ?</h2><div class="filters" id="filters"></div></div>
+      <div class="format-panel-header"><button type="button" class="format-back"><span aria-hidden="true">←</span><span>Les trois formats</span></button></div>
+    <div class="format-slim-banner format-slim-five" id="pauseFormatBanner"><img id="pauseFormatBannerImage" src="format-banner-five.jpg" alt="Élèves effectuant une pause active en classe"></div>
+    <div class="needs"><h2>De quoi les élèves de ma classe ont-ils besoin maintenant ?</h2><p class="format-choice-guidance">Choisissez un besoin, puis une pause.</p><div class="filters" id="filters"></div></div>
     <div class="topline"><h2 id="sessionHeading">Choisir une pause</h2></div>
     <div class="grid" id="sessions"></div>
     </div>
     <div id="formatChallengePanel" class="format-panel" hidden>
-      <div class="format-panel-header"><button type="button" class="format-back"><span aria-hidden="true">←</span><span>Les trois formats</span></button><div><h2>Défis éducatifs actifs · 2 min</h2><p>Choisissez un parcours, puis un défi de 5 questions.</p></div></div>
+      <div class="format-panel-header"><button type="button" class="format-back"><span aria-hidden="true">←</span><span>Les trois formats</span></button></div>
+    <div class="format-slim-banner format-slim-challenges"><img src="format-banner-challenges.jpg" alt="Élèves réalisant un défi éducatif actif en classe"></div>
+    <p class="challenge-choice-guidance">Choisissez un parcours, puis un défi de 5 questions.</p>
     <div class="learn-entry"><div><span class="learn-kicker">🧠 BOUGER &amp; APPRENDRE</span><h3>Défis éducatifs actifs</h3><p>Parcours éducatif de santé et parcours citoyen · 5 questions par défi</p></div>
 <div class="challenge-groups">
 <section class="challenge-group health"><h3>❤️ Parcours éducatif de santé</h3><div class="learn-actions"><button id="mathProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">❤️ SANTÉ</span><span class="challenge-tile-title">Bouger chaque jour</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="geoProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">💧 SANTÉ</span><span class="challenge-tile-title">Manger et boire</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="santeSommeilProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🌙 SANTÉ</span><span class="challenge-tile-title">Sommeil et écrans</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button></div></section>
