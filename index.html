@@ -1323,6 +1323,144 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
 .pause5-author-signature strong{color:#395c7d;font-weight:650}
 @media(max-width:600px){.pause5-author-signature{font-size:.76rem;line-height:1.45;margin:12px auto 4px;padding:0 14px}}
 </style>
+
+<style id="v26v-footer-about-layout">
+/* V26v : signature au pied de page, juste au-dessus des mentions légales. */
+.footer-credits{max-width:1100px;margin:26px auto 2px;padding:0 16px;text-align:center}
+.footer-credits .pause5-author-signature{margin:0!important;padding:0!important;font-size:clamp(.77rem,1.05vw,.91rem)!important;line-height:1.4!important;color:#52677f!important;font-weight:400!important}
+.footer-credits .pause5-author-signature strong{color:#234c74!important;font-weight:800!important}
+/* À propos : un espace proportionné à la contribution de chacun. */
+@media(min-width:851px){
+ #aboutModal .project-people{grid-template-columns:minmax(0,.78fr) minmax(0,1.35fr)!important;align-items:stretch;gap:12px!important;margin-top:10px!important}
+ #aboutModal .person-block{padding:12px 15px!important;border-radius:15px!important;min-width:0}
+ #aboutModal .person-block.initiative{background:linear-gradient(145deg,#f5f8fc,#fff)}
+ #aboutModal .person-block.conception{background:linear-gradient(145deg,#eafff8,#fff)}
+ #aboutModal .person-block .person-kicker{font-size:.68rem!important;margin-bottom:4px!important}
+ #aboutModal .person-block>strong{font-size:1.27rem!important}
+ #aboutModal .person-block small{font-size:.79rem!important;margin-top:3px!important}
+ #aboutModal .person-block p{font-size:.8rem!important;line-height:1.3!important;margin:6px 0!important}
+ #aboutModal .person-email{font-size:.78rem!important;overflow-wrap:anywhere}
+ #aboutModal .about-card{width:min(980px,calc(100vw - 40px))!important;max-width:980px!important;max-height:calc(100dvh - 30px)!important;padding:19px 24px!important;overflow-y:auto!important}
+ #aboutModal .about-pause5-logo{width:156px!important;max-width:30%!important;margin:0 0 7px!important}
+ #aboutModal .about-card>p{font-size:.85rem!important;line-height:1.35!important;margin:5px 0!important}
+ #aboutModal .why-active{padding:9px 13px!important;margin:8px 0 0!important}
+ #aboutModal .why-active h3{font-size:1rem!important;margin:0 0 3px!important}
+ #aboutModal .why-active p{font-size:.78rem!important;line-height:1.27!important;margin:2px 0!important}
+}
+@media(max-width:850px){.footer-credits{margin-top:18px;padding:0 14px}.footer-credits .pause5-author-signature{font-size:.77rem!important}}
+</style>
+
+<style id="v26w-layout-refinements">
+/* Une séparation plus nette entre le contenu et la signature de bas de page. */
+.footer-credits{margin-top:clamp(42px,5vw,72px)!important;margin-bottom:4px!important}
+.footer-credits .pause5-author-signature,.footer-credits .pause5-author-signature strong{font-weight:400!important;color:#52677f!important}
+/* À propos : agrandir légèrement la typographie sans augmenter fortement les blocs. */
+@media(min-width:851px){
+ #aboutModal .person-block .person-kicker{font-size:.73rem!important}
+ #aboutModal .person-block>strong{font-size:1.32rem!important}
+ #aboutModal .person-block small{font-size:.85rem!important}
+ #aboutModal .person-block p{font-size:.87rem!important;line-height:1.34!important}
+ #aboutModal .person-email{font-size:.83rem!important}
+ #aboutModal .about-card>p{font-size:.92rem!important;line-height:1.38!important}
+ #aboutModal .why-active p{font-size:.83rem!important;line-height:1.32!important}
+}
+/* Défis : cartes moins hautes, contenu et lisibilité conservés. */
+#formatChallengePanel .challenge-group .learn-actions button.challenge-tile{
+ min-height:152px!important;padding:15px 17px!important;gap:8px!important;border-radius:17px!important;
+}
+#formatChallengePanel .challenge-group{padding:17px!important}
+#formatChallengePanel .challenge-group h3{margin-bottom:11px!important}
+@media(max-width:850px){
+ .footer-credits{margin-top:42px!important}
+ #formatChallengePanel .challenge-group .learn-actions button.challenge-tile{min-height:124px!important;padding:13px 15px!important;gap:7px!important}
+}
+@media(max-width:600px){
+ #aboutModal .person-block p{font-size:.83rem!important;line-height:1.32!important}
+ #aboutModal .person-block small,#aboutModal .person-email{font-size:.81rem!important}
+ #aboutModal .about-card>p{font-size:.92rem!important;line-height:1.36!important}
+}
+</style>
+
+<style id="v26y-about-responsive-type">
+/* Une taille de corps unique pour toutes les zones de texte de la fenêtre À propos. */
+#aboutModal{--about-body-size:.92rem}
+#aboutModal .about-card>p,
+#aboutModal .why-active p,
+#aboutModal .person-block p,
+#aboutModal .person-block small,
+#aboutModal .person-email{font-size:var(--about-body-size)!important;line-height:1.38!important}
+#aboutModal .person-block .person-kicker{font-size:.82rem!important;line-height:1.2!important}
+#aboutModal .person-block>strong{font-size:1.3rem!important;line-height:1.2!important}
+#aboutModal .why-active h3{font-size:1.05rem!important}
+#aboutModal .about-card{box-sizing:border-box!important;max-width:min(980px,calc(100vw - 24px))!important;max-height:calc(100dvh - 24px)!important;overflow-y:auto!important;overscroll-behavior:contain}
+#aboutModal .about-pause5-logo{width:145px!important;margin-bottom:5px!important}
+#aboutModal .about-card>p{margin:4px 0!important}
+#aboutModal .why-active{margin-top:7px!important;padding:8px 12px!important}
+#aboutModal .why-active p{margin:2px 0!important}
+#aboutModal .project-people{margin-top:9px!important;gap:10px!important}
+#aboutModal .person-block{padding:10px 13px!important}
+#aboutModal .person-block p{margin:4px 0!important}
+@media(max-width:850px){
+ #aboutModal .project-people{grid-template-columns:1fr!important}
+ #aboutModal .about-card{padding:18px 16px!important;max-height:calc(100dvh - 16px)!important}
+ #aboutModal .about-pause5-logo{width:138px!important;max-width:55vw!important}
+}
+@media(max-width:480px){
+ #aboutModal{--about-body-size:.92rem}
+ #aboutModal .about-card{width:calc(100vw - 12px)!important;max-width:calc(100vw - 12px)!important;padding:17px 14px!important}
+ #aboutModal .person-block{padding:11px 12px!important}
+ #aboutModal .person-email{overflow-wrap:anywhere}
+}
+@media(min-width:851px) and (max-height:740px){
+ #aboutModal .about-card{padding:12px 20px!important}
+ #aboutModal .about-pause5-logo{width:115px!important;margin-bottom:2px!important}
+ #aboutModal .about-card>p{line-height:1.28!important;margin:2px 0!important}
+ #aboutModal .why-active{padding:5px 11px!important;margin-top:5px!important}
+ #aboutModal .why-active p{line-height:1.25!important;margin:1px 0!important}
+ #aboutModal .project-people{margin-top:6px!important}
+ #aboutModal .person-block{padding:7px 11px!important}
+}
+</style>
+
+<style id="v26z-about-breathing-room">
+/* Readability over forced no-scroll: keep natural line height and generous separation. */
+#aboutModal .about-card{
+  padding:clamp(20px,2.6vw,30px)!important;
+  max-height:calc(100dvh - 28px)!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+}
+#aboutModal .about-pause5-logo{margin-bottom:15px!important}
+#aboutModal .about-card h2{margin-bottom:15px!important;line-height:1.22!important}
+#aboutModal .about-card>p{
+  line-height:1.6!important;
+  margin:0 0 15px!important;
+}
+#aboutModal .why-active{
+  padding:15px 18px!important;
+  margin:15px 0!important;
+}
+#aboutModal .why-active p{
+  line-height:1.55!important;
+  margin:6px 0!important;
+}
+#aboutModal .project-people{gap:16px!important;margin-top:18px!important}
+#aboutModal .person-block{padding:17px 19px!important}
+#aboutModal .person-block .person-kicker{line-height:1.4!important;margin-bottom:7px!important}
+#aboutModal .person-block>strong{line-height:1.35!important;display:block;margin-bottom:8px!important}
+#aboutModal .person-block p{line-height:1.55!important;margin:9px 0!important}
+#aboutModal .person-email{line-height:1.5!important}
+@media(max-width:700px){
+ #aboutModal .about-card{padding:22px 18px!important;max-height:calc(100dvh - 16px)!important;scrollbar-gutter:auto}
+ #aboutModal .about-card>p{line-height:1.57!important;margin-bottom:14px!important}
+ #aboutModal .project-people{grid-template-columns:1fr!important;gap:14px!important}
+ #aboutModal .person-block{padding:16px!important}
+ #aboutModal .why-active{padding:14px 15px!important}
+}
+@media(max-height:650px) and (min-width:701px){
+ #aboutModal .about-card{padding:18px 24px!important}
+}
+</style>
 </head>
 <body>
 <div class="app" id="app">
@@ -1357,7 +1495,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
       <button class="format-choice format-two" type="button" data-format="two"><span class="format-icon">⚡</span><span class="format-name">PAUSES EXPRESS</span><strong>2 minutes</strong><span class="format-desc">Une courte pause pour se remettre en mouvement</span><span class="format-cta">Choisir les pauses →</span></button>
       <button class="format-choice format-challenge" type="button" data-format="challenges"><span class="format-icon">🧠</span><span class="format-name">DÉFIS ÉDUCATIFS ACTIFS</span><strong>≈ 2 minutes</strong><span class="format-desc">Réviser des connaissances en bougeant</span><span class="format-cta">Choisir les défis →</span></button>
     </div>
-    <p class="pause5-author-signature" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par <strong>Sophie Cheyrou</strong>, professeure d’EPS – Académie de Paris.</p>
+    
     <div id="formatPausePanel" class="format-panel" hidden>
       <div class="format-panel-header"><button type="button" class="format-back"><span aria-hidden="true">←</span><span>Les trois formats</span></button><div><h2 id="formatPauseTitle">Pauses actives · 5 min</h2><p>Choisissez un besoin, puis une pause.</p></div></div>
     <div class="needs"><h2>De quoi les élèves de ma classe ont-ils besoin maintenant ?</h2><div class="filters" id="filters"></div></div>
@@ -1374,6 +1512,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
     </div>
   </section>
 
+  <div class="footer-credits"><p class="pause5-author-signature" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></div>
   <div class="legal-footer"><button class="legal-link" id="legalBtn" type="button">Mentions légales</button></div>
 
   <section class="math-proto" id="mathProto" hidden>
@@ -1877,9 +2016,9 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
     <button class="about-close" id="legalClose" type="button" aria-label="Fermer">×</button>
     <h2 id="legalTitle">Mentions légales</h2>
     <section class="legal-section"></section>
-    <section class="legal-section"><h3>Conception et réalisation</h3><p>Le dispositif <strong>Collège Actif – Avenir Positif (CAAP)</strong> est piloté par <strong>Bruno Tréhet, IA-IPR EPS de l’Académie de Paris</strong>.</p><p><strong>PAUSE 5'</strong> a été conçu et réalisé par <strong>Sophie Cheyrou, professeure d’EPS – Académie de Paris</strong>.</p></section>
-    <section class="legal-section"><h3>Hébergement</h3><p>Le site est hébergé sur les <strong>infrastructures numériques de l’Académie de Paris</strong>.</p></section>
-    <section class="legal-section"><h3>Crédits</h3><p>Les vidéos de démonstration ont été réalisées majoritairement avec la participation d’<strong>élèves volontaires du collège Claude Debussy (Paris 15e)</strong>. Certaines séquences visuelles ont été créées à l’aide d’outils d’intelligence artificielle.</p><p>Les bandes sonores et consignes vocales ont été réalisées avec la <strong>voix de Sophie Cheyrou</strong>.</p><p>Les contenus scientifiques de la rubrique « Pourquoi bouger ? » s’appuient notamment sur les travaux et interventions du <strong>Pr François Carré</strong> et de <strong>Boris Cheval</strong>.</p></section>
+    <section class="legal-section"><h3>Conception et réalisation</h3><p>Le dispositif Collège Actif – Avenir Positif (CAAP) est piloté par Bruno Tréhet, IA-IPR EPS de l’Académie de Paris.</p><p>PAUSE 5' a été conçu et réalisé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
+    <section class="legal-section"><h3>Hébergement</h3><p>Le site est hébergé sur les infrastructures numériques de l’Académie de Paris.</p></section>
+    <section class="legal-section"><h3>Crédits</h3><p>Les vidéos de démonstration ont été réalisées majoritairement avec la participation d’élèves volontaires du collège Claude Debussy (Paris 15e). Certaines séquences visuelles ont été créées à l’aide d’outils d’intelligence artificielle.</p><p>Les bandes sonores et consignes vocales ont été réalisées avec la voix de Sophie Cheyrou.</p><p>Les contenus scientifiques de la rubrique « Pourquoi bouger ? » s’appuient notamment sur les travaux et interventions du Pr François Carré, cardiologue et de Boris Cheval, enseignant-chercheur à l'ENS de Rennes.</p></section>
     <section class="legal-section"><h3>Propriété intellectuelle</h3><p>Les contenus, textes, vidéos, illustrations, sons et ressources composant PAUSE 5' sont destinés à un usage pédagogique. Leur reproduction ou leur réutilisation doit respecter les droits attachés aux différents contenus.</p></section>
     <section class="legal-section"><h3>Données personnelles et traceurs</h3><p>PAUSE 5' ne nécessite aucune création de compte et ne collecte directement aucune donnée personnelle auprès de ses utilisateurs.</p><p>Le site n’intègre aucun dispositif publicitaire ni outil de profilage des utilisateurs.</p><p>Les liens vers des ressources scientifiques externes ne sont ouverts qu’à la demande de l’utilisateur.</p></section>
   </div>
