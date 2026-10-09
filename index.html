@@ -1301,7 +1301,29 @@ body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilV
  .tuto-overlay{padding:8px}
  .tuto-top{flex-wrap:wrap}.tuto-kicker{font-size:clamp(.72rem,3vw,.9rem)}
 }
-</style></head>
+</style>
+<style id="v26t-typography-fit">
+/* Ajustement modéré des textes des questions et réponses, sans changer les consignes. */
+body.math-mode .math-q{font-size:clamp(2.7rem,6.4vh,5.5rem)!important;line-height:1.12!important;overflow-wrap:anywhere}
+body.math-mode .math-video-answers strong{font-size:clamp(1.45rem,2.65vw,2.65rem)!important;line-height:1.13!important;overflow-wrap:anywhere;hyphens:auto}
+body.math-mode .math-video-answers>div{min-width:0!important;overflow:hidden!important}
+body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
+@media(max-width:700px){
+ body.math-mode .math-q{font-size:clamp(1.95rem,8.7vw,3.35rem)!important}
+ body.math-mode .math-video-answers strong{font-size:clamp(.92rem,3.6vw,1.28rem)!important;line-height:1.15!important}
+}
+@media(max-width:420px){body.math-mode .math-video-answers strong{font-size:clamp(.83rem,3.3vw,1.1rem)!important}}
+/* Consignes des pauses actives : légère réduction et retour à la ligne dans leur encadré. */
+#projectionPanel.projector-mode .phase p.instruction-card{font-size:clamp(.91rem,1.45vw,1.38rem)!important;line-height:1.2!important;overflow-wrap:anywhere}
+@media(max-height:760px) and (min-width:701px){#projectionPanel.projector-mode .phase p.instruction-card{font-size:clamp(.88rem,1.3vw,1.24rem)!important}}
+</style>
+
+<style id="v26u-signature-style">
+.pause5-author-signature{margin:16px auto 5px;max-width:980px;text-align:center;font-size:clamp(.76rem,1.25vw,.89rem);line-height:1.5;color:#667a8f;font-weight:450;padding:0 14px}
+.pause5-author-signature strong{color:#395c7d;font-weight:650}
+@media(max-width:600px){.pause5-author-signature{font-size:.76rem;line-height:1.45;margin:12px auto 4px;padding:0 14px}}
+</style>
+</head>
 <body>
 <div class="app" id="app">
   <header class="institutional" aria-label="Académie de Paris">
@@ -1335,6 +1357,7 @@ body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilV
       <button class="format-choice format-two" type="button" data-format="two"><span class="format-icon">⚡</span><span class="format-name">PAUSES EXPRESS</span><strong>2 minutes</strong><span class="format-desc">Une courte pause pour se remettre en mouvement</span><span class="format-cta">Choisir les pauses →</span></button>
       <button class="format-choice format-challenge" type="button" data-format="challenges"><span class="format-icon">🧠</span><span class="format-name">DÉFIS ÉDUCATIFS ACTIFS</span><strong>≈ 2 minutes</strong><span class="format-desc">Réviser des connaissances en bougeant</span><span class="format-cta">Choisir les défis →</span></button>
     </div>
+    <p class="pause5-author-signature" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par <strong>Sophie Cheyrou</strong>, professeure d’EPS – Académie de Paris.</p>
     <div id="formatPausePanel" class="format-panel" hidden>
       <div class="format-panel-header"><button type="button" class="format-back"><span aria-hidden="true">←</span><span>Les trois formats</span></button><div><h2 id="formatPauseTitle">Pauses actives · 5 min</h2><p>Choisissez un besoin, puis une pause.</p></div></div>
     <div class="needs"><h2>De quoi les élèves de ma classe ont-ils besoin maintenant ?</h2><div class="filters" id="filters"></div></div>
@@ -1878,8 +1901,8 @@ body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilV
       
     </div>
     <div class="project-people">
-      <div class="person-block initiative"><span class="person-kicker">UNE INITIATIVE DE</span><strong>Bruno TRÉHET</strong><small>IA-IPR EPS · Académie de Paris</small><p>Pilotage du dispositif <b>« Collège Actif – Avenir Positif »</b></p><a class="person-email" href="mailto:bruno.trehet@ac-paris.fr?subject=Demande%20d%27informations%20-%20PAUSE%205%27&amp;body=Bonjour%20Monsieur%20Tr%C3%A9het%2C%0D%0A%0D%0AJe%20souhaiterais%20obtenir%20des%20informations%20compl%C3%A9mentaires%20sur%20l%27outil%20PAUSE%205%27.%0D%0A%0D%0ABien%20cordialement%2C">✉ bruno.trehet@ac-paris.fr</a></div>
-      <div class="person-block conception"><span class="person-kicker">CONCEPTION ET RÉALISATION DE L’OUTIL</span><strong>Sophie CHEYROU</strong><small>Professeure d’EPS · Académie de Paris</small><a class="person-email" href="mailto:sophie.cheyrou@ac-paris.fr?subject=Demande%20d%27informations%20-%20PAUSE%205%27&amp;body=Bonjour%20Madame%20Cheyrou%2C%0D%0A%0D%0AJe%20souhaiterais%20obtenir%20des%20informations%20compl%C3%A9mentaires%20sur%20l%27outil%20PAUSE%205%27.%0D%0A%0D%0ABien%20cordialement%2C">✉ sophie.cheyrou@ac-paris.fr</a></div>
+      <div class="person-block initiative"><span class="person-kicker">PILOTAGE DU RÉSEAU CAAP</span><strong>Bruno TRÉHET</strong><small>IA-IPR EPS · Académie de Paris</small><p>Pilotage du dispositif <b>« Collège Actif – Avenir Positif »</b></p><a class="person-email" href="mailto:bruno.trehet@ac-paris.fr?subject=Demande%20d%27informations%20-%20PAUSE%205%27&amp;body=Bonjour%20Monsieur%20Tr%C3%A9het%2C%0D%0A%0D%0AJe%20souhaiterais%20obtenir%20des%20informations%20compl%C3%A9mentaires%20sur%20l%27outil%20PAUSE%205%27.%0D%0A%0D%0ABien%20cordialement%2C">✉ bruno.trehet@ac-paris.fr</a></div>
+      <div class="person-block conception"><span class="person-kicker">CONCEPTION ET DÉVELOPPEMENT DE PAUSE 5’</span><strong>Sophie CHEYROU</strong><small>Professeure d’EPS · Académie de Paris</small><p>PAUSE 5’ est un outil pédagogique imaginé, conçu et développé à l’initiative de <strong>Sophie Cheyrou</strong>. Il est mis gratuitement à disposition des enseignants pour favoriser l’activité physique, l’attention et le bien-être des élèves en classe. Son déploiement s’inscrit dans le cadre du réseau <strong>Collèges Actifs – Avenir Positif (CAAP)</strong> de l’académie de Paris.</p><a class="person-email" href="mailto:sophie.cheyrou@ac-paris.fr?subject=Demande%20d%27informations%20-%20PAUSE%205%27&amp;body=Bonjour%20Madame%20Cheyrou%2C%0D%0A%0D%0AJe%20souhaiterais%20obtenir%20des%20informations%20compl%C3%A9mentaires%20sur%20l%27outil%20PAUSE%205%27.%0D%0A%0D%0ABien%20cordialement%2C">✉ sophie.cheyrou@ac-paris.fr</a></div>
     </div>
   </div>
 </div>
@@ -2087,7 +2110,7 @@ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
   {title:"Bienvenue dans PAUSE 5’",text:"Quelques minutes pour bouger, respirer, se recentrer ou apprendre autrement, directement en classe.",note:"Sur place · Sans matériel · Pour toutes les disciplines.",icons:"🏫 🌿 ✨"},
   {title:"Choisissez votre format",text:"Trois possibilités : Pauses actives (5 minutes), Pauses Express (2 minutes) et Défis éducatifs actifs (environ 2 minutes).",note:"Sélectionnez le format qui correspond au temps dont vous disposez.",icons:"🟢 🟠 🟣"},
   {title:"Identifiez le besoin de la classe",text:"Se réveiller, bouger, se concentrer, s’étirer ou se calmer : choisissez la pause adaptée au moment de la journée.",note:"Les défis permettent aussi d’aborder quelques points des parcours éducatifs.",icons:"⚡ 🏃 🎯 🌿 🌙"},
-  {title:"Projetez et commencer la séance",text:"Projetez PAUSE 5’ au tableau, allumez les enceintes si vous en avez, pour entendre les consignes audio, puis cliquez sur Démarrer.",note:"Les boutons Pause, Étape suivante et Plein écran restent à votre disposition. Le bouton « Pourquoi bouger ? » vous servira de support pour expliquer aux élèves l’intérêt des pauses actives en classe.",icons:"🖥️ ▶️ ⏸️"},
+  {title:"Projetez et commencer la séance",text:"Projetez PAUSE 5’ au tableau, allumez les enceintes (si vous en avez) pour entendre les consignes audio, puis cliquez sur Démarrer.",note:"Les boutons Pause, Étape suivante et Plein écran restent à votre disposition. Le bouton « Pourquoi bouger ? » vous servira de support pour expliquer aux élèves l’intérêt des pauses actives en classe.",icons:"🖥️ ▶️ ⏸️"},
   {title:"Installez un rituel souple et inclusif",text:"Invitez chacun(e) à participer à son rythme et selon ses possibilités. Plusieurs mouvements sont adaptables en position assise. Reprenez ensuite votre cours.",note:"Pas besoin d’être professeur d’EPS pour faire bouger sa classe !",icons:"🤝 🪑 🌟"}
  ];
  let step=0,previousFocus=null;
