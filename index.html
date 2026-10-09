@@ -228,6 +228,11 @@
 .phase p.instruction-card{color:#183b5b;font-family:inherit;font-size:clamp(1.1rem,1.8vw,1.9rem);line-height:1.18;font-weight:850;margin:10px 0 0;letter-spacing:-.01em}
 .panel.projector-mode .phase p.instruction-card{font-size:clamp(1.45rem,2.2vw,2.5rem)}
 
+/* V26af : crédits absents pendant les séances et sur l'écran de fin ; mentions sous le panneau de fin. */
+body:has(#player.open) .footer-credits,
+body:has(#finish.open) .footer-credits {display:none!important}
+body:has(#player.open) .legal-footer {display:none!important}
+body:has(#finish.open) .legal-footer {margin-top:12px!important;padding-top:4px!important}
 </style>
 
 <style>
@@ -1589,7 +1594,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
   </section>
 
   <div class="footer-credits"><p class="pause5-author-signature" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></div>
-  <div class="legal-footer"><button class="legal-link" id="legalBtn" type="button">Mentions légales</button></div>
+
 
   <section class="math-proto" id="mathProto" hidden>
     <div class="math-shell">
@@ -2071,6 +2076,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
   </section>
 
   <section class="finish" id="finish"><div class="check">✓</div><div class="eyebrow">PAUSE TERMINÉE</div><h2>On reprend le cours !</h2><p id="finishText">5 minutes de mouvement. La classe peut reprendre le cours.</p><div id="pulseAlt" class="pulse-alt" hidden></div><button class="primary" id="finishBtn">Retour à l'accueil</button></section>
+  <div class="legal-footer"><button class="legal-link" id="legalBtn" type="button">Mentions légales</button></div>
 </div>
 
 <div class="about-modal why-modal" id="whyModal" hidden role="dialog" aria-modal="true" aria-labelledby="whyTitle">
