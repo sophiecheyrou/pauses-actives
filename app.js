@@ -731,7 +731,7 @@ function selectFormat(which){
    filter='ALL';
    renderFilters();
    renderSessions();
-   document.getElementById('formatPauseTitle').textContent=which==='five'?'Pauses actives · 5 minutes':'Pauses Express · 2 minutes';
+   document.getElementById('formatPauseTitle').textContent=which==='five'?'Pauses actives · 5 min':'Pauses Express · 2 min';
    document.getElementById('sessionHeading').textContent='Choisir une pause';
  }
  window.scrollTo({top:0,behavior:'instant'});

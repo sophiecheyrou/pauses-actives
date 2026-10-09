@@ -1282,7 +1282,26 @@ body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilV
 .fullscreen-btn:focus-visible{outline:3px solid #efab22;outline-offset:3px}
 @media(max-width:480px){.fullscreen-btn{min-width:120px}}
 </style>
-</head>
+<style id="v26s-mobile-layout">
+.hero-mobile{display:none}
+@media(max-width:700px){
+ .homehero.homehero-banner{width:100%;height:auto!important;overflow:visible!important}
+ .hero-banner-img{display:none!important}
+ .hero-mobile{display:block;width:100%;background:#f1f9ff;overflow:hidden}
+ .hero-mobile-photo{display:block;width:100%;height:auto;aspect-ratio: 1.55/1;object-fit:cover;object-position:center}
+ .hero-mobile-copy{padding:18px clamp(16px,5vw,28px) 20px;background:linear-gradient(135deg,#fff 0%,#eaf8ff 100%);text-align:left}
+ .hero-mobile-copy h1{font-size:clamp(2.5rem,11vw,4rem);line-height:1;margin:0 0 12px;color:#092e64;font-weight:950}
+ .hero-mobile-motto{display:flex;flex-wrap:wrap;gap:5px 12px;font-weight:950;font-size:clamp(1.14rem,5.4vw,1.7rem);line-height:1.15}
+ .hero-mobile-motto span:nth-child(1){color:#06a7b7}.hero-mobile-motto span:nth-child(2){color:#f06e4c}.hero-mobile-motto span:nth-child(3){color:#8436bb}
+ .hero-mobile-tag{font-weight:850;color:#102c4e;font-size:1rem;margin:12px 0 8px}
+ .hero-mobile-description{font-size:clamp(1rem,4.1vw,1.18rem);line-height:1.4;color:#1b3e67;margin:0;max-width:38ch}
+ .tuto-visual{width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:3.4/1!important;display:block!important;min-height:0!important;overflow:hidden!important}
+ .tuto-visual img{display:block!important;width:100%!important;height:auto!important;aspect-ratio:3.4/1!important;object-fit:contain!important;max-width:100%!important}
+ .tuto-panel{width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:clamp(13px,4vw,22px)}
+ .tuto-overlay{padding:8px}
+ .tuto-top{flex-wrap:wrap}.tuto-kicker{font-size:clamp(.72rem,3vw,.9rem)}
+}
+</style></head>
 <body>
 <div class="app" id="app">
   <header class="institutional" aria-label="Académie de Paris">
@@ -1302,6 +1321,10 @@ body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilV
   <section class="home" id="home">
     <div class="homehero homehero-banner">
       <img class="hero-banner-img" src="hero-banner.jpg" alt="PAUSE 5' · Bouger. Respirer. Apprendre. Une classe en mouvement, des élèves plus engagés !">
+      <div class="hero-mobile" aria-label="PAUSE 5’ : Bouger, respirer, apprendre">
+        <img class="hero-mobile-photo" src="hero-mobile.jpg" alt="Élèves réalisant ensemble une pause active en classe">
+        <div class="hero-mobile-copy"><h1>PAUSE 5’</h1><div class="hero-mobile-motto"><span>BOUGER.</span><span>RESPIRER.</span><span>APPRENDRE.</span></div><p class="hero-mobile-tag">Sur place · Sans matériel</p><p class="hero-mobile-description">Des pauses actives et ludiques pour plus d’énergie, de bien-être et de réussite !</p></div>
+      </div>
     </div>
     <div class="format-intro">
       <h2>Choisissez votre format</h2>
@@ -1313,13 +1336,13 @@ body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilV
       <button class="format-choice format-challenge" type="button" data-format="challenges"><span class="format-icon">🧠</span><span class="format-name">DÉFIS ÉDUCATIFS ACTIFS</span><strong>≈ 2 minutes</strong><span class="format-desc">Réviser des connaissances en bougeant</span><span class="format-cta">Choisir les défis →</span></button>
     </div>
     <div id="formatPausePanel" class="format-panel" hidden>
-      <div class="format-panel-header"><button type="button" class="format-back"><span aria-hidden="true">←</span><span>Les trois formats</span></button><div><h2 id="formatPauseTitle">Pauses actives · 5 minutes</h2><p>Choisissez un besoin, puis une pause.</p></div></div>
+      <div class="format-panel-header"><button type="button" class="format-back"><span aria-hidden="true">←</span><span>Les trois formats</span></button><div><h2 id="formatPauseTitle">Pauses actives · 5 min</h2><p>Choisissez un besoin, puis une pause.</p></div></div>
     <div class="needs"><h2>De quoi les élèves de ma classe ont-ils besoin maintenant ?</h2><div class="filters" id="filters"></div></div>
     <div class="topline"><h2 id="sessionHeading">Choisir une pause</h2></div>
     <div class="grid" id="sessions"></div>
     </div>
     <div id="formatChallengePanel" class="format-panel" hidden>
-      <div class="format-panel-header"><button type="button" class="format-back"><span aria-hidden="true">←</span><span>Les trois formats</span></button><div><h2>Défis éducatifs actifs · ≈ 2 minutes</h2><p>Choisissez un parcours, puis un défi de cinq questions.</p></div></div>
+      <div class="format-panel-header"><button type="button" class="format-back"><span aria-hidden="true">←</span><span>Les trois formats</span></button><div><h2>Défis éducatifs actifs · 2 min</h2><p>Choisissez un parcours, puis un défi de 5 questions.</p></div></div>
     <div class="learn-entry"><div><span class="learn-kicker">🧠 BOUGER &amp; APPRENDRE</span><h3>Défis éducatifs actifs</h3><p>Parcours éducatif de santé et parcours citoyen · 5 questions par défi</p></div>
 <div class="challenge-groups">
 <section class="challenge-group health"><h3>❤️ Parcours éducatif de santé</h3><div class="learn-actions"><button id="mathProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">❤️ SANTÉ</span><span class="challenge-tile-title">Bouger chaque jour</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="geoProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">💧 SANTÉ</span><span class="challenge-tile-title">Manger et boire</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="santeSommeilProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🌙 SANTÉ</span><span class="challenge-tile-title">Sommeil et écrans</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button></div></section>
@@ -2063,9 +2086,9 @@ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
  const slides=[
   {title:"Bienvenue dans PAUSE 5’",text:"Quelques minutes pour bouger, respirer, se recentrer ou apprendre autrement, directement en classe.",note:"Sur place · Sans matériel · Pour toutes les disciplines.",icons:"🏫 🌿 ✨"},
   {title:"Choisissez votre format",text:"Trois possibilités : Pauses actives (5 minutes), Pauses Express (2 minutes) et Défis éducatifs actifs (environ 2 minutes).",note:"Sélectionnez le format qui correspond au temps dont vous disposez.",icons:"🟢 🟠 🟣"},
-  {title:"Identifiez le besoin de la classe",text:"Se réveiller, bouger, se concentrer, s’étirer ou se calmer : choisissez la pause adaptée au moment de la journée.",note:"Les défis éducatifs permettent aussi de réviser en mouvement.",icons:"⚡ 🏃 🎯 🌿 🌙"},
-  {title:"Projetez et lancez la séance",text:"Projetez PAUSE 5’ au tableau ou au vidéoprojecteur. Allumez les enceintes, si vous en avez, pour entendre les consignes audio, puis cliquez sur Démarrer.",note:"Les boutons Pause, Étape suivante et Plein écran restent à votre disposition. Le bouton « Pourquoi bouger ? » vous aide à expliquer aux élèves pourquoi ces pauses actives sont instaurées en classe.",icons:"🖥️ ▶️ ⏸️"},
-  {title:"Installez un rituel souple et inclusif",text:"Invitez chacun à participer à son rythme. Plusieurs mouvements sont adaptables en position assise. Reprenez ensuite votre cours.",note:"Pas besoin d’être professeur d’EPS pour faire bouger sa classe !",icons:"🤝 🪑 🌟"}
+  {title:"Identifiez le besoin de la classe",text:"Se réveiller, bouger, se concentrer, s’étirer ou se calmer : choisissez la pause adaptée au moment de la journée.",note:"Les défis permettent aussi d’aborder quelques points des parcours éducatifs.",icons:"⚡ 🏃 🎯 🌿 🌙"},
+  {title:"Projetez et commencer la séance",text:"Projetez PAUSE 5’ au tableau, allumez les enceintes si vous en avez, pour entendre les consignes audio, puis cliquez sur Démarrer.",note:"Les boutons Pause, Étape suivante et Plein écran restent à votre disposition. Le bouton « Pourquoi bouger ? » vous servira de support pour expliquer aux élèves l’intérêt des pauses actives en classe.",icons:"🖥️ ▶️ ⏸️"},
+  {title:"Installez un rituel souple et inclusif",text:"Invitez chacun(e) à participer à son rythme et selon ses possibilités. Plusieurs mouvements sont adaptables en position assise. Reprenez ensuite votre cours.",note:"Pas besoin d’être professeur d’EPS pour faire bouger sa classe !",icons:"🤝 🪑 🌟"}
  ];
  let step=0,previousFocus=null;
  const modal=$('tutorialOverlay'),panel=modal.querySelector('.tuto-panel');
