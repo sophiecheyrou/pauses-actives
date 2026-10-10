@@ -47,11 +47,11 @@ P('SE RECENTRER','Un point',45,'👁️','Fixe un point.','Mains relâchées.','
 P('RESPIRER','Souffle calme',50,'🌬️','Respirer naturellement.','Posture confortable.','videos/avant-une-evaluation-07-souffle-calme.mp4','audio/avant-une-evaluation-07-souffle-calme.mp3')]},
 {cat:'RELAX',title:'Retour de récréation',tag:"MON DÉFI : après l'exercice de respiration, mon nombre de battements cardiaque est-il plus bas ?",intensity:1,steps:[
 P('APPRENDRE','Prendre son pouls',30,'❤️','Pose doucement 2 doigts sur un seul côté du cou, sous la mâchoire. Cherche tes pulsations cardiaques','','videos/retour-de-recreation-01-prendre-son-pouls.mp4','audio/retour-de-recreation-01-prendre-son-pouls.mp3'),
-P('MESURER','1re mesure – 30 s',30,'⏱️','Compte chaque pulsation cardiaque pendant 30 secondes.','','videos/retour-de-recreation-02-1re-mesure-30-s.mp4','audio/retour-de-recreation-02-1re-mesure-30-s.mp3'),
-P('MÉMORISER','Mon repère de départ',15,'🧠','Retiens ton nombre de pulsations cardiaques.','','videos/retour-de-recreation-03-mon-repere-de-depart.mp4','audio/retour-de-recreation-03-mon-repere-de-depart.mp3'),
+P('MESURER','1re mesure – 30 s',35,'⏱️','Compte chaque pulsation cardiaque pendant 30 secondes.','','videos/retour-de-recreation-02-1re-mesure-30-s.mp4','audio/retour-de-recreation-02-1re-mesure-30-s.mp3'),
+P('MÉMORISER','Mon repère de départ',10,'🧠','Retiens ton nombre de pulsations cardiaques.','','videos/retour-de-recreation-03-mon-repere-de-depart.mp4','audio/retour-de-recreation-03-mon-repere-de-depart.mp3'),
 P('RESPIRER','Respiration lente',180,'🌬️','Inspire lentement… Expire encore plus lentement. Relâche les épaules.','','videos/retour-de-recreation-04-respiration-lente.mp4','audio/retour-de-recreation-04-respiration-lente.mp3'),
-P('MESURER','2e mesure – 30 s',30,'⏱️','Reprends ton pouls de la même façon. Compte les pulsations cardiaques pendant 30 secondes.','','videos/retour-de-recreation-05-2e-mesure-30-s.mp4','audio/retour-de-recreation-05-2e-mesure-30-s.mp3'),
-P('COMPARER','Mon défi',15,'🎯','Compare avec ton premier nombre. Ton pouls a-t-il diminué ?','','videos/retour-de-recreation-06-mon-defi.mp4','audio/retour-de-recreation-06-mon-defi.mp3')]},
+P('MESURER','2e mesure – 30 s',35,'⏱️','Reprends ton pouls de la même façon. Compte les pulsations cardiaques pendant 30 secondes.','','videos/retour-de-recreation-05-2e-mesure-30-s.mp4','audio/retour-de-recreation-05-2e-mesure-30-s.mp3'),
+P('COMPARER','Mon défi',10,'🎯','Compare avec ton premier nombre. Ton pouls a-t-il diminué ?','','videos/retour-de-recreation-06-mon-defi.mp4','audio/retour-de-recreation-06-mon-defi.mp3')]},
 {cat:'RELAX',title:'Fin de journée',tag:'Délier, relâcher et terminer calmement',intensity:1,steps:[
 P('MOBILITÉ','Poignets',35,'🤲','Bouge doucement les poignets.','Même mouvement.','videos/fin-de-journee-01-poignets.mp4','audio/fin-de-journee-01-poignets.mp3'),
 P('RELÂCHEMENT','Épaules',40,'🔄','Fais rouler les épaules.','Même mouvement.','videos/fin-de-journee-02-epaules.mp4','audio/fin-de-journee-02-epaules.mp3'),
@@ -74,7 +74,7 @@ let soundEnabled=true;
 let filter='ALL', currentIndex=null, stepIndex=0, remaining=0, totalRemaining=300, interval=null, running=false, countdownRunning=false, finishing=false;
 let surpriseSeen=new Set(), surpriseTimer=null, freezeCountdownTimer=null;
 const $=id=>document.getElementById(id);
-const MEDIA_VERSION='v26aj-20261010-corrections-synchro';
+const MEDIA_VERSION='v26ao-20261010-mesures-pouls';
 function freshMediaUrl(src){
   if(!src) return src;
   const sep=src.includes('?')?'&':'?';
@@ -387,9 +387,9 @@ function checkPlayfulSurprises(){
   if(stepIndex===6&&elapsed>=10)E('eval-focus','🎯','FOCUS','Une respiration après l’autre.','challenge',22);
  }
  if(title==='Retour de récréation'){
-  if(stepIndex===1&&elapsed>=1)E('pulse-one','❤️','PREMIER REPÈRE','Comptez précisément vos pulsations.','challenge',22);
+  if(stepIndex===1&&elapsed>=0)E('pulse-one','❤️','PREMIER REPÈRE','Comptez précisément vos pulsations.','challenge',30);
   if(stepIndex===3&&elapsed>=45)E('pulse-slow','🐢','RALENTI','Allongez doucement l’expiration.','slow',25);
-  if(stepIndex===4&&elapsed>=1)E('pulse-two','❤️','DEUXIÈME REPÈRE','Même méthode : comptez vos pulsations.','challenge',22);
+  if(stepIndex===4&&elapsed>=0)E('pulse-two','❤️','DEUXIÈME REPÈRE','Même méthode : comptez vos pulsations.','challenge',30);
  }
  if(title==='Express Réveil – 2′'){
   if(stepIndex===1&&elapsed>=8)E('express-reveil-mirror','🪞','MIROIR','Suivez exactement les squats de la vidéo.','mirror',12);
