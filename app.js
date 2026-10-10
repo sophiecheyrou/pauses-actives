@@ -325,7 +325,7 @@ function showSurprise(key,icon,title,text,kind,duration){
     return;
   }
   // BOOST et MIROIR disposent eux aussi de leur son générique dédié.
-  const surpriseAudio=(kind==='synchro' && key==='express-bouger-synchro') ? 'audio/synchro-express-bouger.mp3' : {boost:'audio/boost.mp3',mirror:'audio/miroir.mp3',turbo:'audio/turbo.mp3',synchro:'audio/synchro.mp3'}[kind];
+  const surpriseAudio=(kind==='synchro' && (key==='express-bouger-synchro'||key==='express-focus-synchro')) ? 'audio/synchro-express-bouger.mp3' : {boost:'audio/boost.mp3',mirror:'audio/miroir.mp3',turbo:'audio/turbo.mp3',synchro:'audio/synchro.mp3'}[kind];
   const sa=$('cueAudio');
   // Ces deux étapes possèdent déjà une annonce vocale de synchro : ne pas la doubler.
   const synchroAlreadyAnnounced=(key==='matin-synchro'||key==='aprem-synchro'||key==='defouler-synchro'||key==='exo-synchro');
