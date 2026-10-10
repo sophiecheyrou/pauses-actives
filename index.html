@@ -1579,6 +1579,11 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
   margin-right: auto !important;
 }
 </style>
+<style id="v26at-challenge-credits">
+body.math-mode .footer-credits{display:none!important}
+.challenge-bottom-credit{display:none;text-align:center;width:100%;box-sizing:border-box;margin:18px auto 8px;padding:0 16px;color:#52677f;font-size:clamp(.75rem,1vw,.88rem);line-height:1.5;font-weight:400}
+body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
+</style>
 </head>
 <body>
 <div class="app" id="app">
@@ -1648,7 +1653,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
         <div class="math-demo-grid">
           <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong>BRAS EN L’AIR</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong>DEMI-SQUAT</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong>SQUAT</strong></div>
           <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong>GENOUX ALTERNÉS</strong></div>
         </div>
         <button id="mathStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
@@ -1680,7 +1685,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <button id="mathFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
-  </section>
+  <p class="challenge-bottom-credit" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
 
   <section class="math-proto" id="geoProto" hidden>
     <div class="math-shell">
@@ -1693,9 +1698,9 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
         <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
         <div class="math-demo-grid">
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-04-coude-genou-croise.mp4"></video><strong>BRAS EN L’AIR</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-06-squat-bras.mp4"></video><strong>DEMI-SQUAT</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-06-boxe.mp4"></video><strong>GENOUX ALTERNÉS</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-04-coude-genou-croise.mp4"></video><strong>COUDE-GENOU OPPOSÉ</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-06-squat-bras.mp4"></video><strong>SQUAT-BRAS</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-06-boxe.mp4"></video><strong>BOXE : DROITE-GAUCHE</strong></div>
         </div>
         <button id="geoStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
       </div>
@@ -1726,7 +1731,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <button id="geoFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
-  </section>
+  <p class="challenge-bottom-credit" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
 
   <section class="math-proto" id="santeSommeilProto" hidden>
     <div class="math-shell">
@@ -1739,9 +1744,9 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
         <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
         <div class="math-demo-grid">
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-03-talons-fesses.mp4"></video><strong>BRAS EN L’AIR</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-05-marche-turbo.mp4"></video><strong>DEMI-SQUAT</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-04-rotation-du-buste.mp4"></video><strong>GENOUX ALTERNÉS</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-03-talons-fesses.mp4"></video><strong>TALONS-FESSES</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-05-marche-turbo.mp4"></video><strong>MARCHE ACTIVE</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-04-rotation-du-buste.mp4"></video><strong>ROTATIONS DU BUSTE</strong></div>
         </div>
         <button id="santeSommeilStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
       </div>
@@ -1772,7 +1777,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <button id="santeSommeilFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
-  </section>
+  <p class="challenge-bottom-credit" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
 
   <section class="math-proto" id="citRespectProto" hidden>
     <div class="math-shell">
@@ -1818,7 +1823,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <button id="citRespectFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
-  </section>
+  <p class="challenge-bottom-credit" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
 
   <section class="math-proto" id="citEgaliteProto" hidden>
     <div class="math-shell">
@@ -1864,7 +1869,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <button id="citEgaliteFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
-  </section>
+  <p class="challenge-bottom-credit" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
 
   <section class="math-proto" id="citNumeriqueProto" hidden>
     <div class="math-shell">
@@ -1910,7 +1915,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <button id="citNumeriqueFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
-  </section>
+  <p class="challenge-bottom-credit" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
 
   <section class="math-proto" id="citRepubliqueProto" hidden>
     <div class="math-shell">
@@ -1956,7 +1961,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <button id="citRepubliqueFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
-  </section>
+  <p class="challenge-bottom-credit" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
 
   <section class="math-proto" id="citEngagementProto" hidden>
     <div class="math-shell">
@@ -2002,7 +2007,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <button id="citEngagementFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
-  </section>
+  <p class="challenge-bottom-credit" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
 
   <section class="math-proto" id="citEnvironnementProto" hidden>
     <div class="math-shell">
@@ -2048,7 +2053,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <button id="citEnvironnementFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
-  </section>
+  <p class="challenge-bottom-credit" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
 
   <section class="math-proto" id="citEspritCritiqueProto" hidden>
     <div class="math-shell">
@@ -2094,7 +2099,7 @@ body.math-mode .math-video-answers span{overflow-wrap:anywhere;hyphens:auto}
         <button id="citEspritCritiqueFinishHome" class="math-primary" type="button">← Retour à l'accueil</button>
       </div>
     </div>
-  </section>
+  <p class="challenge-bottom-credit" aria-label="Crédits de création">PAUSE 5’ · Un outil pédagogique conçu et développé par Sophie Cheyrou, professeure d’EPS – Académie de Paris.</p></section>
 
   <section class="player" id="player">
     <div class="playerbar">
