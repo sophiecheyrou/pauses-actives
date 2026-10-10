@@ -54,7 +54,7 @@ P('MESURER','2e mesure – 30 s',35,'⏱️','Reprends ton pouls de la même fa�
 P('COMPARER','Mon défi',10,'🎯','Compare avec ton premier nombre. Ton pouls a-t-il diminué ?','','videos/retour-de-recreation-06-mon-defi.mp4','audio/retour-de-recreation-06-mon-defi.mp3')]},
 {cat:'RELAX',title:'Fin de journée',tag:'Délier, relâcher et terminer calmement',intensity:1,steps:[
 P('MOBILITÉ','Poignets',35,'🤲','Bouge doucement les poignets.','Même mouvement.','videos/fin-de-journee-01-poignets.mp4','audio/fin-de-journee-01-poignets.mp3'),
-P('RELÂCHEMENT','Épaules',40,'🔄','Fais rouler les épaules.','Même mouvement.','videos/fin-de-journee-02-epaules.mp4','audio/fin-de-journee-02-epaules.mp3'),
+P('RELÂCHEMENT','Épaules',40,'🔄',"Fais de grands cercles vers l'arrière",'Même mouvement.','videos/fin-de-journee-02-epaules.mp4','audio/fin-de-journee-02-epaules.mp3'),
 P('OUVERTURE','Poitrine',40,'↔️','Ouvre… puis relâche.','Sans cambrer.','videos/fin-de-journee-03-poitrine.mp4','audio/fin-de-journee-03-poitrine.mp3'),
 P('MOBILITÉ','Rotation',40,'🌿','Tourne doucement le buste.','Amplitude confortable.','videos/fin-de-journee-04-rotation.mp4','audio/fin-de-journee-04-rotation.mp3'),
 P('ÉTIREMENT','Grandir',35,'🙌','Grandis-toi… relâche.','Même mouvement.','videos/fin-de-journee-05-grandir.mp4','audio/fin-de-journee-05-grandir.mp3'),
@@ -409,7 +409,7 @@ function checkPlayfulSurprises(){
  if(title==='Fin de journée'){
   if(stepIndex===1&&elapsed>=12)E('fin-slow','🐢','RALENTI','Faites le mouvement encore plus lentement.','slow',18);
   if(stepIndex===4&&elapsed>=12)E('fin-silence','🤫','SILENCE','Continuez sans aucun bruit.','silence',18);
-  if(stepIndex===7&&elapsed>=5)E('fin-synchro','🌬️','SYNCHRO','Terminez par une respiration calme, tous ensemble.','synchro',20);
+  // Fin de journée : aucune animation ni annonce SYNCHRO pendant la respiration finale.
  }
 }
 function startSessionClock(){
