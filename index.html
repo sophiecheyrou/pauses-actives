@@ -309,6 +309,13 @@ body.math-mode .math-video-answers strong{font-size:clamp(1rem,1.7vw,1.7rem)!imp
  body.math-mode .math-video-answers strong{font-size:1.13rem!important}
 }
 
+
+/* V26bl : son immédiatement à gauche de la pagination, dans tous les défis. */
+.math-top .challenge-progress-group{display:flex;align-items:center;justify-content:flex-end;gap:9px;white-space:nowrap;min-width:0}
+.math-top .challenge-progress-group .challenge-sound-btn{position:static!important;display:inline-flex!important;align-items:center;justify-content:center;font-size:.76rem!important;padding:7px 9px!important;flex-shrink:0}
+.math-top .challenge-progress-group>div[id$="Progress"]{white-space:nowrap;flex-shrink:0}
+.math-top .challenge-header-tools{flex-direction:row!important;align-items:center!important;min-width:0!important}
+@media(max-width:700px){.math-top .challenge-progress-group{gap:4px}.math-top .challenge-progress-group .challenge-sound-btn{font-size:.65rem!important;padding:5px 6px!important}.math-top .challenge-progress-group>div[id$="Progress"]{font-size:.72rem!important}}
 </style>
 
 <style>
@@ -1660,6 +1667,33 @@ body.math-mode .footer-credits{display:none!important}
 .challenge-bottom-credit{display:none;text-align:center;width:100%;box-sizing:border-box;margin:18px auto 8px;padding:0 16px;color:#52677f;font-size:clamp(.75rem,1vw,.88rem);line-height:1.5;font-weight:400}
 body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
 </style>
+
+<style id="v26bk-compact-cards-header">
+/* V26bk : étiquettes plus compactes, hauteur flexible si texte long */
+#formatChallengePanel .challenge-group .learn-actions button.challenge-tile{
+  min-height:115px!important;height:auto!important;padding:12px 15px!important;gap:7px!important;
+}
+@media(max-width:850px){
+ #formatChallengePanel .challenge-group .learn-actions button.challenge-tile{
+   min-height:108px!important;padding:11px 13px!important;gap:6px!important;
+ }
+}
+/* Boutons secondaires d'accueil : géométrie et typographie communes */
+.header-actions .about-btn{
+ display:inline-flex;align-items:center;justify-content:center;
+ min-height:40px;border-radius:12px!important;padding:9px 13px!important;
+ font-size:clamp(.78rem,1.1vw,.9rem)!important;font-weight:700!important;
+ line-height:1.25;white-space:normal;text-align:center;
+ transition:background-color .15s ease,border-color .15s ease;
+}
+.header-actions #tutorialBtn{background:#e8f2fc!important;color:#174c83!important;border:1px solid #bfd8f1!important}
+.header-actions #whyBtn{background:#e7f3e9!important;color:#27633c!important;border:1px solid #c3dfca!important}
+.header-actions #aboutBtn{background:#f0f1f3!important;color:#454b54!important;border:1px solid #d9dce1!important}
+.header-actions #fullscreenBtn{background:#173e70!important;color:#fff!important;border:1px solid #173e70!important}
+.header-actions .about-btn:hover{filter:brightness(.96)}
+.header-actions .about-btn:focus-visible{outline:3px solid #efab22;outline-offset:2px}
+@media(max-width:480px){.header-actions .about-btn{min-height:38px;padding:8px 10px!important}}
+</style>
 </head>
 <body>
 <div class="app" id="app">
@@ -1722,7 +1756,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
       <div class="math-top">
         <button id="mathBack" class="math-ghost" type="button">← Accueil</button>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>❤️ Santé · Bouger chaque jour</h2></div>
-        <div id="mathProgress">1 / 5</div>
+        <div class="challenge-progress-group"><button id="mathSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button><div id="mathProgress">1 / 5</div></div>
       </div>
       <div id="mathIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
@@ -1768,7 +1802,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
       <div class="math-top">
         <button id="geoBack" class="math-ghost" type="button">← Accueil</button>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>💧 Santé · Manger et boire</h2></div>
-        <div id="geoProgress">1 / 5</div>
+        <div class="challenge-progress-group"><button id="geoSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button><div id="geoProgress">1 / 5</div></div>
       </div>
       <div id="geoIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
@@ -1814,7 +1848,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
       <div class="math-top">
         <button id="santeSommeilBack" class="math-ghost" type="button">← Accueil</button>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🌙 Santé · Sommeil et écrans</h2></div>
-        <div id="santeSommeilProgress">1 / 5</div>
+        <div class="challenge-progress-group"><button id="santeSommeilSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button><div id="santeSommeilProgress">1 / 5</div></div>
       </div>
       <div id="santeSommeilIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
@@ -1860,7 +1894,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
       <div class="math-top">
         <button id="citRespectBack" class="math-ghost" type="button">← Accueil</button>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🤝 Citoyen · Respect et vivre ensemble</h2></div>
-        <div id="citRespectProgress">1 / 5</div>
+        <div class="challenge-progress-group"><button id="citRespectSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button><div id="citRespectProgress">1 / 5</div></div>
       </div>
       <div id="citRespectIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
@@ -1906,7 +1940,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
       <div class="math-top">
         <button id="citEgaliteBack" class="math-ghost" type="button">← Accueil</button>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>⚖️ Citoyen · Égalité filles-garçons</h2></div>
-        <div id="citEgaliteProgress">1 / 5</div>
+        <div class="challenge-progress-group"><button id="citEgaliteSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button><div id="citEgaliteProgress">1 / 5</div></div>
       </div>
       <div id="citEgaliteIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
@@ -1952,7 +1986,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
       <div class="math-top">
         <button id="citNumeriqueBack" class="math-ghost" type="button">← Accueil</button>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🛡️ Citoyen · Harcèlement et numérique</h2></div>
-        <div id="citNumeriqueProgress">1 / 5</div>
+        <div class="challenge-progress-group"><button id="citNumeriqueSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button><div id="citNumeriqueProgress">1 / 5</div></div>
       </div>
       <div id="citNumeriqueIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
@@ -1996,9 +2030,9 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   <section class="math-proto" id="citRepubliqueProto" hidden>
     <div class="math-shell">
       <div class="math-top">
-        <div class="challenge-left-tools"><button id="citRepubliqueBack" class="math-ghost" type="button">← Accueil</button><button id="citRepubliqueSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button></div>
+        <div class="challenge-left-tools"><button id="citRepubliqueBack" class="math-ghost" type="button">← Accueil</button></div>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🏛️ Citoyen · Valeurs de la République et laïcité</h2></div>
-        <div class="challenge-header-tools"><div id="citRepubliqueProgress">1 / 5</div></div>
+        <div class="challenge-header-tools"><div class="challenge-progress-group"><button id="citRepubliqueSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button><div id="citRepubliqueProgress">1 / 5</div></div></div>
       </div>
       <div id="citRepubliqueIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
@@ -2042,9 +2076,9 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   <section class="math-proto" id="citEngagementProto" hidden>
     <div class="math-shell">
       <div class="math-top">
-        <div class="challenge-left-tools"><button id="citEngagementBack" class="math-ghost" type="button">← Accueil</button><button id="citEngagementSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-pressed="true">🔊 Son</button></div>
+        <div class="challenge-left-tools"><button id="citEngagementBack" class="math-ghost" type="button">← Accueil</button></div>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🗳️ Citoyen · Démocratie et engagement</h2></div>
-        <div class="challenge-header-tools"><div id="citEngagementProgress">1 / 5</div></div>
+        <div class="challenge-header-tools"><div class="challenge-progress-group"><button id="citEngagementSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button><div id="citEngagementProgress">1 / 5</div></div></div>
       </div>
       <div id="citEngagementIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
@@ -2088,9 +2122,9 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   <section class="math-proto" id="citEnvironnementProto" hidden>
     <div class="math-shell">
       <div class="math-top">
-        <div class="challenge-left-tools"><button id="citEnvironnementBack" class="math-ghost" type="button">← Accueil</button><button id="citEnvironnementSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-pressed="true">🔊 Son</button></div>
+        <div class="challenge-left-tools"><button id="citEnvironnementBack" class="math-ghost" type="button">← Accueil</button></div>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🌱 Citoyen · Environnement et écocitoyenneté</h2></div>
-        <div class="challenge-header-tools"><div id="citEnvironnementProgress">1 / 5</div></div>
+        <div class="challenge-header-tools"><div class="challenge-progress-group"><button id="citEnvironnementSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button><div id="citEnvironnementProgress">1 / 5</div></div></div>
       </div>
       <div id="citEnvironnementIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
@@ -2134,9 +2168,9 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   <section class="math-proto" id="citEspritCritiqueProto" hidden>
     <div class="math-shell">
       <div class="math-top">
-        <div class="challenge-left-tools"><button id="citEspritCritiqueBack" class="math-ghost" type="button">← Accueil</button><button id="citEspritCritiqueSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button></div>
+        <div class="challenge-left-tools"><button id="citEspritCritiqueBack" class="math-ghost" type="button">← Accueil</button></div>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🔎 Citoyen · Esprit critique et information</h2></div>
-        <div class="challenge-header-tools"><div id="citEspritCritiqueProgress">1 / 5</div></div>
+        <div class="challenge-header-tools"><div class="challenge-progress-group"><button id="citEspritCritiqueSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button><div id="citEspritCritiqueProgress">1 / 5</div></div></div>
       </div>
       <div id="citEspritCritiqueIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>

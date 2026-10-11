@@ -81,7 +81,7 @@ function freshMediaUrl(src){
   return `${src}${sep}v=${MEDIA_VERSION}`;
 }
 function updateSoundUI(){
-  ['sessionSoundToggle','citEngagementSoundToggle','citEnvironnementSoundToggle','citEspritCritiqueSoundToggle','citRepubliqueSoundToggle'].forEach(id=>{
+  ['mathSoundToggle','geoSoundToggle','santeSommeilSoundToggle','citRespectSoundToggle','citEgaliteSoundToggle','citNumeriqueSoundToggle','citRepubliqueSoundToggle','citEngagementSoundToggle','citEnvironnementSoundToggle','citEspritCritiqueSoundToggle','sessionSoundToggle'].forEach(id=>{
     const b=$(id); if(!b) return;
     b.textContent=soundEnabled ? '🔊 Son' : '🔇 Son coupé';
     b.setAttribute('aria-pressed', String(soundEnabled));
@@ -760,9 +760,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 // V26az — bouton de réécoute de la consigne sur les dix écrans de présentation.
 document.addEventListener("click",function(e){const b=e.target.closest(".defi-replay-consigne");if(b)mathPlayAudio("audio/defi-introduction-v26az.mp3");});
 
-document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('citEngagementSoundToggle');if(b){b.addEventListener('click',toggleSound);updateSoundUI();}});
 
-document.addEventListener('DOMContentLoaded',()=>{const b=document.getElementById('citEnvironnementSoundToggle');if(b){b.addEventListener('click',toggleSound);updateSoundUI();}});
 
 // V26bg : commande Son accessible sur les défis concernés.
-document.addEventListener('DOMContentLoaded',()=>{['citEspritCritiqueSoundToggle','citRepubliqueSoundToggle'].forEach(id=>{const b=document.getElementById(id);if(b)b.addEventListener('click',toggleSound);});updateSoundUI();});
+
+// V26bl: tous les défis partagent la même commande audio.
+document.addEventListener("DOMContentLoaded",()=>{{const b=document.getElementById("mathSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("geoSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("santeSommeilSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citRespectSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citEgaliteSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citNumeriqueSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citRepubliqueSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citEngagementSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citEnvironnementSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citEspritCritiqueSoundToggle");if(b)b.addEventListener("click",toggleSound);}updateSoundUI();});
