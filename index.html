@@ -316,6 +316,11 @@ body.math-mode .math-video-answers strong{font-size:clamp(1rem,1.7vw,1.7rem)!imp
 .math-top .challenge-progress-group>div[id$="Progress"]{white-space:nowrap;flex-shrink:0}
 .math-top .challenge-header-tools{flex-direction:row!important;align-items:center!important;min-width:0!important}
 @media(max-width:700px){.math-top .challenge-progress-group{gap:4px}.math-top .challenge-progress-group .challenge-sound-btn{font-size:.65rem!important;padding:5px 6px!important}.math-top .challenge-progress-group>div[id$="Progress"]{font-size:.72rem!important}}
+
+/* V26bm : phase de lecture sans pression, puis 15 secondes chronométrées */
+.math-question-clock:has(span[id$="QuestionCount"]:not(:empty)) {font-size:clamp(.9rem,2vw,1.25rem)}
+.math-question-clock .quiz-seconds-label{font-size:1rem}
+.math-question-clock.reading-phase .quiz-seconds-label{display:none}
 </style>
 
 <style>
@@ -1726,7 +1731,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
     <div class="format-choices" id="formatChoices">
       <button class="format-choice format-five" type="button" data-format="five"><span class="format-icon">◷</span><span class="format-name">PAUSES ACTIVES</span><strong>5 minutes</strong><span class="format-desc">Bouger, respirer et se recentrer</span><span class="format-cta">Choisir les pauses →</span></button>
       <button class="format-choice format-two" type="button" data-format="two"><span class="format-icon">⚡</span><span class="format-name">PAUSES EXPRESS</span><strong>2 minutes</strong><span class="format-desc">Une courte pause pour se remettre en mouvement</span><span class="format-cta">Choisir les pauses →</span></button>
-      <button class="format-choice format-challenge" type="button" data-format="challenges"><span class="format-icon">🧠</span><span class="format-name">DÉFIS ÉDUCATIFS ACTIFS</span><strong>≈ 2 minutes</strong><span class="format-desc">Réviser des connaissances en bougeant</span><span class="format-cta">Choisir les défis →</span></button>
+      <button class="format-choice format-challenge" type="button" data-format="challenges"><span class="format-icon">🧠</span><span class="format-name">DÉFIS ÉDUCATIFS ACTIFS</span><strong>3 minutes</strong><span class="format-desc">Réviser des connaissances en bougeant</span><span class="format-cta">Choisir les défis →</span></button>
     </div>
     
     <div id="formatPausePanel" class="format-panel" hidden>
@@ -1742,8 +1747,8 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
     <p class="challenge-choice-guidance">Choisissez un parcours, puis un défi de 5 questions.</p>
     <div class="learn-entry"><div><span class="learn-kicker">🧠 BOUGER &amp; APPRENDRE</span><h3>Défis éducatifs actifs</h3><p>Parcours éducatif de santé et parcours citoyen · 5 questions par défi</p></div>
 <div class="challenge-groups">
-<section class="challenge-group health"><h3>❤️ Parcours éducatif de santé</h3><div class="learn-actions"><button id="mathProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">❤️ SANTÉ</span><span class="challenge-tile-title">Bouger chaque jour</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="geoProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">💧 SANTÉ</span><span class="challenge-tile-title">Manger et boire</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="santeSommeilProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🌙 SANTÉ</span><span class="challenge-tile-title">Sommeil et écrans</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button></div></section>
-<section class="challenge-group citizenship"><h3>🤝 Parcours citoyen</h3><div class="learn-actions"><button id="citRespectProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🤝 CITOYEN</span><span class="challenge-tile-title">Respect et vivre ensemble</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citEgaliteProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">⚖️ CITOYEN</span><span class="challenge-tile-title">Égalité filles-garçons</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citNumeriqueProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🛡️ CITOYEN</span><span class="challenge-tile-title">Harcèlement et numérique</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citRepubliqueProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🏛️ CITOYEN</span><span class="challenge-tile-title">Valeurs de la République et laïcité</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citEngagementProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🗳️ CITOYEN</span><span class="challenge-tile-title">Démocratie et engagement</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citEnvironnementProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🌱 CITOYEN</span><span class="challenge-tile-title">Environnement et écocitoyenneté</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citEspritCritiqueProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🔎 CITOYEN</span><span class="challenge-tile-title">Esprit critique et information</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · ≈ 2 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button></div></section>
+<section class="challenge-group health"><h3>❤️ Parcours éducatif de santé</h3><div class="learn-actions"><button id="mathProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">❤️ SANTÉ</span><span class="challenge-tile-title">Bouger chaque jour</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · 3 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="geoProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">💧 SANTÉ</span><span class="challenge-tile-title">Manger et boire</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · 3 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="santeSommeilProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🌙 SANTÉ</span><span class="challenge-tile-title">Sommeil et écrans</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · 3 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button></div></section>
+<section class="challenge-group citizenship"><h3>🤝 Parcours citoyen</h3><div class="learn-actions"><button id="citRespectProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🤝 CITOYEN</span><span class="challenge-tile-title">Respect et vivre ensemble</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · 3 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citEgaliteProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">⚖️ CITOYEN</span><span class="challenge-tile-title">Égalité filles-garçons</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · 3 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citNumeriqueProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🛡️ CITOYEN</span><span class="challenge-tile-title">Harcèlement et numérique</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · 3 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citRepubliqueProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🏛️ CITOYEN</span><span class="challenge-tile-title">Valeurs de la République et laïcité</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · 3 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citEngagementProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🗳️ CITOYEN</span><span class="challenge-tile-title">Démocratie et engagement</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · 3 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citEnvironnementProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🌱 CITOYEN</span><span class="challenge-tile-title">Environnement et écocitoyenneté</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · 3 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button><button id="citEspritCritiqueProtoBtn" class="challenge-tile" type="button"><span class="challenge-tile-category">🔎 CITOYEN</span><span class="challenge-tile-title">Esprit critique et information</span><span class="challenge-tile-bottom"><span class="challenge-tile-badge">5 QUESTIONS · 3 MIN</span><span class="challenge-tile-arrow" aria-hidden="true">→</span></span></button></div></section>
 </div></div>
     </div>
   </section>
@@ -1778,7 +1783,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
           <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong id="mathC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
-        <div class="math-question-clock"><span id="mathQuestionCount">30</span> s</div>
+        <div class="math-question-clock"><span id="mathQuestionCount">LIS, RÉFLÉCHIS ET BOUGE !</span><span class="quiz-seconds-label"> s</span></div>
         <div class="math-clockbar"><i id="mathClockFill"></i></div>
         <button id="mathSkip" class="math-skip" type="button">Suivant →</button>
       </div>
@@ -1824,7 +1829,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
           <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-06-boxe.mp4"></video><strong id="geoC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
-        <div class="math-question-clock"><span id="geoQuestionCount">30</span> s</div>
+        <div class="math-question-clock"><span id="geoQuestionCount">LIS, RÉFLÉCHIS ET BOUGE !</span><span class="quiz-seconds-label"> s</span></div>
         <div class="math-clockbar"><i id="geoClockFill"></i></div>
         <button id="geoSkip" class="math-skip" type="button">Suivant →</button>
       </div>
@@ -1870,7 +1875,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
           <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-04-rotation-du-buste.mp4"></video><strong id="santeSommeilC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
-        <div class="math-question-clock"><span id="santeSommeilQuestionCount">30</span> s</div>
+        <div class="math-question-clock"><span id="santeSommeilQuestionCount">LIS, RÉFLÉCHIS ET BOUGE !</span><span class="quiz-seconds-label"> s</span></div>
         <div class="math-clockbar"><i id="santeSommeilClockFill"></i></div>
         <button id="santeSommeilSkip" class="math-skip" type="button">Suivant →</button>
       </div>
@@ -1916,7 +1921,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
           <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-06-boxe.mp4"></video><strong id="citRespectC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
-        <div class="math-question-clock"><span id="citRespectQuestionCount">30</span> s</div>
+        <div class="math-question-clock"><span id="citRespectQuestionCount">LIS, RÉFLÉCHIS ET BOUGE !</span><span class="quiz-seconds-label"> s</span></div>
         <div class="math-clockbar"><i id="citRespectClockFill"></i></div>
         <button id="citRespectSkip" class="math-skip" type="button">Suivant →</button>
       </div>
@@ -1962,7 +1967,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
           <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-04-rotation-du-buste.mp4"></video><strong id="citEgaliteC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
-        <div class="math-question-clock"><span id="citEgaliteQuestionCount">30</span> s</div>
+        <div class="math-question-clock"><span id="citEgaliteQuestionCount">LIS, RÉFLÉCHIS ET BOUGE !</span><span class="quiz-seconds-label"> s</span></div>
         <div class="math-clockbar"><i id="citEgaliteClockFill"></i></div>
         <button id="citEgaliteSkip" class="math-skip" type="button">Suivant →</button>
       </div>
@@ -2008,7 +2013,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
           <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-03-coude-genou-oppose.mp4"></video><strong id="citNumeriqueC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
-        <div class="math-question-clock"><span id="citNumeriqueQuestionCount">30</span> s</div>
+        <div class="math-question-clock"><span id="citNumeriqueQuestionCount">LIS, RÉFLÉCHIS ET BOUGE !</span><span class="quiz-seconds-label"> s</span></div>
         <div class="math-clockbar"><i id="citNumeriqueClockFill"></i></div>
         <button id="citNumeriqueSkip" class="math-skip" type="button">Suivant →</button>
       </div>
@@ -2054,7 +2059,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
           <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-05-genoux-alternes.mp4"></video><strong id="citRepubliqueC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
-        <div class="math-question-clock"><span id="citRepubliqueQuestionCount">30</span> s</div>
+        <div class="math-question-clock"><span id="citRepubliqueQuestionCount">LIS, RÉFLÉCHIS ET BOUGE !</span><span class="quiz-seconds-label"> s</span></div>
         <div class="math-clockbar"><i id="citRepubliqueClockFill"></i></div>
         <button id="citRepubliqueSkip" class="math-skip" type="button">Suivant →</button>
       </div>
@@ -2100,7 +2105,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
           <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-02-pas-droite-gauche.mp4"></video><strong id="citEngagementC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
-        <div class="math-question-clock"><span id="citEngagementQuestionCount">30</span> s</div>
+        <div class="math-question-clock"><span id="citEngagementQuestionCount">LIS, RÉFLÉCHIS ET BOUGE !</span><span class="quiz-seconds-label"> s</span></div>
         <div class="math-clockbar"><i id="citEngagementClockFill"></i></div>
         <button id="citEngagementSkip" class="math-skip" type="button">Suivant →</button>
       </div>
@@ -2146,7 +2151,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
           <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-06-mobilite-generale.mp4"></video><strong id="citEnvironnementC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
-        <div class="math-question-clock"><span id="citEnvironnementQuestionCount">30</span> s</div>
+        <div class="math-question-clock"><span id="citEnvironnementQuestionCount">LIS, RÉFLÉCHIS ET BOUGE !</span><span class="quiz-seconds-label"> s</span></div>
         <div class="math-clockbar"><i id="citEnvironnementClockFill"></i></div>
         <button id="citEnvironnementSkip" class="math-skip" type="button">Suivant →</button>
       </div>
@@ -2192,7 +2197,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
           <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-04-coude-genou-croise.mp4"></video><strong id="citEspritCritiqueC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
-        <div class="math-question-clock"><span id="citEspritCritiqueQuestionCount">30</span> s</div>
+        <div class="math-question-clock"><span id="citEspritCritiqueQuestionCount">LIS, RÉFLÉCHIS ET BOUGE !</span><span class="quiz-seconds-label"> s</span></div>
         <div class="math-clockbar"><i id="citEspritCritiqueClockFill"></i></div>
         <button id="citEspritCritiqueSkip" class="math-skip" type="button">Suivant →</button>
       </div>
@@ -2272,7 +2277,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
       <p>Accessible depuis un ordinateur, une tablette ou un smartphone, elle permet aux enseignants de proposer des activités courtes, ludiques et réalisables en classe, sans matériel ni tenue sportive.</p>
       <p>Son ambition : <strong>réduire la sédentarité, favoriser le bien-être des élèves et créer des conditions propices à l'attention, à la concentration et aux apprentissages.</strong></p>
       <section class="about-section"><h3>Trois formats pour répondre aux besoins de la classe</h3>
-        <div class="about-format-list"><p><b>Pauses actives · 5 minutes</b><span>Se réveiller, bouger, se concentrer, s'étirer ou se calmer.</span></p><p><b>Pauses Express · 2 minutes</b><span>Retrouver rapidement de l'énergie, de l'attention ou du calme.</span></p><p><b>Défis éducatifs actifs · 2 minutes</b><span>Apprendre et réviser autrement, en associant mouvement, réflexion et connaissances liées aux parcours éducatifs.</span></p></div>
+        <div class="about-format-list"><p><b>Pauses actives · 5 minutes</b><span>Se réveiller, bouger, se concentrer, s'étirer ou se calmer.</span></p><p><b>Pauses Express · 2 minutes</b><span>Retrouver rapidement de l'énergie, de l'attention ou du calme.</span></p><p><b>Défis éducatifs actifs · 3 minutes</b><span>Apprendre et réviser autrement, en associant mouvement, réflexion et connaissances liées aux parcours éducatifs.</span></p></div>
         <p>Les activités sont conçues pour être accessibles au plus grand nombre et peuvent, pour certaines, être adaptées en position assise.</p>
       </section>
       <section class="about-section"><h3>Un outil au service de la santé et des apprentissages</h3>
@@ -2499,7 +2504,7 @@ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
  const $=id=>document.getElementById(id);
  const slides=[
   {title:"Bienvenue dans PAUSE 5’",text:"Quelques minutes pour bouger, respirer, se recentrer ou apprendre autrement, directement en classe.",note:"Sur place · Sans matériel · Pour toutes les disciplines.",icons:"🏫 🌿 ✨"},
-  {title:"Choisissez votre format",text:"Trois possibilités : Pauses actives (5 minutes), Pauses Express (2 minutes) et Défis éducatifs actifs (environ 2 minutes).",note:"Sélectionnez le format qui correspond au temps dont vous disposez.",icons:"🟢 🟠 🟣"},
+  {title:"Choisissez votre format",text:"Trois possibilités : Pauses actives (5 minutes), Pauses Express (2 minutes) et Défis éducatifs actifs (environ 3 minutes).",note:"Sélectionnez le format qui correspond au temps dont vous disposez.",icons:"🟢 🟠 🟣"},
   {title:"Identifiez le besoin de la classe",text:"Se réveiller, bouger, se concentrer, s’étirer ou se calmer : choisissez la pause adaptée au moment de la journée.",note:"Les défis permettent aussi d’aborder quelques points des parcours éducatifs.",icons:"⚡ 🏃 🎯 🌿 🌙"},
   {title:"Projetez et commencer la séance",text:"Projetez PAUSE 5’ au tableau, allumez les enceintes (si vous en avez) pour entendre les consignes audio, puis cliquez sur Démarrer.",note:"Les boutons Pause, Étape suivante et Plein écran restent à votre disposition. Le bouton « Pourquoi bouger ? » vous servira de support pour expliquer aux élèves l’intérêt des pauses actives en classe.",icons:"🖥️ ▶️ ⏸️"},
   {title:"Installez un rituel souple et inclusif",text:"Invitez chacun(e) à participer à son rythme et selon ses possibilités. Plusieurs mouvements sont adaptables en position assise. Reprenez ensuite votre cours.",note:"Pas besoin d’être professeur d’EPS pour faire bouger sa classe !",icons:"🤝 🪑 🌟"}
