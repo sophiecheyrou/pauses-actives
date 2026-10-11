@@ -233,6 +233,82 @@ body:has(#player.open) .footer-credits,
 body:has(#finish.open) .footer-credits {display:none!important}
 body:has(#player.open) .legal-footer {display:none!important}
 body:has(#finish.open) .legal-footer {margin-top:12px!important;padding-top:4px!important}
+#citRepubliqueResult #citRepubliqueVideo{background:#fff;object-fit:cover;aspect-ratio:16/9;max-height:none;max-width:min(650px,100%);width:100%;height:auto;}
+#citRepubliqueProto .math-demo-grid video,#citRepubliqueProto .math-video-answers video{background:#fff;}
+
+/* Défis citoyens : vidéo de réponse plein cadre et commande audio discrète */
+#citEngagementResult video,#citEnvironnementResult video{display:block!important;width:min(760px,90%,calc((100dvh - 310px)*16/9))!important;height:auto!important;aspect-ratio:16/9!important;object-fit:cover!important;background:transparent!important;border:0!important;border-radius:16px!important;margin:10px auto 14px!important;box-shadow:none!important;}
+.challenge-header-tools{display:flex;align-items:center;gap:12px;justify-content:flex-end}
+.challenge-sound-btn{font-size:.82rem!important;padding:7px 11px!important;white-space:nowrap;cursor:pointer}
+@media(max-width:680px){.challenge-header-tools{gap:5px;flex-wrap:wrap}.challenge-sound-btn{font-size:.72rem!important;padding:5px 7px!important}}
+
+/* V26bg — même gabarit de résultat que République, sans recadrage et sans défilement. */
+#citEspritCritiqueResult video,#citRepubliqueResult video{display:block!important;width:min(650px,90%,calc((100dvh - 310px)*16/9))!important;height:auto!important;max-height:min(34dvh,310px)!important;aspect-ratio:16/9!important;object-fit:contain!important;background:#fff!important;border:0!important;border-radius:16px!important;margin:6px auto 8px!important;box-shadow:none!important}
+#citEspritCritiqueResult,#citRepubliqueResult{min-height:0!important;padding-block:clamp(8px,1.5vh,18px)!important;gap:0!important}
+#citEspritCritiqueResult .math-correct,#citRepubliqueResult .math-correct{font-size:clamp(1.5rem,4vh,3rem)!important}
+#citEspritCritiqueResult .math-move-title,#citRepubliqueResult .math-move-title{margin:4px auto!important}
+#citEspritCritiqueResult .math-count,#citRepubliqueResult .math-count{margin:4px auto!important}
+#citEspritCritiqueResult .math-skip,#citRepubliqueResult .math-skip{margin-top:4px!important}
+.challenge-header-tools{min-width:0;display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:8px!important;text-align:right}
+.challenge-header-tools .challenge-sound-btn{display:inline-flex!important;visibility:visible!important;opacity:1!important;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:2}
+@media(max-height:650px){#citEspritCritiqueResult video,#citRepubliqueResult video{max-height:27dvh!important;width:min(540px,85%,calc((100dvh - 260px)*16/9))!important}}
+
+/* V26bh — Harmonisation des résultats citoyens sur le modèle Harcèlement et numérique. */
+body.math-mode #citRepubliqueResult video,
+body.math-mode #citEngagementResult video,
+body.math-mode #citEnvironnementResult video,
+body.math-mode #citEspritCritiqueResult video{
+ display:block!important;box-sizing:border-box!important;
+ width:min(760px,90%,calc(max(180px,100dvh - 310px)*16/9))!important;
+ height:auto!important;max-height:calc(100dvh - 310px)!important;
+ aspect-ratio:16/9!important;object-fit:contain!important;
+ background:transparent!important;border:2px solid #d6e4ed!important;
+ border-radius:18px!important;box-shadow:0 8px 22px rgba(15,41,71,.09)!important;
+ margin:10px auto 14px!important;
+}
+/* Le bouton son et le compteur ont chacun leur place, y compris en projection. */
+body.math-mode .math-top:has(.challenge-header-tools),
+.math-top:has(.challenge-header-tools){grid-template-columns:minmax(95px,150px) minmax(0,1fr) auto!important;}
+.math-top .challenge-header-tools,
+body.math-mode .math-top .challenge-header-tools{display:flex!important;flex-direction:column!important;align-items:flex-end!important;justify-content:center!important;gap:4px!important;min-width:88px!important;}
+.math-top .challenge-header-tools>div[id$="Progress"]{white-space:nowrap!important;line-height:1.1!important;}
+.math-top .challenge-sound-btn{font-size:.73rem!important;padding:4px 8px!important;line-height:1.2!important;}
+@media(max-width:700px){
+ body.math-mode #citRepubliqueResult video,body.math-mode #citEngagementResult video,
+ body.math-mode #citEnvironnementResult video,body.math-mode #citEspritCritiqueResult video{
+ width:min(94vw,calc(max(140px,100dvh - 235px)*16/9))!important;
+ max-height:calc(100dvh - 235px)!important;border-radius:12px!important;
+ margin:6px auto 8px!important;}
+ .math-top:has(.challenge-header-tools),body.math-mode .math-top:has(.challenge-header-tools){grid-template-columns:auto minmax(0,1fr) auto!important;gap:6px!important;}
+ .math-top .challenge-header-tools,body.math-mode .math-top .challenge-header-tools{display:flex!important;min-width:65px!important;gap:3px!important;}
+ .math-top .challenge-sound-btn{font-size:.64rem!important;padding:3px 5px!important;}
+}
+@media(max-height:540px){
+ body.math-mode #citRepubliqueResult video,body.math-mode #citEngagementResult video,
+ body.math-mode #citEnvironnementResult video,body.math-mode #citEspritCritiqueResult video{
+ width:min(70vw,calc(max(95px,100dvh - 215px)*16/9))!important;
+ max-height:calc(100dvh - 215px)!important;margin:3px auto 5px!important;}
+}
+
+
+/* V26bi : son à gauche de l’en-tête, pagination seule à droite. */
+body.math-mode .math-top:has(.challenge-left-tools),
+.math-top:has(.challenge-left-tools){grid-template-columns:minmax(160px,auto) minmax(0,1fr) auto!important;gap:12px!important}
+.challenge-left-tools{display:flex;align-items:center;justify-content:flex-start;gap:8px;min-width:0;flex-wrap:wrap}
+.math-top .challenge-header-tools{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-end!important;min-width:48px!important}
+.math-top .challenge-sound-btn{font-size:.76rem!important;padding:7px 9px!important;line-height:1.2!important}
+/* Réponses sous les vidéos : réduction légère sur l’ensemble des défis. */
+body.math-mode .math-video-answers span{font-size:clamp(.72rem,1.05vw,.94rem)!important;line-height:1.18!important}
+body.math-mode .math-video-answers strong{font-size:clamp(1rem,1.7vw,1.7rem)!important}
+@media(max-width:700px){
+ body.math-mode .math-top:has(.challenge-left-tools),.math-top:has(.challenge-left-tools){grid-template-columns:minmax(0,auto) minmax(0,1fr) auto!important;gap:5px!important}
+ .challenge-left-tools{gap:4px;flex-wrap:nowrap}
+ .challenge-left-tools .math-ghost{padding:6px 7px!important;font-size:.7rem!important}
+ .math-top .challenge-sound-btn{padding:5px 6px!important;font-size:.67rem!important}
+ body.math-mode .math-video-answers span{font-size:.56rem!important}
+ body.math-mode .math-video-answers strong{font-size:1.13rem!important}
+}
+
 </style>
 
 <style>
@@ -1261,7 +1337,7 @@ body.math-mode #mathVideo,body.math-mode #geoVideo,body.math-mode #santeSommeilV
  transform:translateY(-3px);box-shadow:0 11px 24px rgba(24,54,89,.13)!important;
 }
 .challenge-tile-category{font-size:.88rem;font-weight:900;letter-spacing:.075em}
-.challenge-tile-title{font-size:clamp(1.12rem,1.5vw,1.4rem);font-weight:850;line-height:1.25;color:#14273d;flex:1}
+.challenge-tile-title{font-size:18px;font-weight:700;line-height:1.25;color:#14273d;flex:1}
 .challenge-tile-bottom{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px}
 .challenge-tile-badge{font-size:.78rem;font-weight:900;padding:8px 10px;border-radius:999px;white-space:normal}
 .health .challenge-tile-badge{background:#e6f7ed;color:#155d45;border:1px solid #a9dec1}
@@ -1837,9 +1913,9 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
         <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
         <button type="button" class="defi-replay-consigne" aria-label="Réécouter la consigne audio" style="margin:10px auto 8px;display:block;padding:8px 14px;border-radius:12px;border:1px solid #b7c7d3;background:#f4f8fa;color:#24435b;font:inherit;cursor:pointer">🔊 Réécouter la consigne</button>
         <div class="math-demo-grid">
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-03-talons-fesses.mp4"></video><strong>BRAS EN L’AIR</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-05-marche-turbo.mp4"></video><strong>DEMI-SQUAT</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-04-rotation-du-buste.mp4"></video><strong>GENOUX ALTERNÉS</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-03-talons-fesses.mp4"></video><strong>TALONS-FESSES</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-05-marche-turbo.mp4"></video><strong>MARCHE ACTIVE</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-04-rotation-du-buste.mp4"></video><strong>ROTATIONS DU BUSTE</strong></div>
         </div>
         <button id="citEgaliteStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
       </div>
@@ -1883,9 +1959,9 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
         <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
         <button type="button" class="defi-replay-consigne" aria-label="Réécouter la consigne audio" style="margin:10px auto 8px;display:block;padding:8px 14px;border-radius:12px;border:1px solid #b7c7d3;background:#f4f8fa;color:#24435b;font:inherit;cursor:pointer">🔊 Réécouter la consigne</button>
         <div class="math-demo-grid">
-          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong>BRAS EN L’AIR</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong>DEMI-SQUAT</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong>GENOUX ALTERNÉS</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-05-uppercuts.mp4"></video><strong>BOXE : UPPERCUTS</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-01-petites-flexions.mp4"></video><strong>FLEXIONS</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-03-coude-genou-oppose.mp4"></video><strong>COUDES ET GENOUX OPPOSÉS</strong></div>
         </div>
         <button id="citNumeriqueStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
       </div>
@@ -1893,9 +1969,9 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
         <div class="math-label">QUESTION <span id="citNumeriqueNum">1</span></div>
         <div id="citNumeriqueQ" class="math-q"></div>
         <div class="math-answers math-video-answers">
-          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong id="citNumeriqueA"></strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong id="citNumeriqueB"></strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong id="citNumeriqueC"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-05-uppercuts.mp4"></video><strong id="citNumeriqueA"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-01-petites-flexions.mp4"></video><strong id="citNumeriqueB"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-03-coude-genou-oppose.mp4"></video><strong id="citNumeriqueC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
         <div class="math-question-clock"><span id="citNumeriqueQuestionCount">30</span> s</div>
@@ -1920,18 +1996,18 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   <section class="math-proto" id="citRepubliqueProto" hidden>
     <div class="math-shell">
       <div class="math-top">
-        <button id="citRepubliqueBack" class="math-ghost" type="button">← Accueil</button>
+        <div class="challenge-left-tools"><button id="citRepubliqueBack" class="math-ghost" type="button">← Accueil</button><button id="citRepubliqueSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button></div>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🏛️ Citoyen · Valeurs de la République et laïcité</h2></div>
-        <div id="citRepubliqueProgress">1 / 5</div>
+        <div class="challenge-header-tools"><div id="citRepubliqueProgress">1 / 5</div></div>
       </div>
       <div id="citRepubliqueIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
         <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
         <button type="button" class="defi-replay-consigne" aria-label="Réécouter la consigne audio" style="margin:10px auto 8px;display:block;padding:8px 14px;border-radius:12px;border:1px solid #b7c7d3;background:#f4f8fa;color:#24435b;font:inherit;cursor:pointer">🔊 Réécouter la consigne</button>
         <div class="math-demo-grid">
-          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong>COUDE-GENOU CROISÉ</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong>SQUAT + BRAS</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong>BOXE</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong>BRAS EN L’AIR</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong>SQUAT</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-05-genoux-alternes.mp4"></video><strong>MONTÉES DE GENOUX</strong></div>
         </div>
         <button id="citRepubliqueStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
       </div>
@@ -1941,7 +2017,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
         <div class="math-answers math-video-answers">
           <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong id="citRepubliqueA"></strong></div>
           <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong id="citRepubliqueB"></strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong id="citRepubliqueC"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-05-genoux-alternes.mp4"></video><strong id="citRepubliqueC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
         <div class="math-question-clock"><span id="citRepubliqueQuestionCount">30</span> s</div>
@@ -1966,18 +2042,18 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   <section class="math-proto" id="citEngagementProto" hidden>
     <div class="math-shell">
       <div class="math-top">
-        <button id="citEngagementBack" class="math-ghost" type="button">← Accueil</button>
+        <div class="challenge-left-tools"><button id="citEngagementBack" class="math-ghost" type="button">← Accueil</button><button id="citEngagementSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-pressed="true">🔊 Son</button></div>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🗳️ Citoyen · Démocratie et engagement</h2></div>
-        <div id="citEngagementProgress">1 / 5</div>
+        <div class="challenge-header-tools"><div id="citEngagementProgress">1 / 5</div></div>
       </div>
       <div id="citEngagementIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
         <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
         <button type="button" class="defi-replay-consigne" aria-label="Réécouter la consigne audio" style="margin:10px auto 8px;display:block;padding:8px 14px;border-radius:12px;border:1px solid #b7c7d3;background:#f4f8fa;color:#24435b;font:inherit;cursor:pointer">🔊 Réécouter la consigne</button>
         <div class="math-demo-grid">
-          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong>TALONS-FESSES</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong>MARCHE TURBO</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong>ROTATION DU BUSTE</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-03-double-direct.mp4"></video><strong>BOXE : DOUBLE DIRECT</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-06-squat-bras.mp4"></video><strong>SQUAT ET BRAS</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-02-pas-droite-gauche.mp4"></video><strong>PAS DROITE-GAUCHE</strong></div>
         </div>
         <button id="citEngagementStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
       </div>
@@ -1985,9 +2061,9 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
         <div class="math-label">QUESTION <span id="citEngagementNum">1</span></div>
         <div id="citEngagementQ" class="math-q"></div>
         <div class="math-answers math-video-answers">
-          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong id="citEngagementA"></strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong id="citEngagementB"></strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong id="citEngagementC"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-03-double-direct.mp4"></video><strong id="citEngagementA"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-06-squat-bras.mp4"></video><strong id="citEngagementB"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-02-pas-droite-gauche.mp4"></video><strong id="citEngagementC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
         <div class="math-question-clock"><span id="citEngagementQuestionCount">30</span> s</div>
@@ -2012,18 +2088,18 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   <section class="math-proto" id="citEnvironnementProto" hidden>
     <div class="math-shell">
       <div class="math-top">
-        <button id="citEnvironnementBack" class="math-ghost" type="button">← Accueil</button>
+        <div class="challenge-left-tools"><button id="citEnvironnementBack" class="math-ghost" type="button">← Accueil</button><button id="citEnvironnementSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-pressed="true">🔊 Son</button></div>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🌱 Citoyen · Environnement et écocitoyenneté</h2></div>
-        <div id="citEnvironnementProgress">1 / 5</div>
+        <div class="challenge-header-tools"><div id="citEnvironnementProgress">1 / 5</div></div>
       </div>
       <div id="citEnvironnementIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
         <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
         <button type="button" class="defi-replay-consigne" aria-label="Réécouter la consigne audio" style="margin:10px auto 8px;display:block;padding:8px 14px;border-radius:12px;border:1px solid #b7c7d3;background:#f4f8fa;color:#24435b;font:inherit;cursor:pointer">🔊 Réécouter la consigne</button>
         <div class="math-demo-grid">
-          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong>TALONS-FESSES</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong>MARCHE TURBO</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong>ROTATION DU BUSTE</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-01-cercles-epaules.mp4"></video><strong>CERCLES D’ÉPAULES</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-03-montee-sur-pointes.mp4"></video><strong>MONTÉE SUR POINTES</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-06-mobilite-generale.mp4"></video><strong>TÊTE : DROITE, GAUCHE</strong></div>
         </div>
         <button id="citEnvironnementStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
       </div>
@@ -2031,9 +2107,9 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
         <div class="math-label">QUESTION <span id="citEnvironnementNum">1</span></div>
         <div id="citEnvironnementQ" class="math-q"></div>
         <div class="math-answers math-video-answers">
-          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong id="citEnvironnementA"></strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong id="citEnvironnementB"></strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong id="citEnvironnementC"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-01-cercles-epaules.mp4"></video><strong id="citEnvironnementA"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-03-montee-sur-pointes.mp4"></video><strong id="citEnvironnementB"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/relacher-les-tensions-06-mobilite-generale.mp4"></video><strong id="citEnvironnementC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
         <div class="math-question-clock"><span id="citEnvironnementQuestionCount">30</span> s</div>
@@ -2058,18 +2134,18 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   <section class="math-proto" id="citEspritCritiqueProto" hidden>
     <div class="math-shell">
       <div class="math-top">
-        <button id="citEspritCritiqueBack" class="math-ghost" type="button">← Accueil</button>
+        <div class="challenge-left-tools"><button id="citEspritCritiqueBack" class="math-ghost" type="button">← Accueil</button><button id="citEspritCritiqueSoundToggle" class="session-sound-btn challenge-sound-btn" type="button" aria-label="Activer ou couper le son" aria-pressed="true">🔊 Son</button></div>
         <div><span>🧠 BOUGER &amp; APPRENDRE</span><h2>🔎 Citoyen · Esprit critique et information</h2></div>
-        <div id="citEspritCritiqueProgress">1 / 5</div>
+        <div class="challenge-header-tools"><div id="citEspritCritiqueProgress">1 / 5</div></div>
       </div>
       <div id="citEspritCritiqueIntro" class="math-stage math-intro">
         <h3 class="math-intro-title">Réponds avec ton corps !</h3>
         <p class="math-intro-rule">Observe les trois mouvements.<br>À chaque question, réalise le mouvement correspondant à ta réponse.</p>
         <button type="button" class="defi-replay-consigne" aria-label="Réécouter la consigne audio" style="margin:10px auto 8px;display:block;padding:8px 14px;border-radius:12px;border:1px solid #b7c7d3;background:#f4f8fa;color:#24435b;font:inherit;cursor:pointer">🔊 Réécouter la consigne</button>
         <div class="math-demo-grid">
-          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong>TALONS-FESSES</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong>MARCHE TURBO</strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong>ROTATION DU BUSTE</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/apres-etre-reste-assis-03-poussees-devant.mp4"></video><strong>POUSSÉES DEVANT</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-03-talons-fesses.mp4"></video><strong>TALONS-FESSES</strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-04-coude-genou-croise.mp4"></video><strong>COUDES ET GENOUX CROISÉS</strong></div>
         </div>
         <button id="citEspritCritiqueStart" class="math-primary math-start-big" type="button">▶ DÉMARRER</button>
       </div>
@@ -2077,9 +2153,9 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
         <div class="math-label">QUESTION <span id="citEspritCritiqueNum">1</span></div>
         <div id="citEspritCritiqueQ" class="math-q"></div>
         <div class="math-answers math-video-answers">
-          <div><video muted loop playsinline preload="metadata" src="videos/besoin-de-se-defouler-02-directs.mp4"></video><strong id="citEspritCritiqueA"></strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-04-squats.mp4"></video><strong id="citEspritCritiqueB"></strong></div>
-          <div><video muted loop playsinline preload="metadata" src="videos/avant-un-exercice-01-meme-cote.mp4"></video><strong id="citEspritCritiqueC"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/apres-etre-reste-assis-03-poussees-devant.mp4"></video><strong id="citEspritCritiqueA"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-de-journee-03-talons-fesses.mp4"></video><strong id="citEspritCritiqueB"></strong></div>
+          <div><video muted loop playsinline preload="metadata" src="videos/debut-dapres-midi-04-coude-genou-croise.mp4"></video><strong id="citEspritCritiqueC"></strong></div>
         </div>
         <div class="math-think">Fais le mouvement de ta réponse</div>
         <div class="math-question-clock"><span id="citEspritCritiqueQuestionCount">30</span> s</div>
@@ -2248,7 +2324,7 @@ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&m.classList.contains('open')) closeWhy(e); });
 })();
 </script>
-<script src="app.js?v=26an-20261010"></script>
+<script src="app.js?v=26bf-20261011"></script>
 
 <style id="v23f-projector-layout-fix">
 /* V23f — séance projetée : zone centrale compacte + commandes garanties visibles */
