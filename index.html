@@ -1725,6 +1725,23 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   body.math-mode .math-video-answers span { font-size: .95rem !important; }
 }
 </style>
+
+<style id="v26bs-video-native-ratio-landscape">
+/* V26bs : élimine les bandes ajoutées par le cadre 16/9 forcé, sans recadrer la vidéo. */
+@media (orientation:landscape) and (max-height:600px) and (max-width:1000px) {
+ body:not(.pause-prestart) #projectionPanel.projector-mode .demo {
+   aspect-ratio:auto!important; height:auto!important; max-height:none!important;
+   min-height:0!important; width:100%!important; overflow:visible!important;
+   background:transparent!important; align-self:center!important;
+ }
+ body:not(.pause-prestart) #projectionPanel.projector-mode .demo video {
+   position:relative!important; inset:auto!important; display:block!important;
+   width:100%!important; height:auto!important; aspect-ratio:auto!important;
+   max-width:100%!important; max-height:none!important; object-fit:contain!important;
+   background:transparent!important; margin:0 auto!important;
+ }
+}
+</style>
 </head>
 <body>
 <div class="app" id="app">
