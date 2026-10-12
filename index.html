@@ -1913,6 +1913,51 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   }
 }
 </style>
+
+<style id="v26bw-landscape-touch-controls">
+/* Priorité tactile aux trois commandes en mode paysage sur smartphone.
+   Les calques décoratifs et vidéo ne peuvent plus intercepter les pressions. */
+@media screen and (orientation:landscape) and (max-height:600px) and (max-width:1000px) {
+  body.session-active #projectionPanel.projector-mode {
+    isolation:isolate!important;
+    overflow:visible!important;
+  }
+  body.session-active #projectionPanel.projector-mode .projection-layout {
+    position:relative!important;
+    z-index:1!important;
+  }
+  body.session-active #projectionPanel.projector-mode .demo,
+  body.session-active #projectionPanel.projector-mode .demo video,
+  body.session-active #projectionPanel.projector-mode .prestart-message,
+  body.session-active #projectionPanel.projector-mode .surprise-overlay,
+  body.session-active #projectionPanel.projector-mode .surprise-active {
+    pointer-events:none!important;
+  }
+  body.session-active #projectionPanel.projector-mode .controls {
+    position:relative!important;
+    z-index:100!important;
+    pointer-events:auto!important;
+    isolation:isolate!important;
+    touch-action:manipulation!important;
+  }
+  body.session-active #projectionPanel.projector-mode .controls #pause,
+  body.session-active #projectionPanel.projector-mode .controls #next,
+  body.session-active #projectionPanel.projector-mode .controls #homeDuringSession,
+  body.session-active #projectionPanel.projector-mode .controls #start {
+    position:relative!important;
+    z-index:101!important;
+    pointer-events:auto!important;
+    touch-action:manipulation!important;
+    cursor:pointer!important;
+    -webkit-tap-highlight-color:rgba(0,110,220,.12);
+  }
+  body.session-active #projectionPanel.projector-mode .timeline {
+    position:relative!important;
+    z-index:0!important;
+    pointer-events:none!important;
+  }
+}
+</style>
 </head>
 <body>
 <div class="app" id="app">
