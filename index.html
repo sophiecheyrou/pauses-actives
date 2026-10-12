@@ -2039,6 +2039,7 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
       <img class="college-logo" src="logo-college-actif.png" alt="Collège Actif · Avenir Positif">
     </div>
     <div class="header-actions">
+      <button class="about-btn" id="installPauseBtn" type="button" title="Installer ou créer un raccourci PAUSE 5’">⬇️&nbsp; Installer PAUSE 5’</button>
       <button class="about-btn tutorial-launch" id="tutorialBtn" type="button">🎓&nbsp; Mode d’emploi</button>
       <button class="about-btn why-btn" id="whyBtn" type="button">💡&nbsp; Pourquoi bouger ?</button>
       <button class="about-btn" id="aboutBtn" type="button">ⓘ&nbsp; À propos</button>
@@ -2837,7 +2838,8 @@ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
   {title:"Choisissez votre format",text:"Trois possibilités : Pauses actives (5 minutes), Pauses Express (2 minutes) et Défis éducatifs actifs (environ 3 minutes).",note:"Sélectionnez le format qui correspond au temps dont vous disposez.",icons:"🟢 🟠 🟣"},
   {title:"Identifiez le besoin de la classe",text:"Se réveiller, bouger, se concentrer, s’étirer ou se calmer : choisissez la pause adaptée au moment de la journée.",note:"Les défis permettent aussi d’aborder quelques points des parcours éducatifs.",icons:"⚡ 🏃 🎯 🌿 🌙"},
   {title:"Projetez et commencer la séance",text:"Projetez PAUSE 5’ au tableau, allumez les enceintes (si vous en avez) pour entendre les consignes audio, puis cliquez sur Démarrer.",note:"Les boutons Pause, Étape suivante et Plein écran restent à votre disposition. Le bouton « Pourquoi bouger ? » vous servira de support pour expliquer aux élèves l’intérêt des pauses actives en classe.",icons:"🖥️ ▶️ ⏸️"},
-  {title:"Installez un rituel souple et inclusif",text:"Invitez chacun(e) à participer à son rythme et selon ses possibilités. Plusieurs mouvements sont adaptables en position assise. Reprenez ensuite votre cours.",note:"Pas besoin d’être professeur d’EPS pour faire bouger sa classe !",icons:"🤝 🪑 🌟"}
+  {title:"Installez un rituel souple et inclusif",text:"Invitez chacun(e) à participer à son rythme et selon ses possibilités. Plusieurs mouvements sont adaptables en position assise. Reprenez ensuite votre cours.",note:"Pas besoin d’être professeur d’EPS pour faire bouger sa classe !",icons:"🤝 🪑 🌟"},
+  {title:"Retrouvez PAUSE 5’ sur le bureau",text:"Sur l’ordinateur de la classe, cliquez sur « Installer PAUSE 5’ ». Dans Chrome ou Edge, acceptez l’installation proposée. Si le navigateur ne la propose pas, utilisez son menu : Chrome « Enregistrer et partager » / « Créer un raccourci » (selon la version) ; Edge « Applications » / « Installer ce site en tant qu’application ». Vous pouvez ensuite épingler l’application à la barre des tâches ou créer un raccourci sur le bureau.",note:"Sur les PC gérés par l’établissement, une autorisation informatique peut être nécessaire. L’installation ne remplace pas une connexion Internet pour toutes les vidéos.",icons:"💻 📌 ▶️"}
  ];
  let step=0,previousFocus=null;
  const modal=$('tutorialOverlay'),panel=modal.querySelector('.tuto-panel');
@@ -2846,7 +2848,7 @@ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
   $('tutorialTitle').textContent=slide.title;
   $('tutorialText').textContent=slide.text;
   $('tutorialNote').textContent=slide.note;
-  $('tutorialVisual').innerHTML='<img src="tutorial-classe-'+(step+1)+'.jpg" alt="Élèves réalisant une pause active en classe" loading="eager">';
+  $('tutorialVisual').innerHTML=step<5?'<img src="tutorial-classe-'+(step+1)+'.jpg" alt="Élèves réalisant une pause active en classe" loading="eager">':'<div class="tuto-install-icon" aria-hidden="true">💻　⬇️　📌</div>';
   $('tutorialCount').textContent='Étape '+(step+1)+' sur '+slides.length;
   $('tutorialProgress').innerHTML=slides.map((_,i)=>'<span class="tuto-dot'+(i<=step?' current':'')+'"></span>').join('');
   $('tutorialPrev').disabled=step===0;
@@ -2869,6 +2871,50 @@ body.pause-prestart.playful-prestart .prestart-message .playful-mission span{
  try{if(!localStorage.getItem('pause5-tutorial-seen-v1'))setTimeout(open,700)}catch(e){}
 })();
 </script>
+
+<style id="v26bz-install-style">
+.header-actions #installPauseBtn{background:#eaf8ef!important;color:#17633b!important;border:1px solid #b7ddc8!important}
+.tuto-install-icon{height:100%;display:flex;align-items:center;justify-content:center;font-size:clamp(2.3rem,6vw,4rem)}
+.p5-install-overlay{position:fixed;inset:0;z-index:120000;background:rgba(9,26,57,.75);display:none;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
+.p5-install-overlay.open{display:flex}
+.p5-install-panel{box-sizing:border-box;width:min(580px,100%);max-height:90dvh;overflow:auto;background:#fff;color:#17304f;border-radius:20px;padding:clamp(20px,3vw,30px);box-shadow:0 20px 70px #001b3b55;font:inherit}
+.p5-install-panel h2{margin:0 0 12px;font-size:clamp(1.35rem,3vw,1.85rem)}
+.p5-install-panel p,.p5-install-panel li{line-height:1.55;font-size:clamp(.95rem,1.5vw,1.07rem)}
+.p5-install-panel ol{padding-left:1.4em}
+.p5-install-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;margin-top:18px}
+.p5-install-actions button{cursor:pointer;border:1px solid #b7cce2;border-radius:12px;background:#f4f8ff;padding:10px 16px;color:#123a69;font-weight:750}
+.p5-install-actions .primary{background:#1769b6;color:white;border-color:#1769b6}
+</style>
+<div id="p5InstallOverlay" class="p5-install-overlay" role="dialog" aria-modal="true" aria-labelledby="p5InstallTitle" aria-hidden="true">
+ <section class="p5-install-panel" tabindex="-1">
+  <h2 id="p5InstallTitle">⬇️ Installer PAUSE 5’ sur l’ordinateur</h2>
+  <div id="p5InstallContent"></div>
+  <div class="p5-install-actions"><button type="button" id="p5InstallClose">Fermer</button><button type="button" id="p5InstallNative" class="primary" hidden>Installer maintenant</button></div>
+ </section>
+</div>
+<script id="v26bz-install-js">
+(()=>{
+ const btn=document.getElementById('installPauseBtn'),overlay=document.getElementById('p5InstallOverlay'),content=document.getElementById('p5InstallContent'),closeBtn=document.getElementById('p5InstallClose'),nativeBtn=document.getElementById('p5InstallNative');
+ if(!btn||!overlay)return;
+ let deferred=null,previousFocus=null;
+ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;});
+ window.addEventListener('appinstalled',()=>{deferred=null;if(overlay.classList.contains('open')){content.innerHTML='<p>✅ PAUSE 5’ a été installée. Vous pouvez désormais l’ouvrir depuis vos applications.</p>';nativeBtn.hidden=true;}});
+ function guide(){
+  const standalone=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+  if(standalone)return '<p>✅ PAUSE 5’ est déjà ouverte comme une application.</p>';
+  const ua=navigator.userAgent||'';
+  if(/iPad|iPhone|iPod/.test(ua))return '<p>Sur iPhone ou iPad, ouvrez PAUSE 5’ dans Safari, touchez <strong>Partager</strong> puis <strong>Sur l’écran d’accueil</strong>.</p>';
+  if(/Android/.test(ua))return '<p>Dans Chrome, ouvrez le menu <strong>⋮</strong>, puis choisissez <strong>Installer l’application</strong> ou <strong>Ajouter à l’écran d’accueil</strong>.</p>';
+  return '<p>Pour retrouver PAUSE 5’ en un clic sur le PC relié au vidéoprojecteur :</p><ol><li>Ouvrez ce site dans <strong>Chrome</strong> ou <strong>Microsoft Edge</strong>.</li><li>Dans <strong>Edge</strong> : menu <strong>⋯ → Applications → Installer ce site en tant qu’application</strong>.</li><li>Dans <strong>Chrome</strong> : utilisez l’icône d’installation dans la barre d’adresse, ou le menu <strong>⋮ → Enregistrer et partager / Créer un raccourci</strong> (selon la version).</li><li>Placez ensuite l’icône sur le <strong>bureau</strong> ou épinglez-la à la <strong>barre des tâches</strong>.</li></ol><p><small>Si l’installation est bloquée sur un ordinateur administré, demandez l’aide du référent numérique. Le raccourci reste une solution simple lorsque sa création est autorisée.</small></p>';
+ }
+ function open(){previousFocus=document.activeElement;content.innerHTML=guide();nativeBtn.hidden=!deferred;overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');overlay.querySelector('.p5-install-panel').focus();}
+ function close(){overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');if(previousFocus?.focus)previousFocus.focus();}
+ btn.addEventListener('click',open);closeBtn.addEventListener('click',close);overlay.addEventListener('click',e=>{if(e.target===overlay)close();});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay.classList.contains('open'))close();});
+ nativeBtn.addEventListener('click',async()=>{if(!deferred)return;const prompt=deferred;deferred=null;nativeBtn.hidden=true;try{await prompt.prompt();const choice=await prompt.userChoice;if(choice?.outcome==='accepted')content.innerHTML='<p>Installation demandée. Retrouvez PAUSE 5’ dans vos applications.</p>';else content.innerHTML=guide();}catch(e){content.innerHTML=guide();}});
+})();
+</script>
+
 </body>
 </html>
 
