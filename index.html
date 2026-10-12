@@ -1742,6 +1742,49 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
  }
 }
 </style>
+
+<style id="v26bt-landscape-video-size-fix">
+/* V26bt : vidéo légèrement réduite, ratio natif préservé, commandes dans le flux. */
+@media (orientation:landscape) and (max-height:600px) and (max-width:1000px) {
+  body:not(.pause-prestart) #projectionPanel.projector-mode .projection-layout {
+    flex:0 0 auto!important;
+    min-height:0!important;
+    align-items:center!important;
+    overflow:visible!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .demo {
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:auto!important;
+    overflow:visible!important;
+    flex-shrink:0!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .demo video {
+    display:block!important;
+    position:relative!important;
+    inset:auto!important;
+    width:auto!important;
+    height:auto!important;
+    max-width:100%!important;
+    max-height:38dvh!important;
+    aspect-ratio:auto!important;
+    object-fit:contain!important;
+    flex-shrink:1!important;
+    margin:0 auto!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .controls {
+    position:static!important;
+    flex:0 0 auto!important;
+    margin-top:10px!important;
+    clear:both!important;
+  }
+}
+</style>
 </head>
 <body>
 <div class="app" id="app">
