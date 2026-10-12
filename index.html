@@ -1871,6 +1871,48 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
  .surprise-overlay span {font-size:clamp(1rem,5vw,1.6rem)!important;}
 }
 </style>
+
+<style id="v26bv-frame-matches-video">
+/* Smartphone paysage : le cadre adopte exactement le ratio de la vidéo.
+   Pas de cadre étiré par la grille ni d'espace vide sous l'image. */
+@media screen and (orientation:landscape) and (max-height:600px) and (max-width:1000px) {
+  body:not(.pause-prestart) #projectionPanel.projector-mode .projection-layout .demo.has-video {
+    box-sizing:border-box!important;
+    position:relative!important;
+    display:block!important;
+    flex:none!important;
+    width:min(100%, 76.44dvh)!important;
+    max-width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    aspect-ratio:16 / 9!important;
+    padding:0!important;
+    margin:0 auto!important;
+    align-self:center!important;
+    justify-self:center!important;
+    overflow:hidden!important;
+    background:transparent!important;
+    border-radius:14px!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .projection-layout .demo.has-video video {
+    box-sizing:border-box!important;
+    display:block!important;
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    max-height:none!important;
+    aspect-ratio:16 / 9!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    background:transparent!important;
+    margin:0!important;
+    padding:0!important;
+  }
+}
+</style>
 </head>
 <body>
 <div class="app" id="app">
