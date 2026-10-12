@@ -1699,6 +1699,32 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
 .header-actions .about-btn:focus-visible{outline:3px solid #efab22;outline-offset:2px}
 @media(max-width:480px){.header-actions .about-btn{min-height:38px;padding:8px 10px!important}}
 </style>
+
+<style id="pause5-mobile-portrait-videos">
+/* V26bq : uniquement smartphone étroit en portrait ; aucun changement sur TNI/paysage. */
+@media screen and (max-width: 600px) and (orientation: portrait) {
+  body.math-mode .math-demo-grid,
+  body.math-mode .math-video-answers {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 12px auto !important;
+  }
+  body.math-mode .math-demo-grid > div,
+  body.math-mode .math-video-answers > div {
+    width: 100%; box-sizing: border-box; padding: 8px !important;
+  }
+  body.math-mode .math-demo-grid video,
+  body.math-mode .math-video-answers video {
+    display: block; width: 100% !important; height: auto !important;
+    aspect-ratio: 16 / 9; max-height: none !important; object-fit: contain;
+  }
+  body.math-mode .math-demo-grid strong,
+  body.math-mode .math-video-answers strong { font-size: 1.15rem !important; }
+  body.math-mode .math-video-answers span { font-size: .95rem !important; }
+}
+</style>
 </head>
 <body>
 <div class="app" id="app">
