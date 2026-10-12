@@ -1785,6 +1785,92 @@ body.math-mode .math-proto:not([hidden])>.challenge-bottom-credit{display:block}
   }
 }
 </style>
+
+<style id="v26bu-layout-corrections">
+/* Smartphone paysage : le cadre épouse la vidéo, sans bandes ni zone vide. */
+@media screen and (orientation:landscape) and (max-height:600px) and (max-width:1000px) {
+ body:not(.pause-prestart) #projectionPanel.projector-mode {
+   height:auto!important; min-height:0!important; max-height:none!important;
+   overflow:visible!important; display:block!important;
+   padding-bottom:12px!important;
+ }
+ body:not(.pause-prestart) #projectionPanel.projector-mode .projection-layout {
+   display:grid!important;
+   grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)!important;
+   align-items:center!important; gap:12px!important;
+   margin-top:6px!important; width:100%!important;
+   height:auto!important; min-height:0!important;
+ }
+ body:not(.pause-prestart) #projectionPanel.projector-mode .demo {
+   display:flex!important; justify-content:center!important; align-items:center!important;
+   box-sizing:border-box!important;
+   width:fit-content!important; max-width:100%!important;
+   height:fit-content!important; max-height:none!important;
+   min-height:0!important; aspect-ratio:auto!important;
+   padding:0!important; margin:0 auto!important;
+   overflow:hidden!important; background:transparent!important;
+   border-radius:12px!important;
+ }
+ body:not(.pause-prestart) #projectionPanel.projector-mode .demo video {
+   position:static!important; display:block!important;
+   width:auto!important; height:auto!important;
+   max-width:100%!important; max-height:43dvh!important;
+   aspect-ratio:auto!important; object-fit:contain!important;
+   margin:0!important; flex:0 1 auto!important;
+   background:transparent!important;
+ }
+ body:not(.pause-prestart) #projectionPanel.projector-mode .controls {
+   position:relative!important; inset:auto!important;
+   display:flex!important; flex-wrap:wrap!important;
+   justify-content:center!important; align-items:center!important;
+   gap:7px!important; margin:12px 0 8px!important;
+   padding:5px 3px max(8px,env(safe-area-inset-bottom))!important;
+   width:100%!important; box-sizing:border-box!important;
+   transform:none!important; z-index:2!important;
+ }
+ body:not(.pause-prestart) #projectionPanel.projector-mode .controls button {
+   max-width:100%!important; min-height:38px!important;
+   padding:8px 12px!important; font-size:clamp(13px,2.6vw,17px)!important;
+ }
+ body:not(.pause-prestart) #projectionPanel.projector-mode .phase {
+   min-width:0!important; max-width:100%!important;
+ }
+ body:not(.pause-prestart) #projectionPanel.projector-mode .phase p {
+   overflow-wrap:anywhere!important;
+ }
+ body:not(.pause-prestart) #projectionPanel.projector-mode .timeline {
+   position:relative!important; margin-bottom:8px!important;
+ }
+ body:has(#projectionPanel.projector-mode) {overflow-y:auto!important;}
+}
+/* Titres d'effets BOOST, MIROIR, etc. : retour à la ligne en portrait. */
+@media screen and (orientation:portrait) and (max-width:700px) {
+ .surprise-active {
+   position:fixed!important;
+   top:max(8px,env(safe-area-inset-top))!important;
+   left:50%!important; right:auto!important;
+   transform:translateX(-50%)!important;
+   width:max-content!important; max-width:calc(100vw - 24px)!important;
+   box-sizing:border-box!important; padding:8px 12px!important;
+   white-space:normal!important; overflow-wrap:anywhere!important;
+   word-break:normal!important; text-align:center!important;
+   line-height:1.2!important; border-radius:14px!important;
+   font-size:clamp(.85rem,3.8vw,1.2rem)!important;
+ }
+ .surprise-overlay {
+   box-sizing:border-box!important;
+   padding:16px!important; max-width:100vw!important;
+   overflow-wrap:anywhere!important;
+ }
+ .surprise-overlay strong, .surprise-overlay span {
+   display:block!important; max-width:100%!important;
+   white-space:normal!important; overflow-wrap:anywhere!important;
+   line-height:1.12!important;
+ }
+ .surprise-overlay strong {font-size:clamp(1.8rem,9vw,3.5rem)!important;}
+ .surprise-overlay span {font-size:clamp(1rem,5vw,1.6rem)!important;}
+}
+</style>
 </head>
 <body>
 <div class="app" id="app">
