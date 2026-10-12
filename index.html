@@ -2695,3 +2695,109 @@ body.pause-prestart #projectionPanel.projector-mode #next {
   }
 }
 </style>
+
+<style id="v26br-smartphone-landscape-pauses">
+/* V26br : pauses 5' et 2' sur smartphone en paysage uniquement.
+   Les commandes reprennent leur place dans le flux et ne recouvrent plus les consignes. */
+@media (orientation:landscape) and (max-height:600px) and (max-width:1000px) {
+  body:not(.pause-prestart) #projectionPanel.projector-mode {
+    box-sizing:border-box!important;
+    display:flex!important;
+    flex-direction:column!important;
+    height:100vh!important;
+    height:100dvh!important;
+    min-height:0!important;
+    padding:calc(5px + env(safe-area-inset-top)) 10px calc(6px + env(safe-area-inset-bottom))!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .sessionhead,
+  body:not(.pause-prestart) #projectionPanel.projector-mode .playerbar {
+    flex:0 0 auto!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .projection-layout {
+    display:grid!important;
+    grid-template-columns:minmax(0,1.65fr) minmax(0,1fr)!important;
+    gap:10px!important;
+    align-items:center!important;
+    flex:1 0 auto!important;
+    height:auto!important;
+    min-height:145px!important;
+    max-height:none!important;
+    overflow:visible!important;
+    margin:4px 0!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .demo {
+    display:block!important;
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:16/9!important;
+    max-height:min(57dvh,310px)!important;
+    min-height:0!important;
+    object-fit:contain!important;
+    margin:0!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .phase {
+    min-width:0!important;
+    max-height:none!important;
+    overflow:visible!important;
+    padding:0 2px!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .phase h3 {
+    font-size:clamp(1.1rem,3.2vw,1.8rem)!important;
+    line-height:1.05!important;
+    margin:2px 0!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .phase p.instruction-card,
+  body:not(.pause-prestart) #projectionPanel.projector-mode .seated-project {
+    font-size:clamp(.8rem,1.8vw,1.05rem)!important;
+    line-height:1.15!important;
+    margin:4px 0!important;
+    padding:5px 7px!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .phase .phase-time {
+    font-size:clamp(1.55rem,4vw,2.3rem)!important;
+    margin:4px 0!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .controls {
+    position:static!important;
+    inset:auto!important;
+    left:auto!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:auto!important;
+    transform:none!important;
+    z-index:auto!important;
+    flex:0 0 auto!important;
+    width:100%!important;
+    max-width:none!important;
+    box-sizing:border-box!important;
+    display:flex!important;
+    justify-content:center!important;
+    flex-wrap:wrap!important;
+    gap:7px!important;
+    padding:5px 0!important;
+    margin:5px 0 2px!important;
+    background:#fff!important;
+    box-shadow:none!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .controls button {
+    position:static!important;
+    transform:none!important;
+    padding:8px 12px!important;
+    font-size:clamp(.8rem,1.8vw,.98rem)!important;
+    margin:0!important;
+  }
+  body:not(.pause-prestart) #projectionPanel.projector-mode .timeline {
+    position:static!important;
+    inset:auto!important;
+    left:auto!important;
+    right:auto!important;
+    bottom:auto!important;
+    flex:0 0 auto!important;
+    width:100%!important;
+    margin:3px 0 0!important;
+  }
+}
+</style>
