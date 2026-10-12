@@ -766,3 +766,29 @@ document.addEventListener("click",function(e){const b=e.target.closest(".defi-re
 
 // V26bl: tous les défis partagent la même commande audio.
 document.addEventListener("DOMContentLoaded",()=>{{const b=document.getElementById("mathSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("geoSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("santeSommeilSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citRespectSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citEgaliteSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citNumeriqueSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citRepubliqueSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citEngagementSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citEnvironnementSoundToggle");if(b)b.addEventListener("click",toggleSound);}{const b=document.getElementById("citEspritCritiqueSoundToggle");if(b)b.addEventListener("click",toggleSound);}updateSoundUI();});
+
+
+/* V26bx — iPhone paysage : commande tactile directe.
+   Réutilise les handlers onclick existants, sans modifier la logique des séances. */
+(function(){
+  ['pause','next','homeDuringSession'].forEach(function(id){
+    var button=document.getElementById(id);
+    if(!button)return;
+    var touchStart=null;
+    button.addEventListener('touchstart',function(ev){
+      if(ev.touches.length!==1)return;
+      touchStart={x:ev.touches[0].clientX,y:ev.touches[0].clientY};
+    },{passive:true});
+    button.addEventListener('touchend',function(ev){
+      if(!window.matchMedia('(orientation: landscape) and (max-height: 600px) and (max-width: 1000px)').matches)return;
+      if(button.hidden||button.disabled||!touchStart)return;
+      var touch=ev.changedTouches[0];
+      if(!touch||Math.hypot(touch.clientX-touchStart.x,touch.clientY-touchStart.y)>18)return;
+      touchStart=null;
+      ev.preventDefault();
+      ev.stopPropagation();
+      button.click();
+    },{passive:false});
+    button.addEventListener('touchcancel',function(){touchStart=null;},{passive:true});
+  });
+})();
